@@ -1,0 +1,13 @@
+MID	MNAME	AMOUNT
+86698	Antibiotic	226
+14726	Thermometers	37
+72115	Disinfectant	59
+12570	Septanest	83
+11654	Cotton Swabs	120
+24208	Bandages	136
+61185	Gauze	167
+14470	Pills	168
+70154	Gloves	54
+99078	Anesthetic	190
+73385	Syringes	136
+16596	Pills	69

@@ -1,0 +1,104 @@
+CREATE TABLE Patient
+(
+  cBirthYear NUMERIC(4) NOT NULL,
+  cAddress VARCHAR(55) NOT NULL,
+  cName VARCHAR(30) NOT NULL,
+  cGender VARCHAR(5) NOT NULL,
+  cId NUMERIC(5) NOT NULL,
+  cMobile VARCHAR(10) NOT NULL,
+  cMail VARCHAR(35) NOT NULL,
+  PRIMARY KEY (cId)
+);
+
+CREATE TABLE Treatment
+(
+  tType VARCHAR(15) NOT NULL,
+  Description VARCHAR(200) NOT NULL,
+  Price NUMERIC(5) NOT NULL,
+  tId NUMERIC(5) NOT NULL,
+  Time FLOAT NOT NULL,
+  PRIMARY KEY (tId)
+);
+
+CREATE TABLE Staff
+(
+  sAddress VARCHAR(55) NOT NULL,
+  sMobile CHAR(10) NOT NULL,
+  sName VARCHAR(30) NOT NULL,
+  sMail VARCHAR(35) NOT NULL,
+  sId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (sId)
+);
+
+CREATE TABLE Office
+(
+  oType VARCHAR(15) NOT NULL,
+  sId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (sId),
+  FOREIGN KEY (sId) REFERENCES Staff(sId)
+);
+
+CREATE TABLE Doctor
+(
+  License VARCHAR(15) NOT NULL,
+  Specialties VARCHAR(15) NOT NULL,
+  sId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (sId),
+  FOREIGN KEY (sId) REFERENCES Staff(sId)
+);
+
+CREATE TABLE Appointment
+(
+  aDate DATE NOT NULL,
+  AppointmentID NUMERIC(7) NOT NULL,
+  sId NUMERIC(5) NOT NULL,
+  cId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (AppointmentID),
+  FOREIGN KEY (sId) REFERENCES Doctor(sId),
+  FOREIGN KEY (cId) REFERENCES Patient(cId)
+);
+
+CREATE TABLE Material
+(
+  mId NUMERIC(5) NOT NULL,
+  mName VARCHAR(15) NOT NULL,
+  Amount NUMERIC(5) NOT NULL,
+  PRIMARY KEY (mId)
+);
+
+CREATE TABLE OMakeA
+(
+  AppointmentID NUMERIC(5) NOT NULL,
+  sId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (AppointmentID, sId),
+  FOREIGN KEY (AppointmentID) REFERENCES Appointment(AppointmentID),
+  FOREIGN KEY (sId) REFERENCES Office(sId)
+);
+
+CREATE TABLE TPreformedInA
+(
+  tId NUMERIC(5) NOT NULL,
+  AppointmentID NUMERIC(5) NOT NULL,
+  PRIMARY KEY (tId, AppointmentID),
+  FOREIGN KEY (tId) REFERENCES Treatment(tId),
+  FOREIGN KEY (AppointmentID) REFERENCES Appointment(AppointmentID)
+);
+
+CREATE TABLE MUsedInT
+(
+  tId NUMERIC(5) NOT NULL,
+  mId NUMERIC(5) NOT NULL,
+  PRIMARY KEY (tId, mId),
+  FOREIGN KEY (tId) REFERENCES Treatment(tId),
+  FOREIGN KEY (mId) REFERENCES Material(mId)
+);
+
+CREATE TABLE Payment
+(
+  Id NUMERIC(5) NOT NULL,
+  TotalPrice NUMERIC(10) NOT NULL,
+  pDate DATE NOT NULL,
+  AppointmentID NUMERIC(5) NOT NULL,
+  PRIMARY KEY (Id),
+  FOREIGN KEY (AppointmentID) REFERENCES Appointment(AppointmentID)
+);
