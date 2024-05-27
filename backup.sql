@@ -1,5 +1,5 @@
 ﻿prompt PL/SQL Developer import file
-prompt Created on יום ראשון 26 מאי 2024 by maria
+prompt Created on יום שני 27 מאי 2024 by maria
 set feedback off
 set define off
 prompt Creating STAFF...
@@ -11,32 +11,9 @@ create table STAFF
   smail    VARCHAR2(35) not null,
   sid      NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table STAFF
-  add primary key (SID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (SID);
 grant select, update, delete on STAFF to MIRIAM;
 
 prompt Creating DOCTOR...
@@ -46,32 +23,9 @@ create table DOCTOR
   specialties VARCHAR2(15) not null,
   sid         NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table DOCTOR
-  add primary key (SID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (SID);
 alter table DOCTOR
   add foreign key (SID)
   references STAFF (SID);
@@ -88,32 +42,9 @@ create table PATIENT
   cmobile    VARCHAR2(10) not null,
   cmail      VARCHAR2(35) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table PATIENT
-  add primary key (CID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (CID);
 grant select, update, delete on PATIENT to MIRIAM;
 
 prompt Creating APPOINTMENT...
@@ -124,32 +55,9 @@ create table APPOINTMENT
   sid           NUMBER(5) not null,
   cid           NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table APPOINTMENT
-  add primary key (APPOINTMENTID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (APPOINTMENTID);
 alter table APPOINTMENT
   add foreign key (SID)
   references DOCTOR (SID);
@@ -165,32 +73,9 @@ create table MATERIAL
   mname  VARCHAR2(15) not null,
   amount NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table MATERIAL
-  add primary key (MID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (MID);
 grant select, update, delete on MATERIAL to MIRIAM;
 
 prompt Creating TREATMENT...
@@ -202,32 +87,9 @@ create table TREATMENT
   tid         NUMBER(5) not null,
   time        NUMBER not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table TREATMENT
-  add primary key (TID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (TID);
 grant select, update, delete on TREATMENT to MIRIAM;
 
 prompt Creating MUSEDINT...
@@ -236,32 +98,9 @@ create table MUSEDINT
   tid NUMBER(5) not null,
   mid NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table MUSEDINT
-  add primary key (TID, MID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (TID, MID);
 alter table MUSEDINT
   add foreign key (TID)
   references TREATMENT (TID);
@@ -276,32 +115,9 @@ create table OFFICE
   otype VARCHAR2(15) not null,
   sid   NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table OFFICE
-  add primary key (SID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (SID);
 alter table OFFICE
   add foreign key (SID)
   references STAFF (SID);
@@ -313,32 +129,9 @@ create table OMAKEA
   appointmentid NUMBER(5) not null,
   sid           NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table OMAKEA
-  add primary key (APPOINTMENTID, SID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (APPOINTMENTID, SID);
 alter table OMAKEA
   add foreign key (APPOINTMENTID)
   references APPOINTMENT (APPOINTMENTID);
@@ -355,32 +148,9 @@ create table PAYMENT
   pdate         DATE not null,
   appointmentid NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table PAYMENT
-  add primary key (ID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (ID);
 alter table PAYMENT
   add foreign key (APPOINTMENTID)
   references APPOINTMENT (APPOINTMENTID);
@@ -392,32 +162,9 @@ create table TPREFORMEDINA
   tid           NUMBER(5) not null,
   appointmentid NUMBER(5) not null
 )
-tablespace SYSTEM
-  pctfree 10
-  pctused 40
-  initrans 1
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+;
 alter table TPREFORMEDINA
-  add primary key (TID, APPOINTMENTID)
-  using index 
-  tablespace SYSTEM
-  pctfree 10
-  initrans 2
-  maxtrans 255
-  storage
-  (
-    initial 64K
-    next 1M
-    minextents 1
-    maxextents unlimited
-  );
+  add primary key (TID, APPOINTMENTID);
 alter table TPREFORMEDINA
   add foreign key (TID)
   references TREATMENT (TID);
@@ -449,23 +196,23 @@ alter table PAYMENT disable all triggers;
 prompt Disabling triggers for TPREFORMEDINA...
 alter table TPREFORMEDINA disable all triggers;
 prompt Disabling foreign key constraints for DOCTOR...
-alter table DOCTOR disable constraint SYS_C007250;
+alter table DOCTOR disable constraint SYS_C007299;
 prompt Disabling foreign key constraints for APPOINTMENT...
-alter table APPOINTMENT disable constraint SYS_C007256;
-alter table APPOINTMENT disable constraint SYS_C007257;
+alter table APPOINTMENT disable constraint SYS_C007313;
+alter table APPOINTMENT disable constraint SYS_C007314;
 prompt Disabling foreign key constraints for MUSEDINT...
-alter table MUSEDINT disable constraint SYS_C007275;
-alter table MUSEDINT disable constraint SYS_C007276;
+alter table MUSEDINT disable constraint SYS_C007328;
+alter table MUSEDINT disable constraint SYS_C007329;
 prompt Disabling foreign key constraints for OFFICE...
-alter table OFFICE disable constraint SYS_C007245;
+alter table OFFICE disable constraint SYS_C007333;
 prompt Disabling foreign key constraints for OMAKEA...
-alter table OMAKEA disable constraint SYS_C007265;
-alter table OMAKEA disable constraint SYS_C007266;
+alter table OMAKEA disable constraint SYS_C007337;
+alter table OMAKEA disable constraint SYS_C007338;
 prompt Disabling foreign key constraints for PAYMENT...
-alter table PAYMENT disable constraint SYS_C007282;
+alter table PAYMENT disable constraint SYS_C007344;
 prompt Disabling foreign key constraints for TPREFORMEDINA...
-alter table TPREFORMEDINA disable constraint SYS_C007270;
-alter table TPREFORMEDINA disable constraint SYS_C007271;
+alter table TPREFORMEDINA disable constraint SYS_C007348;
+alter table TPREFORMEDINA disable constraint SYS_C007349;
 prompt Deleting TPREFORMEDINA...
 delete from TPREFORMEDINA;
 commit;
@@ -501,63 +248,665 @@ delete from STAFF;
 commit;
 prompt Loading STAFF...
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('12 bu Tel Aviv', '035798612 ', 'Mono OR', 'mono@gmail.com', 10000);
+values ('3407 Parturient Road', '569438994 ', 'Jamalia Nelson', 'jamalianelson1349@gmail.couk', 50906);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('123 Main St', '123456789 ', 'John Doe', 'john@email.com', 10001);
+values ('P.O. Box 227, 6260 Ac St.', '588621867 ', 'Axel Brewer', 'axelbrewer1930@aol.com', 24626);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('456 Oak Ave', '987654321 ', 'Jane Smith', 'jane@email.com', 10002);
+values ('870-4178 Ut St.', '566568338 ', 'Hoyt Burgess', 'hoytburgess@icloud.org', 21996);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('789 Elm St', '456789012 ', 'Michael Johnson', 'michael@email.com', 10003);
+values ('Ap #841-223 Donec Avenue', '502347836 ', 'Ezra Petty', 'ezrapetty@gmail.org', 50112);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('321 Pine Rd', '789012345 ', 'Emily Davis', 'emily@email.com', 10004);
+values ('Ap #949-2228 Taciti Ave', '546448857 ', 'Stephanie Walters', 'stephaniewalters6553@google.org', 59791);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('654 Maple Ln', '345678901 ', 'David Wilson', 'david@email.com', 10005);
+values ('988-8976 Phasellus Rd.', '512641152 ', 'Justin Perkins', 'justinperkins@google.couk', 60642);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('987 Cedar Blvd', '678901234 ', 'Sarah Thompson', 'sarah@email.com', 10006);
+values ('960-1858 Vivamus Av.', '516540543 ', 'Charles Russell', 'charlesrussell1550@gmail.org', 88541);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('246 Oak Ct', '901234567 ', 'Robert Anderson', 'robert@email.com', 10007);
+values ('7486 Mollis Avenue', '550467486 ', 'Timon Kirk', 'timonkirk@yahoo.net', 70482);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('579 Elm Way', '234567890 ', 'Jessica Taylor', 'jessica@email.com', 10008);
+values ('172-5884 Orci. Rd.', '525639826 ', 'Yen Boyer', 'yenboyer391@aol.edu', 61721);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('813 Pine Ave', '567890123 ', 'Chris Brown', 'chris@email.com', 10009);
+values ('655-8823 Quam Street', '565424647 ', 'Leah Olson', 'leaholson@gmail.ca', 84092);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('159 Maple St', '890123456 ', 'Amanda Garcia', 'amanda@email.com', 10010);
+values ('727-1258 Et, Rd.', '564758401 ', 'Warren Bradley', 'warrenbradley8891@yahoo.net', 73373);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('101 Birch St', '234123456 ', 'Oliver Martin', 'oliver@email.com', 10011);
+values ('187-6770 Ipsum. Avenue', '524397393 ', 'Hanae Salas', 'hanaesalas5714@yahoo.net', 55295);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('202 Spruce Ln', '567234567 ', 'Sophia Lee', 'sophia@email.com', 10012);
+values ('Ap #704-1734 Urna Road', '554277315 ', 'Hilel Leonard', 'hilelleonard6037@google.net', 12245);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('303 Cherry Ave', '890345678 ', 'Liam Martinez', 'liam@email.com', 10013);
+values ('Ap #148-4189 Magna. Av.', '520381736 ', 'Natalie Bishop', 'nataliebishop@aol.net', 43702);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('404 Willow Rd', '123456789 ', 'Mia Rodriguez', 'mia@email.com', 10014);
+values ('P.O. Box 533, 173 Aliquet Avenue', '573723328 ', 'Nerea Atkins', 'nereaatkins3078@gmail.couk', 52769);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('505 Poplar St', '234567890 ', 'Noah Davis', 'noah@email.com', 10015);
+values ('Ap #315-4061 Pellentesque Ave', '512018656 ', 'Keiko Greene', 'keikogreene9814@aol.couk', 74841);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('606 Aspen Ct', '345678901 ', 'Isabella Lewis', 'isabella@email.com', 10016);
+values ('4830 Nec Ave', '561202638 ', 'August Mayer', 'augustmayer@aol.edu', 92960);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('707 Beech Blvd', '456789012 ', 'James White', 'james@email.com', 10017);
+values ('921-5607 Molestie Rd.', '577522811 ', 'Macey Leonard', 'maceyleonard@google.com', 69582);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('88 Magnolia Way', '567890123 ', 'Charl Walker', 'charlotte@email.com', 10018);
+values ('Ap #136-7353 Sed Ave', '568035678 ', 'Shannon Leon', 'shannonleon5982@gmail.couk', 68890);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('909 Oak Dr', '678901234 ', 'Ben Hall', 'benjamin@email.com', 10019);
+values ('P.O. Box 300, 1799 Gravida. Rd.', '555590456 ', 'Hammett Gill', 'hammettgill3998@yahoo.net', 18791);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('100 Redwood Ave', '789012345 ', 'Amelia Young', 'amelia@email.com', 10020);
+values ('Ap #332-9305 Vivamus St.', '573718435 ', 'Shelley Moody', 'shelleymoody@google.net', 89796);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('196-696 Tincidunt Av.', '576802140 ', 'Shaine Sosa', 'shainesosa8233@gmail.couk', 71870);
+values ('P.O. Box 522, 8963 Ante. Av.', '587582511 ', 'Quynn Holloway', 'quynnholloway@gmail.ca', 95354);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #517-3634 Sed Street', '576163875 ', 'Kirsten Foreman', 'kirstenforeman55@google.org', 53162);
+values ('Ap #666-8698 Purus Rd.', '522758221 ', 'Salvador Ashley', 'salvadorashley9273@gmail.com', 57569);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #105-1406 Lorem Av.', '577647211 ', 'Hillary Garrett', 'hillarygarrett@yahoo.org', 19365);
+values ('948-8845 Vel St.', '517414144 ', 'Dahlia Owens', 'dahliaowens@aol.com', 54038);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 103, 7570 Vestibulum St.', '535653718 ', 'Susan Lester', 'susanlester3407@google.com', 69468);
+values ('489-8703 Arcu. St.', '572652786 ', 'Morgan Hardin', 'morganhardin@yahoo.com', 69221);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 128, 3885 Vitae St.', '512974695 ', 'Brianna Holcomb', 'briannaholcomb5084@icloud.ca', 94853);
+values ('777-555 Fringilla. Av.', '557839415 ', 'Eaton Lott', 'eatonlott5980@yahoo.net', 70250);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('5640 Justo St.', '533026653 ', 'Imani Clayton', 'imaniclayton@icloud.com', 31979);
+values ('Ap #656-7023 Est. St.', '574921141 ', 'Clark Sampson', 'clarksampson4602@gmail.edu', 35553);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('235-3854 Ipsum St.', '554287212 ', 'Colleen Nichols', 'colleennichols3441@gmail.couk', 49506);
+values ('833-8832 Aliquam St.', '580411781 ', 'Garrett Harrison', 'garrettharrison@icloud.ca', 43931);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('764-1812 Velit. Street', '596111846 ', 'Constance Francis', 'constancefrancis@yahoo.net', 51524);
+values ('P.O. Box 969, 908 Cum St.', '562542622 ', 'Madaline Mack', 'madalinemack@aol.net', 27637);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('496-2155 Orci Street', '541521610 ', 'Ali Black', 'aliblack@gmail.org', 50219);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #601-1348 Et Road', '535112874 ', 'Marshall Shannon', 'marshallshannon5759@google.net', 22440);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('309-8129 Feugiat Rd.', '564257271 ', 'Oscar Benjamin', 'oscarbenjamin@aol.edu', 66029);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('786-3330 Nisi Av.', '513778782 ', 'Emerson Cardenas', 'emersoncardenas@icloud.couk', 68854);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7968 Eu Road', '548711235 ', 'Brennan Reid', 'brennanreid@yahoo.edu', 99681);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7783 Phasellus Avenue', '552114866 ', 'Kiara Ayers', 'kiaraayers7858@aol.org', 30610);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #418-6767 Semper. Avenue', '593645385 ', 'Sacha Webster', 'sachawebster6532@yahoo.com', 24608);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #833-5380 Mauris Road', '512145373 ', 'Oscar Mays', 'oscarmays9991@gmail.couk', 47411);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('1014 Aliquet Rd.', '573652779 ', 'Vance Bradley', 'vancebradley@icloud.ca', 13416);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #453-5652 Mollis. Rd.', '564797052 ', 'Karyn Price', 'karynprice@gmail.edu', 18802);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('480-3066 Nunc Rd.', '537150742 ', 'Macon King', 'maconking3176@gmail.net', 16012);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 467, 5418 Duis Road', '564174504 ', 'Connor Mcmillan', 'connormcmillan@google.net', 15963);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #719-4855 Ante St.', '535721837 ', 'Abra Clemons', 'abraclemons2857@aol.org', 84940);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('809 Urna Street', '575013566 ', 'Harrison Stewart', 'harrisonstewart@gmail.net', 19098);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #901-2030 Vel Street', '542991526 ', 'Jeremy Santana', 'jeremysantana@gmail.couk', 69373);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('827-8375 Aliquam Rd.', '527581368 ', 'Constance Navarro', 'constancenavarro@icloud.edu', 31845);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('383-3411 Nam Rd.', '566718812 ', 'Colby Shaffer', 'colbyshaffer7949@icloud.couk', 25922);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('279-4046 A, St.', '594524576 ', 'Stacey Mcleod', 'staceymcleod@aol.com', 26135);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('4212 Odio Av.', '521145828 ', 'Gannon Vance', 'gannonvance@google.org', 77934);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 408, 8813 Volutpat. Avenue', '517871957 ', 'Alan Sullivan', 'alansullivan@aol.com', 83782);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8129 Facilisis Av.', '598355463 ', 'Joelle Hoover', 'joellehoover4378@yahoo.couk', 90376);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #331-8940 Ut Road', '521151267 ', 'Kane Velazquez', 'kanevelazquez5579@icloud.com', 90152);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7215 Vestibulum Road', '556769693 ', 'Halee Boyer', 'haleeboyer8640@yahoo.couk', 61039);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 933, 8375 Enim Rd.', '582388653 ', 'Jordan Stanton', 'jordanstanton@gmail.net', 72497);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('112-260 Varius Av.', '576107777 ', 'Jescie Reynolds', 'jesciereynolds4525@icloud.couk', 44135);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #299-1591 Dictum Street', '505456764 ', 'Harding Ballard', 'hardingballard7768@icloud.ca', 41470);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('442-2426 Ut Street', '526678882 ', 'Gavin Foley', 'gavinfoley@yahoo.ca', 16017);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #878-4716 Magna Rd.', '554512612 ', 'Kennedy Atkins', 'kennedyatkins5511@yahoo.net', 68062);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('369-2220 Proin Av.', '556043206 ', 'Keely Lambert', 'keelylambert@aol.couk', 87909);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #778-3523 Nunc Street', '521473627 ', 'Kerry Cantrell', 'kerrycantrell3347@google.couk', 37037);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('214-5228 Turpis St.', '540508616 ', 'Nehru Kane', 'nehrukane@gmail.edu', 13854);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('861-3422 Et, Rd.', '548580479 ', 'Evan Norman', 'evannorman3424@yahoo.net', 20080);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 302, 6246 Risus. St.', '538180461 ', 'Flynn Fulton', 'flynnfulton@google.edu', 48224);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #727-177 Pede Rd.', '545651455 ', 'Indigo Rios', 'indigorios2663@aol.net', 74972);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('242-6132 Laoreet Ave', '535495636 ', 'Dexter Brock', 'dexterbrock@google.edu', 90220);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 452, 4243 Mi Street', '564133153 ', 'Finn Dalton', 'finndalton8241@google.net', 15962);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 745, 426 Sed Avenue', '578738721 ', 'Ryan Farley', 'ryanfarley@aol.couk', 62317);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('431-364 Nulla. Street', '533622703 ', 'Devin Dejesus', 'devindejesus6975@yahoo.com', 19618);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('787-2727 Curabitur St.', '583807736 ', 'Lance Mooney', 'lancemooney@google.com', 65613);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #238-8440 Dapibus Av.', '597121814 ', 'Chadwick May', 'chadwickmay@aol.edu', 96640);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('9496 Nulla Ave', '557505223 ', 'Slade Frank', 'sladefrank9577@google.edu', 61696);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7256 Lorem St.', '555586696 ', 'Raymond Warner', 'raymondwarner@icloud.com', 38187);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 334, 4736 Eleifend St.', '580677323 ', 'Gil Morse', 'gilmorse@google.ca', 29872);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #556-2620 Lectus Street', '541851873 ', 'Lesley Clements', 'lesleyclements@gmail.org', 87171);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('551-7034 Semper St.', '532543299 ', 'Berk Brooks', 'berkbrooks5135@gmail.com', 85179);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #189-6621 Gravida. Rd.', '513542253 ', 'Axel Simpson', 'axelsimpson4740@google.com', 72073);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('820-4056 Cras Avenue', '521786146 ', 'Brynne Winters', 'brynnewinters7074@yahoo.com', 98900);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 503, 1178 Metus Ave', '559616521 ', 'Rahim Rodriquez', 'rahimrodriquez@yahoo.edu', 35556);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('5718 Vulputate St.', '594666137 ', 'Phoebe Mckinney', 'phoebemckinney@google.ca', 33532);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('560-2948 Non, Rd.', '523156678 ', 'Tanner Peters', 'tannerpeters@icloud.couk', 68549);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('509-4772 Vestibulum Rd.', '524626646 ', 'Flynn Villarreal', 'flynnvillarreal9983@aol.couk', 68614);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('564-5771 Eu Street', '592450737 ', 'Tanisha Morgan', 'tanishamorgan838@google.couk', 11083);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8968 Suspendisse Road', '504006741 ', 'Lunea Emerson', 'luneaemerson@google.net', 38296);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('396-1488 Erat Street', '538383559 ', 'Naida Wade', 'naidawade@icloud.edu', 54635);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('881-5828 Integer St.', '551732000 ', 'Flavia Mcintosh', 'flaviamcintosh@gmail.com', 43915);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #403-2787 Egestas. Street', '573237112 ', 'Karyn Marsh', 'karynmarsh@yahoo.edu', 63761);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('319-2818 Nisl St.', '515333265 ', 'Galvin Ashley', 'galvinashley@gmail.net', 90668);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #522-2184 Amet Av.', '522733464 ', 'Tamara Park', 'tamarapark1701@gmail.com', 71473);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('246-5855 Amet Av.', '515274520 ', 'Griffith Keller', 'griffithkeller7065@icloud.couk', 18863);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('3056 Turpis Rd.', '536953528 ', 'Colleen Drake', 'colleendrake4856@icloud.couk', 84301);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 547, 4627 Molestie Road', '563603836 ', 'Wyatt Lara', 'wyattlara@icloud.com', 51251);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #700-8942 Nunc Street', '516175362 ', 'Rowan Savage', 'rowansavage1753@aol.couk', 82187);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('509 Non Rd.', '546198853 ', 'Zena Howard', 'zenahoward@icloud.couk', 44156);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 445, 7101 Quisque Rd.', '574447573 ', 'Eve Holland', 'eveholland@icloud.couk', 58745);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('700-1021 Elit, Av.', '522656074 ', 'Robert Sims', 'robertsims4427@gmail.com', 18525);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('111-6793 Magna. Av.', '546229625 ', 'Ivory Dunn', 'ivorydunn@google.couk', 99939);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 873, 6303 Nec St.', '576201253 ', 'Uriel Neal', 'urielneal@aol.org', 81284);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('585-1795 Metus Av.', '555092215 ', 'Fritz Weeks', 'fritzweeks5168@yahoo.com', 17105);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #641-3387 Phasellus Avenue', '531410563 ', 'Cheryl Rojas', 'cherylrojas@yahoo.org', 11630);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('950-338 Nascetur Ave', '513777066 ', 'Ferris Gallagher', 'ferrisgallagher1685@icloud.couk', 86538);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #760-5710 Vulputate, Ave', '564394841 ', 'Len Baldwin', 'lenbaldwin@google.com', 64760);
+commit;
+prompt 100 records committed...
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #269-7789 Molestie. Avenue', '585648527 ', 'Jennifer Durham', 'jenniferdurham@aol.net', 32568);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 775, 1674 Odio Avenue', '569446768 ', 'Dominique Travis', 'dominiquetravis@google.edu', 82258);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 714, 4508 Mollis St.', '522208561 ', 'Molly Perry', 'mollyperry@gmail.couk', 63530);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 382, 7049 Non St.', '513075078 ', 'Cara Rosario', 'cararosario5324@google.com', 56476);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #757-1273 Et, St.', '576548447 ', 'Darryl Schmidt', 'darrylschmidt@yahoo.com', 64185);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('555-8195 Augue Rd.', '543118427 ', 'Samson Waller', 'samsonwaller@aol.couk', 88762);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('841 Aliquam St.', '568408287 ', 'Sebastian Brown', 'sebastianbrown@icloud.org', 99769);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #872-7778 Ullamcorper Rd.', '555239556 ', 'Jena Gamble', 'jenagamble9266@gmail.couk', 83831);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #550-8456 Nunc. Road', '513447169 ', 'Emmanuel Burks', 'emmanuelburks@gmail.com', 27991);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #515-9910 Ac Av.', '517415802 ', 'Preston Golden', 'prestongolden@yahoo.ca', 82172);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #492-5770 Nunc Ave', '588137371 ', 'Guy Macdonald', 'guymacdonald@google.net', 35877);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('5998 Dolor. Rd.', '578693863 ', 'Eric Wade', 'ericwade@google.com', 61546);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('352-1005 Mauris St.', '562747017 ', 'Sybil Garner', 'sybilgarner@gmail.org', 52116);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('520-5294 Habitant St.', '517443492 ', 'Lillian Parrish', 'lillianparrish@google.org', 80830);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('101-2980 Auctor St.', '523740535 ', 'Beverly Clements', 'beverlyclements881@yahoo.org', 71959);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 485, 6211 Non, Street', '566737527 ', 'Alana Sweet', 'alanasweet@gmail.edu', 37345);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('890-9570 Faucibus Rd.', '516973121 ', 'Ray Waters', 'raywaters@gmail.org', 34214);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('765-6368 Sed Av.', '557582683 ', 'Erin Franks', 'erinfranks6566@aol.ca', 86842);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('366-1556 Phasellus Rd.', '577777975 ', 'Venus Nolan', 'venusnolan2990@aol.com', 91865);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('822-8554 Pellentesque Road', '516661385 ', 'Jaquelyn Meyers', 'jaquelynmeyers5406@icloud.ca', 79825);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('455-9109 Odio Street', '533682586 ', 'Elton Wells', 'eltonwells@yahoo.edu', 14599);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('336-8376 Pede, Rd.', '575701763 ', 'Graham O''brien', 'grahamobrien6608@gmail.org', 12053);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 127, 6219 Eu St.', '546418581 ', 'Joy Jacobson', 'joyjacobson@icloud.ca', 83250);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('868-9853 Vitae, Road', '526222973 ', 'Vance Butler', 'vancebutler2321@aol.org', 57384);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 632, 4151 Turpis St.', '542322210 ', 'Lucy Moses', 'lucymoses@aol.couk', 55244);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('9869 Magna Av.', '587828575 ', 'Keaton Mcknight', 'keatonmcknight@yahoo.edu', 12082);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('146-1365 Congue, St.', '527349116 ', 'Valentine Kaufman', 'valentinekaufman@gmail.net', 41120);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('230-6929 Suscipit Road', '596814562 ', 'Chiquita Hines', 'chiquitahines@google.com', 31151);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #513-8280 Enim. Ave', '566358768 ', 'Lars Baird', 'larsbaird94@google.ca', 99596);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 300, 1701 Donec Street', '542121155 ', 'Risa Torres', 'risatorres3860@gmail.org', 31448);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('491-894 Mauris Avenue', '502523876 ', 'Laith Austin', 'laithaustin326@yahoo.couk', 55149);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('789-2466 Eu Rd.', '583569262 ', 'Carissa Baird', 'carissabaird@gmail.org', 83211);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 107, 1303 Donec Road', '565625124 ', 'Helen Rocha', 'helenrocha@yahoo.com', 70610);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('803-6157 Cras Road', '502526397 ', 'Vielka Lopez', 'vielkalopez578@aol.ca', 88875);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 999, 980 Sollicitudin St.', '534253376 ', 'Barrett Beasley', 'barrettbeasley@google.couk', 99342);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #707-9661 Tempus St.', '596105288 ', 'Lee Gould', 'leegould3190@aol.com', 42679);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('1962 Dui. Ave', '582623882 ', 'Sheila Mooney', 'sheilamooney@gmail.couk', 83526);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #851-5065 Fusce Avenue', '596768416 ', 'Tanisha Ruiz', 'tanisharuiz3940@aol.com', 19936);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('989-4140 Aliquet Rd.', '535472519 ', 'Reagan Ashley', 'reaganashley3225@google.com', 81877);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('9362 Suspendisse Street', '564069268 ', 'Kenyon Greene', 'kenyongreene@icloud.edu', 50598);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('736-6478 Velit. Rd.', '573703504 ', 'Sheila Banks', 'sheilabanks@aol.org', 89061);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('582-8851 Iaculis St.', '541634727 ', 'Keelie Waters', 'keeliewaters7555@gmail.edu', 76589);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('924-4488 Torquent Avenue', '544831649 ', 'Judah Kerr', 'judahkerr5@google.edu', 25190);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('841-5414 Orci, Rd.', '521844931 ', 'Ryan Castaneda', 'ryancastaneda@aol.couk', 32593);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 879, 8486 Congue, Av.', '594677637 ', 'Hilel Baird', 'hilelbaird7340@gmail.edu', 72720);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #322-8694 Vel, Avenue', '551835552 ', 'Melinda Rosario', 'melindarosario@google.ca', 35130);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #237-505 Ullamcorper, St.', '554657269 ', 'Carly Mosley', 'carlymosley5311@icloud.edu', 91368);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('679-9125 Ut Av.', '514407551 ', 'Jenna Graves', 'jennagraves@yahoo.org', 28571);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #804-1927 Vitae St.', '524243801 ', 'Justine Baldwin', 'justinebaldwin8485@google.ca', 87332);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #265-8459 Curabitur Rd.', '539591012 ', 'Alfonso Morales', 'alfonsomorales737@gmail.com', 86483);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('325-1754 Vestibulum Av.', '562876878 ', 'Melissa Schroeder', 'melissaschroeder@google.net', 51740);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 110, 8945 In Avenue', '574646715 ', 'Timon Fleming', 'timonfleming@gmail.net', 79591);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #680-7541 Lorem, Rd.', '577325511 ', 'Abel Byers', 'abelbyers@google.com', 74331);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 746, 6204 Nunc Ave', '564741374 ', 'Henry Sweet', 'henrysweet6041@aol.couk', 74548);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('555-2029 Cursus Rd.', '524579329 ', 'Brady Strickland', 'bradystrickland@yahoo.couk', 52359);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('887-6001 Duis St.', '554222075 ', 'Abel Alvarez', 'abelalvarez@google.ca', 19671);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('898-8406 Nulla. Rd.', '523461780 ', 'Graiden Hutchinson', 'graidenhutchinson@google.org', 28053);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #244-9663 Faucibus Rd.', '586539667 ', 'Melvin Knapp', 'melvinknapp4769@aol.couk', 16712);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('122-8062 Erat. Av.', '580046806 ', 'Kenneth Ashley', 'kennethashley@gmail.org', 59839);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 200, 7870 Laoreet, Avenue', '553212214 ', 'Garrison Lambert', 'garrisonlambert818@gmail.net', 89337);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('727-1250 Scelerisque Ave', '583463722 ', 'Rosalyn Valencia', 'rosalynvalencia@aol.com', 97343);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('105-5667 A, Ave', '574118242 ', 'Grady Maddox', 'gradymaddox@aol.couk', 45839);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #741-1070 Suspendisse Rd.', '510726324 ', 'Flynn Madden', 'flynnmadden1077@aol.com', 10652);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('4121 Dolor. Av.', '592391108 ', 'Jason Wilcox', 'jasonwilcox6386@icloud.edu', 47507);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('135-6253 Nisl Road', '519384725 ', 'Angelica Randall', 'angelicarandall@aol.couk', 57567);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #982-4907 Pede, St.', '541679324 ', 'Germane Newton', 'germanenewton@google.org', 28651);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8085 Est. Rd.', '548734071 ', 'Cedric Fulton', 'cedricfulton@aol.net', 10334);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('6720 Sit Avenue', '523468637 ', 'Kerry Petty', 'kerrypetty3896@gmail.ca', 27192);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('9508 Amet, Road', '501773154 ', 'Jemima Little', 'jemimalittle166@icloud.couk', 91660);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('737-6687 Mi. Avenue', '515384361 ', 'Cathleen Winters', 'cathleenwinters2733@yahoo.ca', 95896);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('540-5910 Fringilla St.', '594767325 ', 'Uta Lynch', 'utalynch@google.net', 49666);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('656-6402 Ac Rd.', '579426362 ', 'Erica Ramos', 'ericaramos@gmail.org', 95320);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('960-9429 Vitae Av.', '557048406 ', 'Walter Rodriguez', 'walterrodriguez8240@icloud.edu', 47027);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('411-6658 Natoque Road', '525646654 ', 'Camden Acevedo', 'camdenacevedo1142@aol.net', 15383);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('164-6098 Tincidunt, St.', '558642378 ', 'Brett Vinson', 'brettvinson3881@aol.com', 13261);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('352-9568 Lacus. Rd.', '564658502 ', 'Minerva Knowles', 'minervaknowles@aol.net', 74091);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('781-1796 Mauris St.', '525587831 ', 'Jacqueline Fleming', 'jacquelinefleming4206@google.com', 47970);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('5850 Sed Road', '545186956 ', 'MacKenzie Rivera', 'mackenzierivera4426@google.couk', 36074);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('774-6657 Adipiscing, Avenue', '542627439 ', 'Montana Bullock', 'montanabullock6038@google.org', 42023);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 427, 7833 Eget Street', '508652224 ', 'Abel Dillard', 'abeldillard@gmail.edu', 34428);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #115-2097 Purus Av.', '528857826 ', 'Chancellor Bates', 'chancellorbates@aol.org', 15991);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('157-6601 Pellentesque Rd.', '530105577 ', 'Tanisha Kim', 'tanishakim@google.couk', 73025);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('367-5340 Vestibulum, Rd.', '557955774 ', 'Zelenia Robles', 'zeleniarobles5833@aol.couk', 53998);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 208, 7355 Bibendum Street', '514448660 ', 'Jada Gibson', 'jadagibson5119@yahoo.couk', 34404);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('908-6570 Vitae Rd.', '553888816 ', 'Hasad Madden', 'hasadmadden3719@aol.couk', 79255);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('778-828 Tempor St.', '513625224 ', 'Barclay Donovan', 'barclaydonovan@icloud.org', 21312);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7423 Vel Ave', '589795952 ', 'Amena Bowers', 'amenabowers6899@google.edu', 63284);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #715-8187 Vulputate Street', '502841488 ', 'Ignacia Haley', 'ignaciahaley@google.edu', 54246);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #242-1826 Ante Road', '581931122 ', 'Medge Matthews', 'medgematthews@gmail.edu', 17595);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8685 Erat Av.', '542787462 ', 'Hasad Frye', 'hasadfrye7650@yahoo.couk', 29561);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #211-5804 Adipiscing, Street', '554814788 ', 'Bree Blackburn', 'breeblackburn@google.edu', 46150);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('165-9181 Dictum Av.', '558713989 ', 'Pascale Mclean', 'pascalemclean@yahoo.ca', 48255);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 519, 8551 Interdum Av.', '585153685 ', 'Fritz Robles', 'fritzrobles2842@icloud.ca', 98375);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('838-4367 Sem Rd.', '514486364 ', 'Garrison Sims', 'garrisonsims5648@google.couk', 65741);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('430-2424 Aliquet, Avenue', '509955854 ', 'Desiree Drake', 'desireedrake6194@icloud.org', 79859);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('840-8083 Cras Road', '560688853 ', 'Shaine Garcia', 'shainegarcia@gmail.org', 92935);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #881-2381 Luctus Rd.', '531546613 ', 'Carla Park', 'carlapark@yahoo.ca', 24656);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #150-6481 Lorem Avenue', '504367217 ', 'Gregory Hull', 'gregoryhull9722@google.org', 70748);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8110 Nunc Ave', '552884893 ', 'Tucker Holcomb', 'tuckerholcomb@gmail.com', 55269);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('540-7773 Nullam St.', '532912738 ', 'Ferdinand Hunter', 'ferdinandhunter9004@gmail.edu', 47962);
+commit;
+prompt 200 records committed...
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #603-6530 Auctor St.', '535493434 ', 'Seth Mcdonald', 'sethmcdonald2053@icloud.edu', 89885);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('427-2751 Facilisis, St.', '513666362 ', 'Josiah Pacheco', 'josiahpacheco@google.org', 33360);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 571, 7230 In Rd.', '541637088 ', 'Francesca Mendoza', 'francescamendoza8935@yahoo.couk', 88571);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('952-4250 Nulla Av.', '558444542 ', 'Gay Glover', 'gayglover5321@google.org', 49355);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #777-9659 Blandit Avenue', '583816826 ', 'Vincent Wilkinson', 'vincentwilkinson@google.couk', 81875);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #260-5768 Lorem Street', '526494402 ', 'Nerea Flowers', 'nereaflowers2160@yahoo.com', 10709);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 478, 2984 Et Av.', '529168672 ', 'Ulla Richardson', 'ullarichardson@aol.ca', 99447);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 370, 365 Elementum, Av.', '506867633 ', 'Giselle Miranda', 'gisellemiranda4065@aol.net', 80248);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 542, 520 Etiam Rd.', '563614205 ', 'Kato Fowler', 'katofowler7238@google.net', 55385);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8206 Suspendisse Street', '528153403 ', 'Jonah Davis', 'jonahdavis@google.ca', 58938);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #475-7167 Aliquet St.', '576794236 ', 'Ali Mccarty', 'alimccarty@gmail.org', 99778);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('760-4732 Ante Road', '529684949 ', 'Hoyt Terry', 'hoytterry9662@gmail.net', 35535);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('167-396 Sem Rd.', '532851328 ', 'Basil Sawyer', 'basilsawyer@aol.net', 50188);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8461 Eu St.', '504368535 ', 'Steel French', 'steelfrench7565@aol.net', 64636);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('5527 Eget, Av.', '525465726 ', 'Silas Berger', 'silasberger@icloud.com', 59041);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #901-8937 Magna. St.', '571664224 ', 'Rana Hughes', 'ranahughes@icloud.net', 92716);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #404-2686 Habitant Rd.', '555403678 ', 'Nissim Carter', 'nissimcarter2938@gmail.couk', 39314);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('247-1748 Gravida. Av.', '554380376 ', 'Colleen Kelley', 'colleenkelley8163@aol.org', 64076);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('878-8837 Ornare, Avenue', '560948551 ', 'Madison Clarke', 'madisonclarke@yahoo.net', 66915);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #718-1453 Vel, Ave', '515126338 ', 'Mason Roberts', 'masonroberts5198@google.couk', 39306);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #488-9356 Nisl St.', '538404014 ', 'Slade Bowers', 'sladebowers@gmail.net', 57210);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('3750 Ligula. Ave', '524166350 ', 'Troy Hayden', 'troyhayden@gmail.ca', 81184);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('985-1322 Lacus Rd.', '593164728 ', 'Seth Tanner', 'sethtanner@gmail.net', 93908);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('504-7454 Rutrum Street', '530850760 ', 'Erich Mayer', 'erichmayer2714@icloud.edu', 27277);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #625-8527 Ligula. Av.', '535458431 ', 'Allegra Harper', 'allegraharper@gmail.ca', 15746);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('680-804 Sociis St.', '524168384 ', 'Fulton Sanders', 'fultonsanders@gmail.com', 49449);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #706-799 Phasellus St.', '501794513 ', 'Helen Walters', 'helenwalters4808@aol.com', 33794);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('134-4456 Mi Road', '549835824 ', 'Deanna Taylor', 'deannataylor@google.edu', 68229);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #332-261 Luctus Road', '537254793 ', 'Hanae Mercado', 'hanaemercado1791@icloud.ca', 83271);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 592, 2502 Nulla Avenue', '547128513 ', 'Wilma Mcintyre', 'wilmamcintyre@gmail.ca', 30379);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('382-2358 Sapien. Rd.', '536552445 ', 'Shay Wilkerson', 'shaywilkerson@gmail.couk', 72662);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #953-2828 Semper St.', '532443538 ', 'Reagan Reed', 'reaganreed@yahoo.org', 48384);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #665-9867 Ipsum Rd.', '510334421 ', 'Melyssa Gould', 'melyssagould4067@gmail.com', 34941);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('678-7913 Dolor. Rd.', '583862347 ', 'Haviva Roth', 'havivaroth3316@gmail.net', 15357);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #228-5304 Lectus Av.', '552686566 ', 'Dara Mcclure', 'daramcclure5281@yahoo.couk', 66193);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('3715 Commodo St.', '529985889 ', 'Jameson Sears', 'jamesonsears7830@icloud.net', 60957);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #384-9731 Eget Rd.', '585903313 ', 'Mikayla Ramos', 'mikaylaramos7868@icloud.edu', 72820);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('821 Accumsan Street', '559015656 ', 'Rebecca Glover', 'rebeccaglover5668@aol.net', 45109);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 725, 719 Odio. St.', '536348805 ', 'Vance Mcleod', 'vancemcleod3763@icloud.com', 26921);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('388-6577 Sodales Street', '560653462 ', 'Pamela Wheeler', 'pamelawheeler8490@yahoo.couk', 94830);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('6097 Sed St.', '541163753 ', 'Kalia Martinez', 'kaliamartinez@gmail.couk', 82443);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 393, 1086 Justo. Rd.', '514477505 ', 'Benedict Neal', 'benedictneal@gmail.couk', 98750);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #560-4351 Tincidunt, Av.', '510113661 ', 'Eugenia Harmon', 'eugeniaharmon@yahoo.com', 31947);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('747-1905 Sodales Street', '500871371 ', 'Cadman Knapp', 'cadmanknapp9312@aol.net', 57527);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 192, 7628 Mi St.', '531600723 ', 'Jasmine Holcomb', 'jasmineholcomb4015@icloud.edu', 13794);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 827, 1820 Nec, Avenue', '534165364 ', 'Timon Cameron', 'timoncameron1858@google.ca', 42991);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #590-3472 A, Street', '545885159 ', 'Lavinia Gordon', 'laviniagordon3328@icloud.ca', 30696);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('887-8056 Ornare, Av.', '557618769 ', 'Ignacia Sanders', 'ignaciasanders5602@yahoo.com', 51125);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('6358 Eu Rd.', '573183387 ', 'Keefe Cardenas', 'keefecardenas6920@yahoo.net', 76380);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('105-5302 In Rd.', '522421773 ', 'Imelda Pittman', 'imeldapittman6879@yahoo.net', 91455);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #306-3942 Eget Avenue', '522015243 ', 'Quyn Hamilton', 'quynhamilton1081@google.org', 56263);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 760, 9733 Egestas Street', '553737682 ', 'Alden Murphy', 'aldenmurphy@yahoo.net', 51861);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('120-7097 Egestas. Av.', '545561089 ', 'Zeus Villarreal', 'zeusvillarreal9608@google.net', 62741);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #753-5386 Nunc Ave', '544171861 ', 'Jacob Arnold', 'jacobarnold6727@icloud.edu', 55546);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #675-9070 Dolor. Ave', '534303341 ', 'Chandler Rios', 'chandlerrios@gmail.net', 95541);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('107-4502 Aenean St.', '583194321 ', 'Nicole Pollard', 'nicolepollard7474@yahoo.com', 55777);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('335-5389 Eu, Ave', '565872686 ', 'Xyla Rutledge', 'xylarutledge@google.com', 54662);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #649-8422 Nullam Av.', '517796724 ', 'Maggy Meyer', 'maggymeyer@icloud.edu', 93859);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('635-2003 Sit Av.', '508975168 ', 'Joel Pratt', 'joelpratt@gmail.com', 63762);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 426, 3188 Nunc. Rd.', '583770774 ', 'Christen Rocha', 'christenrocha@aol.org', 25578);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #328-7014 Consequat Av.', '511215426 ', 'Noel French', 'noelfrench@icloud.net', 86430);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #777-4122 Facilisis Rd.', '583231436 ', 'Brian Mcgowan', 'brianmcgowan593@gmail.couk', 63961);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('7351 A Rd.', '516758953 ', 'Harding Ortiz', 'hardingortiz@icloud.net', 90716);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #136-7681 Aliquet Rd.', '531158076 ', 'Idona York', 'idonayork4706@gmail.com', 68393);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #873-3777 Vitae St.', '533242190 ', 'Dawn Mack', 'dawnmack9547@yahoo.edu', 13243);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 209, 6098 Lacinia Ave', '533672181 ', 'Zane Mason', 'zanemason3835@gmail.edu', 15343);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 718, 2810 Malesuada Ave', '576014371 ', 'Aaron West', 'aaronwest@aol.edu', 22236);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('923-8870 Malesuada Ave', '562428602 ', 'Ria Blair', 'riablair@gmail.net', 33143);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('444-4229 Ipsum. Ave', '585821533 ', 'Tyler Kirk', 'tylerkirk5592@yahoo.net', 89219);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 699, 710 Aliquet Avenue', '560063248 ', 'Vernon Terrell', 'vernonterrell@icloud.ca', 34355);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 423, 6657 Luctus. Ave', '517220662 ', 'Haley Floyd', 'haleyfloyd@gmail.couk', 76479);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8230 Luctus, St.', '533187031 ', 'Amal George', 'amalgeorge2591@aol.org', 99553);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #379-8022 Cras Street', '581654097 ', 'Louis Coffey', 'louiscoffey@yahoo.edu', 92365);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #623-9447 Tincidunt, Rd.', '526281113 ', 'Rashad Morse', 'rashadmorse8467@google.com', 21395);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #836-672 Non, Rd.', '568198026 ', 'Kylie Washington', 'kyliewashington@icloud.couk', 26952);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #186-8377 Magna St.', '580346633 ', 'Lesley Mitchell', 'lesleymitchell@google.net', 78475);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('350-1665 In Ave', '558401857 ', 'Dominique Barron', 'dominiquebarron@aol.net', 46197);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8630 Dictum Rd.', '585728104 ', 'Lillith Juarez', 'lillithjuarez@yahoo.couk', 42122);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #860-3713 Nec Rd.', '583491354 ', 'Amanda Schneider', 'amandaschneider5626@google.net', 77955);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #571-8518 Aliquam Road', '553751328 ', 'Cruz Thomas', 'cruzthomas@icloud.edu', 25991);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 447, 6647 Arcu Avenue', '516365335 ', 'Leslie Sawyer', 'lesliesawyer249@gmail.net', 65725);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('607-8242 Euismod St.', '531186934 ', 'Steven Roberts', 'stevenroberts1344@google.couk', 45148);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('708-2955 Hendrerit Av.', '567582562 ', 'Basia Cabrera', 'basiacabrera@google.com', 36102);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #770-1714 Ipsum Road', '559516128 ', 'Kelsie Anderson', 'kelsieanderson@icloud.edu', 69880);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('427-6416 Eros. Av.', '560467565 ', 'Nola Hunt', 'nolahunt1361@aol.com', 11410);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('349-5844 Porttitor St.', '576740394 ', 'Kyle Castillo', 'kylecastillo7518@aol.edu', 60751);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('125-1770 Aenean Ave', '584744473 ', 'Ahmed Carey', 'ahmedcarey5002@yahoo.org', 37415);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('4585 Mollis St.', '511582703 ', 'Edward Black', 'edwardblack9041@google.net', 28516);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('938-6874 Nullam Rd.', '568671458 ', 'Jolene Grant', 'jolenegrant3628@gmail.com', 81157);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 923, 8101 Non, Road', '530214135 ', 'Hayden Green', 'haydengreen1666@google.com', 41224);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #794-303 Sit Rd.', '508515499 ', 'Janna Hayden', 'jannahayden1610@icloud.ca', 54266);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 111, 6097 Nullam Avenue', '568540267 ', 'Giacomo Day', 'giacomoday@gmail.com', 80537);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #332-8555 Quis Street', '565725845 ', 'Todd Jimenez', 'toddjimenez@aol.couk', 81894);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #713-1789 Sodales. Rd.', '578771307 ', 'Garrett Freeman', 'garrettfreeman@gmail.net', 17853);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('154-9857 Dolor Av.', '533222477 ', 'Caesar French', 'caesarfrench9172@google.com', 29543);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('664-7202 Elit Ave', '560853734 ', 'Beau Horne', 'beauhorne2911@icloud.couk', 30526);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 191, 6074 Mi St.', '585874316 ', 'Jackson Parsons', 'jacksonparsons@aol.com', 83689);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('794-1599 Consectetuer Rd.', '582511229 ', 'Camille Ratliff', 'camilleratliff@yahoo.edu', 19331);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('6953 Sollicitudin St.', '537311487 ', 'Ivor Gonzales', 'ivorgonzales9752@google.edu', 51672);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('257-185 Quis, St.', '575363961 ', 'Slade Rivas', 'sladerivas7347@yahoo.com', 34609);
+commit;
+prompt 300 records committed...
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #154-5061 Vel Ave', '512177462 ', 'Olivia Church', 'oliviachurch@google.com', 73659);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('299-3992 Etiam Av.', '565532609 ', 'Jaquelyn Delgado', 'jaquelyndelgado59@google.net', 23953);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 743, 8952 Eu St.', '547847816 ', 'Astra Baker', 'astrabaker1642@google.org', 37004);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #996-3197 Tempor Rd.', '551560128 ', 'Rhoda Waller', 'rhodawaller@aol.couk', 40705);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #834-7751 Rutrum, Avenue', '527856737 ', 'Kevin Guerra', 'kevinguerra3289@google.org', 39365);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('576-1754 Fusce St.', '513537248 ', 'Magee Mccarthy', 'mageemccarthy823@aol.org', 69296);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #570-3303 Mus. Street', '542823752 ', 'Otto Sharpe', 'ottosharpe@yahoo.org', 18773);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #309-2092 Vitae, Rd.', '571389174 ', 'Shad Stein', 'shadstein1487@google.couk', 33749);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('381-262 Mauris Avenue', '545334213 ', 'Nigel Waters', 'nigelwaters5879@aol.ca', 16063);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('6305 Cras Rd.', '534811785 ', 'Cruz Neal', 'cruzneal@google.net', 62435);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('134-2600 Sit Av.', '536862815 ', 'Sara Sandoval', 'sarasandoval4151@aol.net', 58235);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #815-5751 Egestas. Ave', '587603023 ', 'Herrod Rowe', 'herrodrowe@aol.net', 78572);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('P.O. Box 465, 8105 At Rd.', '555958867 ', 'Jena Barron', 'jenabarron@google.com', 31696);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #434-8747 Fringilla Rd.', '512638817 ', 'Neil Potts', 'neilpotts1191@yahoo.ca', 96641);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #896-8687 Justo Avenue', '588367610 ', 'Maite Delacruz', 'maitedelacruz@gmail.ca', 48188);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('461-8594 A Ave', '584395811 ', 'Nero Riley', 'neroriley@icloud.couk', 45377);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('120-6708 Cursus Av.', '539472154 ', 'Richard Bates', 'richardbates@icloud.com', 91156);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #407-2591 Fusce St.', '599544334 ', 'Griffin Cummings', 'griffincummings1057@yahoo.org', 11311);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('8086 Ac Road', '568812899 ', 'Patrick Norton', 'patricknorton6880@gmail.couk', 27600);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('108-7510 Non, Rd.', '537715789 ', 'Whitney Atkinson', 'whitneyatkinson@google.couk', 18401);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #572-4245 Ut Rd.', '564037863 ', 'Imelda Harrington', 'imeldaharrington4459@gmail.com', 53805);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #214-699 Eros. Rd.', '506917833 ', 'Jasper Mercado', 'jaspermercado2111@google.edu', 43573);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('752-1645 Proin St.', '563111331 ', 'Xavier Murphy', 'xaviermurphy@yahoo.com', 68429);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('820-8046 Ligula. Street', '586147840 ', 'Ayanna Underwood', 'ayannaunderwood9150@google.edu', 40492);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #973-6569 Aenean Rd.', '513540692 ', 'Quail Hester', 'quailhester@icloud.edu', 40041);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('9808 Auctor St.', '556167576 ', 'Jessica Thornton', 'jessicathornton@icloud.org', 20672);
+insert into STAFF (saddress, smobile, sname, smail, sid)
+values ('Ap #788-7084 Mollis St.', '514975733 ', 'Gavin Walker', 'gavinwalker@google.net', 77008);
 insert into STAFF (saddress, smobile, sname, smail, sid)
 values ('P.O. Box 712, 8640 Odio. Rd.', '530216427 ', 'Ava Nolan', 'avanolan@gmail.org', 22376);
 insert into STAFF (saddress, smobile, sname, smail, sid)
@@ -685,854 +1034,68 @@ values ('1483 Nisi. Rd.', '514431199 ', 'Honorato Lara', 'honoratolara@icloud.ca
 insert into STAFF (saddress, smobile, sname, smail, sid)
 values ('P.O. Box 418, 1128 Orci, Street', '514802815 ', 'Wallace Woodward', 'wallacewoodward9518@gmail.ca', 72375);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #680-7541 Lorem, Rd.', '577325511 ', 'Abel Byers', 'abelbyers@google.com', 74331);
+values ('12 bu Tel Aviv', '035798612 ', 'Mono OR', 'mono@gmail.com', 10000);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 746, 6204 Nunc Ave', '564741374 ', 'Henry Sweet', 'henrysweet6041@aol.couk', 74548);
+values ('123 Main St', '123456789 ', 'John Doe', 'john@email.com', 10001);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('555-2029 Cursus Rd.', '524579329 ', 'Brady Strickland', 'bradystrickland@yahoo.couk', 52359);
+values ('456 Oak Ave', '987654321 ', 'Jane Smith', 'jane@email.com', 10002);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('887-6001 Duis St.', '554222075 ', 'Abel Alvarez', 'abelalvarez@google.ca', 19671);
+values ('789 Elm St', '456789012 ', 'Michael Johnson', 'michael@email.com', 10003);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('898-8406 Nulla. Rd.', '523461780 ', 'Graiden Hutchinson', 'graidenhutchinson@google.org', 28053);
+values ('321 Pine Rd', '789012345 ', 'Emily Davis', 'emily@email.com', 10004);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #244-9663 Faucibus Rd.', '586539667 ', 'Melvin Knapp', 'melvinknapp4769@aol.couk', 16712);
+values ('654 Maple Ln', '345678901 ', 'David Wilson', 'david@email.com', 10005);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('122-8062 Erat. Av.', '580046806 ', 'Kenneth Ashley', 'kennethashley@gmail.org', 59839);
+values ('987 Cedar Blvd', '678901234 ', 'Sarah Thompson', 'sarah@email.com', 10006);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 200, 7870 Laoreet, Avenue', '553212214 ', 'Garrison Lambert', 'garrisonlambert818@gmail.net', 89337);
-commit;
-prompt 100 records committed...
+values ('246 Oak Ct', '901234567 ', 'Robert Anderson', 'robert@email.com', 10007);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('727-1250 Scelerisque Ave', '583463722 ', 'Rosalyn Valencia', 'rosalynvalencia@aol.com', 97343);
+values ('579 Elm Way', '234567890 ', 'Jessica Taylor', 'jessica@email.com', 10008);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('105-5667 A, Ave', '574118242 ', 'Grady Maddox', 'gradymaddox@aol.couk', 45839);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #741-1070 Suspendisse Rd.', '510726324 ', 'Flynn Madden', 'flynnmadden1077@aol.com', 10652);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('4121 Dolor. Av.', '592391108 ', 'Jason Wilcox', 'jasonwilcox6386@icloud.edu', 47507);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('135-6253 Nisl Road', '519384725 ', 'Angelica Randall', 'angelicarandall@aol.couk', 57567);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #982-4907 Pede, St.', '541679324 ', 'Germane Newton', 'germanenewton@google.org', 28651);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8085 Est. Rd.', '548734071 ', 'Cedric Fulton', 'cedricfulton@aol.net', 10334);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('6720 Sit Avenue', '523468637 ', 'Kerry Petty', 'kerrypetty3896@gmail.ca', 27192);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('9508 Amet, Road', '501773154 ', 'Jemima Little', 'jemimalittle166@icloud.couk', 91660);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('737-6687 Mi. Avenue', '515384361 ', 'Cathleen Winters', 'cathleenwinters2733@yahoo.ca', 95896);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('540-5910 Fringilla St.', '594767325 ', 'Uta Lynch', 'utalynch@google.net', 49666);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('656-6402 Ac Rd.', '579426362 ', 'Erica Ramos', 'ericaramos@gmail.org', 95320);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('960-9429 Vitae Av.', '557048406 ', 'Walter Rodriguez', 'walterrodriguez8240@icloud.edu', 47027);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('411-6658 Natoque Road', '525646654 ', 'Camden Acevedo', 'camdenacevedo1142@aol.net', 15383);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('164-6098 Tincidunt, St.', '558642378 ', 'Brett Vinson', 'brettvinson3881@aol.com', 13261);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('352-9568 Lacus. Rd.', '564658502 ', 'Minerva Knowles', 'minervaknowles@aol.net', 74091);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('781-1796 Mauris St.', '525587831 ', 'Jacqueline Fleming', 'jacquelinefleming4206@google.com', 47970);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('5850 Sed Road', '545186956 ', 'MacKenzie Rivera', 'mackenzierivera4426@google.couk', 36074);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('774-6657 Adipiscing, Avenue', '542627439 ', 'Montana Bullock', 'montanabullock6038@google.org', 42023);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 427, 7833 Eget Street', '508652224 ', 'Abel Dillard', 'abeldillard@gmail.edu', 34428);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #115-2097 Purus Av.', '528857826 ', 'Chancellor Bates', 'chancellorbates@aol.org', 15991);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('157-6601 Pellentesque Rd.', '530105577 ', 'Tanisha Kim', 'tanishakim@google.couk', 73025);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('367-5340 Vestibulum, Rd.', '557955774 ', 'Zelenia Robles', 'zeleniarobles5833@aol.couk', 53998);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 208, 7355 Bibendum Street', '514448660 ', 'Jada Gibson', 'jadagibson5119@yahoo.couk', 34404);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('908-6570 Vitae Rd.', '553888816 ', 'Hasad Madden', 'hasadmadden3719@aol.couk', 79255);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('778-828 Tempor St.', '513625224 ', 'Barclay Donovan', 'barclaydonovan@icloud.org', 21312);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7423 Vel Ave', '589795952 ', 'Amena Bowers', 'amenabowers6899@google.edu', 63284);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #715-8187 Vulputate Street', '502841488 ', 'Ignacia Haley', 'ignaciahaley@google.edu', 54246);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #242-1826 Ante Road', '581931122 ', 'Medge Matthews', 'medgematthews@gmail.edu', 17595);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8685 Erat Av.', '542787462 ', 'Hasad Frye', 'hasadfrye7650@yahoo.couk', 29561);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #211-5804 Adipiscing, Street', '554814788 ', 'Bree Blackburn', 'breeblackburn@google.edu', 46150);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('165-9181 Dictum Av.', '558713989 ', 'Pascale Mclean', 'pascalemclean@yahoo.ca', 48255);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 519, 8551 Interdum Av.', '585153685 ', 'Fritz Robles', 'fritzrobles2842@icloud.ca', 98375);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('838-4367 Sem Rd.', '514486364 ', 'Garrison Sims', 'garrisonsims5648@google.couk', 65741);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('430-2424 Aliquet, Avenue', '509955854 ', 'Desiree Drake', 'desireedrake6194@icloud.org', 79859);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('840-8083 Cras Road', '560688853 ', 'Shaine Garcia', 'shainegarcia@gmail.org', 92935);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #881-2381 Luctus Rd.', '531546613 ', 'Carla Park', 'carlapark@yahoo.ca', 24656);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #150-6481 Lorem Avenue', '504367217 ', 'Gregory Hull', 'gregoryhull9722@google.org', 70748);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8110 Nunc Ave', '552884893 ', 'Tucker Holcomb', 'tuckerholcomb@gmail.com', 55269);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('540-7773 Nullam St.', '532912738 ', 'Ferdinand Hunter', 'ferdinandhunter9004@gmail.edu', 47962);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #603-6530 Auctor St.', '535493434 ', 'Seth Mcdonald', 'sethmcdonald2053@icloud.edu', 89885);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('427-2751 Facilisis, St.', '513666362 ', 'Josiah Pacheco', 'josiahpacheco@google.org', 33360);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 571, 7230 In Rd.', '541637088 ', 'Francesca Mendoza', 'francescamendoza8935@yahoo.couk', 88571);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('952-4250 Nulla Av.', '558444542 ', 'Gay Glover', 'gayglover5321@google.org', 49355);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #777-9659 Blandit Avenue', '583816826 ', 'Vincent Wilkinson', 'vincentwilkinson@google.couk', 81875);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #260-5768 Lorem Street', '526494402 ', 'Nerea Flowers', 'nereaflowers2160@yahoo.com', 10709);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 478, 2984 Et Av.', '529168672 ', 'Ulla Richardson', 'ullarichardson@aol.ca', 99447);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 370, 365 Elementum, Av.', '506867633 ', 'Giselle Miranda', 'gisellemiranda4065@aol.net', 80248);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 542, 520 Etiam Rd.', '563614205 ', 'Kato Fowler', 'katofowler7238@google.net', 55385);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8206 Suspendisse Street', '528153403 ', 'Jonah Davis', 'jonahdavis@google.ca', 58938);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #475-7167 Aliquet St.', '576794236 ', 'Ali Mccarty', 'alimccarty@gmail.org', 99778);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('760-4732 Ante Road', '529684949 ', 'Hoyt Terry', 'hoytterry9662@gmail.net', 35535);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('167-396 Sem Rd.', '532851328 ', 'Basil Sawyer', 'basilsawyer@aol.net', 50188);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8461 Eu St.', '504368535 ', 'Steel French', 'steelfrench7565@aol.net', 64636);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('5527 Eget, Av.', '525465726 ', 'Silas Berger', 'silasberger@icloud.com', 59041);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #901-8937 Magna. St.', '571664224 ', 'Rana Hughes', 'ranahughes@icloud.net', 92716);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #404-2686 Habitant Rd.', '555403678 ', 'Nissim Carter', 'nissimcarter2938@gmail.couk', 39314);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('247-1748 Gravida. Av.', '554380376 ', 'Colleen Kelley', 'colleenkelley8163@aol.org', 64076);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('878-8837 Ornare, Avenue', '560948551 ', 'Madison Clarke', 'madisonclarke@yahoo.net', 66915);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #718-1453 Vel, Ave', '515126338 ', 'Mason Roberts', 'masonroberts5198@google.couk', 39306);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #488-9356 Nisl St.', '538404014 ', 'Slade Bowers', 'sladebowers@gmail.net', 57210);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('3750 Ligula. Ave', '524166350 ', 'Troy Hayden', 'troyhayden@gmail.ca', 81184);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('985-1322 Lacus Rd.', '593164728 ', 'Seth Tanner', 'sethtanner@gmail.net', 93908);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('504-7454 Rutrum Street', '530850760 ', 'Erich Mayer', 'erichmayer2714@icloud.edu', 27277);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #625-8527 Ligula. Av.', '535458431 ', 'Allegra Harper', 'allegraharper@gmail.ca', 15746);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('680-804 Sociis St.', '524168384 ', 'Fulton Sanders', 'fultonsanders@gmail.com', 49449);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #706-799 Phasellus St.', '501794513 ', 'Helen Walters', 'helenwalters4808@aol.com', 33794);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('134-4456 Mi Road', '549835824 ', 'Deanna Taylor', 'deannataylor@google.edu', 68229);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #332-261 Luctus Road', '537254793 ', 'Hanae Mercado', 'hanaemercado1791@icloud.ca', 83271);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 592, 2502 Nulla Avenue', '547128513 ', 'Wilma Mcintyre', 'wilmamcintyre@gmail.ca', 30379);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('382-2358 Sapien. Rd.', '536552445 ', 'Shay Wilkerson', 'shaywilkerson@gmail.couk', 72662);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #953-2828 Semper St.', '532443538 ', 'Reagan Reed', 'reaganreed@yahoo.org', 48384);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #665-9867 Ipsum Rd.', '510334421 ', 'Melyssa Gould', 'melyssagould4067@gmail.com', 34941);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('678-7913 Dolor. Rd.', '583862347 ', 'Haviva Roth', 'havivaroth3316@gmail.net', 15357);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #228-5304 Lectus Av.', '552686566 ', 'Dara Mcclure', 'daramcclure5281@yahoo.couk', 66193);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('3715 Commodo St.', '529985889 ', 'Jameson Sears', 'jamesonsears7830@icloud.net', 60957);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #384-9731 Eget Rd.', '585903313 ', 'Mikayla Ramos', 'mikaylaramos7868@icloud.edu', 72820);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('821 Accumsan Street', '559015656 ', 'Rebecca Glover', 'rebeccaglover5668@aol.net', 45109);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 725, 719 Odio. St.', '536348805 ', 'Vance Mcleod', 'vancemcleod3763@icloud.com', 26921);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 452, 4243 Mi Street', '564133153 ', 'Finn Dalton', 'finndalton8241@google.net', 15962);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 745, 426 Sed Avenue', '578738721 ', 'Ryan Farley', 'ryanfarley@aol.couk', 62317);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('431-364 Nulla. Street', '533622703 ', 'Devin Dejesus', 'devindejesus6975@yahoo.com', 19618);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('787-2727 Curabitur St.', '583807736 ', 'Lance Mooney', 'lancemooney@google.com', 65613);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #238-8440 Dapibus Av.', '597121814 ', 'Chadwick May', 'chadwickmay@aol.edu', 96640);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('9496 Nulla Ave', '557505223 ', 'Slade Frank', 'sladefrank9577@google.edu', 61696);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7256 Lorem St.', '555586696 ', 'Raymond Warner', 'raymondwarner@icloud.com', 38187);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 334, 4736 Eleifend St.', '580677323 ', 'Gil Morse', 'gilmorse@google.ca', 29872);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #556-2620 Lectus Street', '541851873 ', 'Lesley Clements', 'lesleyclements@gmail.org', 87171);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('551-7034 Semper St.', '532543299 ', 'Berk Brooks', 'berkbrooks5135@gmail.com', 85179);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #189-6621 Gravida. Rd.', '513542253 ', 'Axel Simpson', 'axelsimpson4740@google.com', 72073);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('820-4056 Cras Avenue', '521786146 ', 'Brynne Winters', 'brynnewinters7074@yahoo.com', 98900);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 503, 1178 Metus Ave', '559616521 ', 'Rahim Rodriquez', 'rahimrodriquez@yahoo.edu', 35556);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('5718 Vulputate St.', '594666137 ', 'Phoebe Mckinney', 'phoebemckinney@google.ca', 33532);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('560-2948 Non, Rd.', '523156678 ', 'Tanner Peters', 'tannerpeters@icloud.couk', 68549);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('509-4772 Vestibulum Rd.', '524626646 ', 'Flynn Villarreal', 'flynnvillarreal9983@aol.couk', 68614);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('564-5771 Eu Street', '592450737 ', 'Tanisha Morgan', 'tanishamorgan838@google.couk', 11083);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8968 Suspendisse Road', '504006741 ', 'Lunea Emerson', 'luneaemerson@google.net', 38296);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('396-1488 Erat Street', '538383559 ', 'Naida Wade', 'naidawade@icloud.edu', 54635);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('881-5828 Integer St.', '551732000 ', 'Flavia Mcintosh', 'flaviamcintosh@gmail.com', 43915);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #403-2787 Egestas. Street', '573237112 ', 'Karyn Marsh', 'karynmarsh@yahoo.edu', 63761);
-commit;
-prompt 200 records committed...
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('319-2818 Nisl St.', '515333265 ', 'Galvin Ashley', 'galvinashley@gmail.net', 90668);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #522-2184 Amet Av.', '522733464 ', 'Tamara Park', 'tamarapark1701@gmail.com', 71473);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('246-5855 Amet Av.', '515274520 ', 'Griffith Keller', 'griffithkeller7065@icloud.couk', 18863);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('3056 Turpis Rd.', '536953528 ', 'Colleen Drake', 'colleendrake4856@icloud.couk', 84301);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 547, 4627 Molestie Road', '563603836 ', 'Wyatt Lara', 'wyattlara@icloud.com', 51251);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #700-8942 Nunc Street', '516175362 ', 'Rowan Savage', 'rowansavage1753@aol.couk', 82187);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('509 Non Rd.', '546198853 ', 'Zena Howard', 'zenahoward@icloud.couk', 44156);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 445, 7101 Quisque Rd.', '574447573 ', 'Eve Holland', 'eveholland@icloud.couk', 58745);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('700-1021 Elit, Av.', '522656074 ', 'Robert Sims', 'robertsims4427@gmail.com', 18525);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('111-6793 Magna. Av.', '546229625 ', 'Ivory Dunn', 'ivorydunn@google.couk', 99939);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 873, 6303 Nec St.', '576201253 ', 'Uriel Neal', 'urielneal@aol.org', 81284);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('585-1795 Metus Av.', '555092215 ', 'Fritz Weeks', 'fritzweeks5168@yahoo.com', 17105);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #641-3387 Phasellus Avenue', '531410563 ', 'Cheryl Rojas', 'cherylrojas@yahoo.org', 11630);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('950-338 Nascetur Ave', '513777066 ', 'Ferris Gallagher', 'ferrisgallagher1685@icloud.couk', 86538);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #760-5710 Vulputate, Ave', '564394841 ', 'Len Baldwin', 'lenbaldwin@google.com', 64760);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #269-7789 Molestie. Avenue', '585648527 ', 'Jennifer Durham', 'jenniferdurham@aol.net', 32568);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 775, 1674 Odio Avenue', '569446768 ', 'Dominique Travis', 'dominiquetravis@google.edu', 82258);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 714, 4508 Mollis St.', '522208561 ', 'Molly Perry', 'mollyperry@gmail.couk', 63530);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 382, 7049 Non St.', '513075078 ', 'Cara Rosario', 'cararosario5324@google.com', 56476);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #757-1273 Et, St.', '576548447 ', 'Darryl Schmidt', 'darrylschmidt@yahoo.com', 64185);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('555-8195 Augue Rd.', '543118427 ', 'Samson Waller', 'samsonwaller@aol.couk', 88762);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('841 Aliquam St.', '568408287 ', 'Sebastian Brown', 'sebastianbrown@icloud.org', 99769);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #872-7778 Ullamcorper Rd.', '555239556 ', 'Jena Gamble', 'jenagamble9266@gmail.couk', 83831);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #550-8456 Nunc. Road', '513447169 ', 'Emmanuel Burks', 'emmanuelburks@gmail.com', 27991);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #515-9910 Ac Av.', '517415802 ', 'Preston Golden', 'prestongolden@yahoo.ca', 82172);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #492-5770 Nunc Ave', '588137371 ', 'Guy Macdonald', 'guymacdonald@google.net', 35877);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('5998 Dolor. Rd.', '578693863 ', 'Eric Wade', 'ericwade@google.com', 61546);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('352-1005 Mauris St.', '562747017 ', 'Sybil Garner', 'sybilgarner@gmail.org', 52116);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('520-5294 Habitant St.', '517443492 ', 'Lillian Parrish', 'lillianparrish@google.org', 80830);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('101-2980 Auctor St.', '523740535 ', 'Beverly Clements', 'beverlyclements881@yahoo.org', 71959);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 485, 6211 Non, Street', '566737527 ', 'Alana Sweet', 'alanasweet@gmail.edu', 37345);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('890-9570 Faucibus Rd.', '516973121 ', 'Ray Waters', 'raywaters@gmail.org', 34214);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('765-6368 Sed Av.', '557582683 ', 'Erin Franks', 'erinfranks6566@aol.ca', 86842);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('366-1556 Phasellus Rd.', '577777975 ', 'Venus Nolan', 'venusnolan2990@aol.com', 91865);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('822-8554 Pellentesque Road', '516661385 ', 'Jaquelyn Meyers', 'jaquelynmeyers5406@icloud.ca', 79825);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('455-9109 Odio Street', '533682586 ', 'Elton Wells', 'eltonwells@yahoo.edu', 14599);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('336-8376 Pede, Rd.', '575701763 ', 'Graham O''brien', 'grahamobrien6608@gmail.org', 12053);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 127, 6219 Eu St.', '546418581 ', 'Joy Jacobson', 'joyjacobson@icloud.ca', 83250);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('868-9853 Vitae, Road', '526222973 ', 'Vance Butler', 'vancebutler2321@aol.org', 57384);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 632, 4151 Turpis St.', '542322210 ', 'Lucy Moses', 'lucymoses@aol.couk', 55244);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('9869 Magna Av.', '587828575 ', 'Keaton Mcknight', 'keatonmcknight@yahoo.edu', 12082);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('146-1365 Congue, St.', '527349116 ', 'Valentine Kaufman', 'valentinekaufman@gmail.net', 41120);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('230-6929 Suscipit Road', '596814562 ', 'Chiquita Hines', 'chiquitahines@google.com', 31151);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #513-8280 Enim. Ave', '566358768 ', 'Lars Baird', 'larsbaird94@google.ca', 99596);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 300, 1701 Donec Street', '542121155 ', 'Risa Torres', 'risatorres3860@gmail.org', 31448);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('491-894 Mauris Avenue', '502523876 ', 'Laith Austin', 'laithaustin326@yahoo.couk', 55149);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('789-2466 Eu Rd.', '583569262 ', 'Carissa Baird', 'carissabaird@gmail.org', 83211);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 107, 1303 Donec Road', '565625124 ', 'Helen Rocha', 'helenrocha@yahoo.com', 70610);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('803-6157 Cras Road', '502526397 ', 'Vielka Lopez', 'vielkalopez578@aol.ca', 88875);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 999, 980 Sollicitudin St.', '534253376 ', 'Barrett Beasley', 'barrettbeasley@google.couk', 99342);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #707-9661 Tempus St.', '596105288 ', 'Lee Gould', 'leegould3190@aol.com', 42679);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('1962 Dui. Ave', '582623882 ', 'Sheila Mooney', 'sheilamooney@gmail.couk', 83526);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #851-5065 Fusce Avenue', '596768416 ', 'Tanisha Ruiz', 'tanisharuiz3940@aol.com', 19936);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('989-4140 Aliquet Rd.', '535472519 ', 'Reagan Ashley', 'reaganashley3225@google.com', 81877);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('9362 Suspendisse Street', '564069268 ', 'Kenyon Greene', 'kenyongreene@icloud.edu', 50598);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('736-6478 Velit. Rd.', '573703504 ', 'Sheila Banks', 'sheilabanks@aol.org', 89061);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('582-8851 Iaculis St.', '541634727 ', 'Keelie Waters', 'keeliewaters7555@gmail.edu', 76589);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('924-4488 Torquent Avenue', '544831649 ', 'Judah Kerr', 'judahkerr5@google.edu', 25190);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('841-5414 Orci, Rd.', '521844931 ', 'Ryan Castaneda', 'ryancastaneda@aol.couk', 32593);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 879, 8486 Congue, Av.', '594677637 ', 'Hilel Baird', 'hilelbaird7340@gmail.edu', 72720);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #322-8694 Vel, Avenue', '551835552 ', 'Melinda Rosario', 'melindarosario@google.ca', 35130);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #237-505 Ullamcorper, St.', '554657269 ', 'Carly Mosley', 'carlymosley5311@icloud.edu', 91368);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('679-9125 Ut Av.', '514407551 ', 'Jenna Graves', 'jennagraves@yahoo.org', 28571);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #804-1927 Vitae St.', '524243801 ', 'Justine Baldwin', 'justinebaldwin8485@google.ca', 87332);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #265-8459 Curabitur Rd.', '539591012 ', 'Alfonso Morales', 'alfonsomorales737@gmail.com', 86483);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('325-1754 Vestibulum Av.', '562876878 ', 'Melissa Schroeder', 'melissaschroeder@google.net', 51740);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 110, 8945 In Avenue', '574646715 ', 'Timon Fleming', 'timonfleming@gmail.net', 79591);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('388-6577 Sodales Street', '560653462 ', 'Pamela Wheeler', 'pamelawheeler8490@yahoo.couk', 94830);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('6097 Sed St.', '541163753 ', 'Kalia Martinez', 'kaliamartinez@gmail.couk', 82443);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 393, 1086 Justo. Rd.', '514477505 ', 'Benedict Neal', 'benedictneal@gmail.couk', 98750);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #560-4351 Tincidunt, Av.', '510113661 ', 'Eugenia Harmon', 'eugeniaharmon@yahoo.com', 31947);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('747-1905 Sodales Street', '500871371 ', 'Cadman Knapp', 'cadmanknapp9312@aol.net', 57527);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 192, 7628 Mi St.', '531600723 ', 'Jasmine Holcomb', 'jasmineholcomb4015@icloud.edu', 13794);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 827, 1820 Nec, Avenue', '534165364 ', 'Timon Cameron', 'timoncameron1858@google.ca', 42991);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #590-3472 A, Street', '545885159 ', 'Lavinia Gordon', 'laviniagordon3328@icloud.ca', 30696);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('887-8056 Ornare, Av.', '557618769 ', 'Ignacia Sanders', 'ignaciasanders5602@yahoo.com', 51125);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('6358 Eu Rd.', '573183387 ', 'Keefe Cardenas', 'keefecardenas6920@yahoo.net', 76380);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('105-5302 In Rd.', '522421773 ', 'Imelda Pittman', 'imeldapittman6879@yahoo.net', 91455);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #306-3942 Eget Avenue', '522015243 ', 'Quyn Hamilton', 'quynhamilton1081@google.org', 56263);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 760, 9733 Egestas Street', '553737682 ', 'Alden Murphy', 'aldenmurphy@yahoo.net', 51861);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('120-7097 Egestas. Av.', '545561089 ', 'Zeus Villarreal', 'zeusvillarreal9608@google.net', 62741);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #753-5386 Nunc Ave', '544171861 ', 'Jacob Arnold', 'jacobarnold6727@icloud.edu', 55546);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #675-9070 Dolor. Ave', '534303341 ', 'Chandler Rios', 'chandlerrios@gmail.net', 95541);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('107-4502 Aenean St.', '583194321 ', 'Nicole Pollard', 'nicolepollard7474@yahoo.com', 55777);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('335-5389 Eu, Ave', '565872686 ', 'Xyla Rutledge', 'xylarutledge@google.com', 54662);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #649-8422 Nullam Av.', '517796724 ', 'Maggy Meyer', 'maggymeyer@icloud.edu', 93859);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('635-2003 Sit Av.', '508975168 ', 'Joel Pratt', 'joelpratt@gmail.com', 63762);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 426, 3188 Nunc. Rd.', '583770774 ', 'Christen Rocha', 'christenrocha@aol.org', 25578);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #328-7014 Consequat Av.', '511215426 ', 'Noel French', 'noelfrench@icloud.net', 86430);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #777-4122 Facilisis Rd.', '583231436 ', 'Brian Mcgowan', 'brianmcgowan593@gmail.couk', 63961);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7351 A Rd.', '516758953 ', 'Harding Ortiz', 'hardingortiz@icloud.net', 90716);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #136-7681 Aliquet Rd.', '531158076 ', 'Idona York', 'idonayork4706@gmail.com', 68393);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #873-3777 Vitae St.', '533242190 ', 'Dawn Mack', 'dawnmack9547@yahoo.edu', 13243);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 209, 6098 Lacinia Ave', '533672181 ', 'Zane Mason', 'zanemason3835@gmail.edu', 15343);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 718, 2810 Malesuada Ave', '576014371 ', 'Aaron West', 'aaronwest@aol.edu', 22236);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('923-8870 Malesuada Ave', '562428602 ', 'Ria Blair', 'riablair@gmail.net', 33143);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('444-4229 Ipsum. Ave', '585821533 ', 'Tyler Kirk', 'tylerkirk5592@yahoo.net', 89219);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 699, 710 Aliquet Avenue', '560063248 ', 'Vernon Terrell', 'vernonterrell@icloud.ca', 34355);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 423, 6657 Luctus. Ave', '517220662 ', 'Haley Floyd', 'haleyfloyd@gmail.couk', 76479);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8230 Luctus, St.', '533187031 ', 'Amal George', 'amalgeorge2591@aol.org', 99553);
-commit;
-prompt 300 records committed...
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #379-8022 Cras Street', '581654097 ', 'Louis Coffey', 'louiscoffey@yahoo.edu', 92365);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #623-9447 Tincidunt, Rd.', '526281113 ', 'Rashad Morse', 'rashadmorse8467@google.com', 21395);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #836-672 Non, Rd.', '568198026 ', 'Kylie Washington', 'kyliewashington@icloud.couk', 26952);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #186-8377 Magna St.', '580346633 ', 'Lesley Mitchell', 'lesleymitchell@google.net', 78475);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('350-1665 In Ave', '558401857 ', 'Dominique Barron', 'dominiquebarron@aol.net', 46197);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8630 Dictum Rd.', '585728104 ', 'Lillith Juarez', 'lillithjuarez@yahoo.couk', 42122);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #860-3713 Nec Rd.', '583491354 ', 'Amanda Schneider', 'amandaschneider5626@google.net', 77955);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #571-8518 Aliquam Road', '553751328 ', 'Cruz Thomas', 'cruzthomas@icloud.edu', 25991);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 447, 6647 Arcu Avenue', '516365335 ', 'Leslie Sawyer', 'lesliesawyer249@gmail.net', 65725);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('607-8242 Euismod St.', '531186934 ', 'Steven Roberts', 'stevenroberts1344@google.couk', 45148);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('708-2955 Hendrerit Av.', '567582562 ', 'Basia Cabrera', 'basiacabrera@google.com', 36102);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #770-1714 Ipsum Road', '559516128 ', 'Kelsie Anderson', 'kelsieanderson@icloud.edu', 69880);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('427-6416 Eros. Av.', '560467565 ', 'Nola Hunt', 'nolahunt1361@aol.com', 11410);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('349-5844 Porttitor St.', '576740394 ', 'Kyle Castillo', 'kylecastillo7518@aol.edu', 60751);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('125-1770 Aenean Ave', '584744473 ', 'Ahmed Carey', 'ahmedcarey5002@yahoo.org', 37415);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('4585 Mollis St.', '511582703 ', 'Edward Black', 'edwardblack9041@google.net', 28516);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('938-6874 Nullam Rd.', '568671458 ', 'Jolene Grant', 'jolenegrant3628@gmail.com', 81157);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 923, 8101 Non, Road', '530214135 ', 'Hayden Green', 'haydengreen1666@google.com', 41224);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #794-303 Sit Rd.', '508515499 ', 'Janna Hayden', 'jannahayden1610@icloud.ca', 54266);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 111, 6097 Nullam Avenue', '568540267 ', 'Giacomo Day', 'giacomoday@gmail.com', 80537);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #332-8555 Quis Street', '565725845 ', 'Todd Jimenez', 'toddjimenez@aol.couk', 81894);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #713-1789 Sodales. Rd.', '578771307 ', 'Garrett Freeman', 'garrettfreeman@gmail.net', 17853);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('154-9857 Dolor Av.', '533222477 ', 'Caesar French', 'caesarfrench9172@google.com', 29543);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('664-7202 Elit Ave', '560853734 ', 'Beau Horne', 'beauhorne2911@icloud.couk', 30526);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 191, 6074 Mi St.', '585874316 ', 'Jackson Parsons', 'jacksonparsons@aol.com', 83689);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('794-1599 Consectetuer Rd.', '582511229 ', 'Camille Ratliff', 'camilleratliff@yahoo.edu', 19331);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('6953 Sollicitudin St.', '537311487 ', 'Ivor Gonzales', 'ivorgonzales9752@google.edu', 51672);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('257-185 Quis, St.', '575363961 ', 'Slade Rivas', 'sladerivas7347@yahoo.com', 34609);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #154-5061 Vel Ave', '512177462 ', 'Olivia Church', 'oliviachurch@google.com', 73659);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('299-3992 Etiam Av.', '565532609 ', 'Jaquelyn Delgado', 'jaquelyndelgado59@google.net', 23953);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 743, 8952 Eu St.', '547847816 ', 'Astra Baker', 'astrabaker1642@google.org', 37004);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #996-3197 Tempor Rd.', '551560128 ', 'Rhoda Waller', 'rhodawaller@aol.couk', 40705);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #834-7751 Rutrum, Avenue', '527856737 ', 'Kevin Guerra', 'kevinguerra3289@google.org', 39365);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('576-1754 Fusce St.', '513537248 ', 'Magee Mccarthy', 'mageemccarthy823@aol.org', 69296);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #570-3303 Mus. Street', '542823752 ', 'Otto Sharpe', 'ottosharpe@yahoo.org', 18773);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #309-2092 Vitae, Rd.', '571389174 ', 'Shad Stein', 'shadstein1487@google.couk', 33749);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('381-262 Mauris Avenue', '545334213 ', 'Nigel Waters', 'nigelwaters5879@aol.ca', 16063);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('6305 Cras Rd.', '534811785 ', 'Cruz Neal', 'cruzneal@google.net', 62435);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('134-2600 Sit Av.', '536862815 ', 'Sara Sandoval', 'sarasandoval4151@aol.net', 58235);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #815-5751 Egestas. Ave', '587603023 ', 'Herrod Rowe', 'herrodrowe@aol.net', 78572);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 465, 8105 At Rd.', '555958867 ', 'Jena Barron', 'jenabarron@google.com', 31696);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #434-8747 Fringilla Rd.', '512638817 ', 'Neil Potts', 'neilpotts1191@yahoo.ca', 96641);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #896-8687 Justo Avenue', '588367610 ', 'Maite Delacruz', 'maitedelacruz@gmail.ca', 48188);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('461-8594 A Ave', '584395811 ', 'Nero Riley', 'neroriley@icloud.couk', 45377);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('120-6708 Cursus Av.', '539472154 ', 'Richard Bates', 'richardbates@icloud.com', 91156);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #407-2591 Fusce St.', '599544334 ', 'Griffin Cummings', 'griffincummings1057@yahoo.org', 11311);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8086 Ac Road', '568812899 ', 'Patrick Norton', 'patricknorton6880@gmail.couk', 27600);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('108-7510 Non, Rd.', '537715789 ', 'Whitney Atkinson', 'whitneyatkinson@google.couk', 18401);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #572-4245 Ut Rd.', '564037863 ', 'Imelda Harrington', 'imeldaharrington4459@gmail.com', 53805);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #214-699 Eros. Rd.', '506917833 ', 'Jasper Mercado', 'jaspermercado2111@google.edu', 43573);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('752-1645 Proin St.', '563111331 ', 'Xavier Murphy', 'xaviermurphy@yahoo.com', 68429);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('820-8046 Ligula. Street', '586147840 ', 'Ayanna Underwood', 'ayannaunderwood9150@google.edu', 40492);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #973-6569 Aenean Rd.', '513540692 ', 'Quail Hester', 'quailhester@icloud.edu', 40041);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('9808 Auctor St.', '556167576 ', 'Jessica Thornton', 'jessicathornton@icloud.org', 20672);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #788-7084 Mollis St.', '514975733 ', 'Gavin Walker', 'gavinwalker@google.net', 77008);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('3407 Parturient Road', '569438994 ', 'Jamalia Nelson', 'jamalianelson1349@gmail.couk', 50906);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 227, 6260 Ac St.', '588621867 ', 'Axel Brewer', 'axelbrewer1930@aol.com', 24626);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('870-4178 Ut St.', '566568338 ', 'Hoyt Burgess', 'hoytburgess@icloud.org', 21996);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #841-223 Donec Avenue', '502347836 ', 'Ezra Petty', 'ezrapetty@gmail.org', 50112);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #949-2228 Taciti Ave', '546448857 ', 'Stephanie Walters', 'stephaniewalters6553@google.org', 59791);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('988-8976 Phasellus Rd.', '512641152 ', 'Justin Perkins', 'justinperkins@google.couk', 60642);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('960-1858 Vivamus Av.', '516540543 ', 'Charles Russell', 'charlesrussell1550@gmail.org', 88541);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7486 Mollis Avenue', '550467486 ', 'Timon Kirk', 'timonkirk@yahoo.net', 70482);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('172-5884 Orci. Rd.', '525639826 ', 'Yen Boyer', 'yenboyer391@aol.edu', 61721);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('655-8823 Quam Street', '565424647 ', 'Leah Olson', 'leaholson@gmail.ca', 84092);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('727-1258 Et, Rd.', '564758401 ', 'Warren Bradley', 'warrenbradley8891@yahoo.net', 73373);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('187-6770 Ipsum. Avenue', '524397393 ', 'Hanae Salas', 'hanaesalas5714@yahoo.net', 55295);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #704-1734 Urna Road', '554277315 ', 'Hilel Leonard', 'hilelleonard6037@google.net', 12245);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #148-4189 Magna. Av.', '520381736 ', 'Natalie Bishop', 'nataliebishop@aol.net', 43702);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 533, 173 Aliquet Avenue', '573723328 ', 'Nerea Atkins', 'nereaatkins3078@gmail.couk', 52769);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #315-4061 Pellentesque Ave', '512018656 ', 'Keiko Greene', 'keikogreene9814@aol.couk', 74841);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('4830 Nec Ave', '561202638 ', 'August Mayer', 'augustmayer@aol.edu', 92960);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('921-5607 Molestie Rd.', '577522811 ', 'Macey Leonard', 'maceyleonard@google.com', 69582);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #136-7353 Sed Ave', '568035678 ', 'Shannon Leon', 'shannonleon5982@gmail.couk', 68890);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 300, 1799 Gravida. Rd.', '555590456 ', 'Hammett Gill', 'hammettgill3998@yahoo.net', 18791);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #332-9305 Vivamus St.', '573718435 ', 'Shelley Moody', 'shelleymoody@google.net', 89796);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 522, 8963 Ante. Av.', '587582511 ', 'Quynn Holloway', 'quynnholloway@gmail.ca', 95354);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #666-8698 Purus Rd.', '522758221 ', 'Salvador Ashley', 'salvadorashley9273@gmail.com', 57569);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('948-8845 Vel St.', '517414144 ', 'Dahlia Owens', 'dahliaowens@aol.com', 54038);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('489-8703 Arcu. St.', '572652786 ', 'Morgan Hardin', 'morganhardin@yahoo.com', 69221);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('777-555 Fringilla. Av.', '557839415 ', 'Eaton Lott', 'eatonlott5980@yahoo.net', 70250);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #656-7023 Est. St.', '574921141 ', 'Clark Sampson', 'clarksampson4602@gmail.edu', 35553);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('833-8832 Aliquam St.', '580411781 ', 'Garrett Harrison', 'garrettharrison@icloud.ca', 43931);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 969, 908 Cum St.', '562542622 ', 'Madaline Mack', 'madalinemack@aol.net', 27637);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('496-2155 Orci Street', '541521610 ', 'Ali Black', 'aliblack@gmail.org', 50219);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #601-1348 Et Road', '535112874 ', 'Marshall Shannon', 'marshallshannon5759@google.net', 22440);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('309-8129 Feugiat Rd.', '564257271 ', 'Oscar Benjamin', 'oscarbenjamin@aol.edu', 66029);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('786-3330 Nisi Av.', '513778782 ', 'Emerson Cardenas', 'emersoncardenas@icloud.couk', 68854);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7968 Eu Road', '548711235 ', 'Brennan Reid', 'brennanreid@yahoo.edu', 99681);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7783 Phasellus Avenue', '552114866 ', 'Kiara Ayers', 'kiaraayers7858@aol.org', 30610);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #418-6767 Semper. Avenue', '593645385 ', 'Sacha Webster', 'sachawebster6532@yahoo.com', 24608);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #833-5380 Mauris Road', '512145373 ', 'Oscar Mays', 'oscarmays9991@gmail.couk', 47411);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('1014 Aliquet Rd.', '573652779 ', 'Vance Bradley', 'vancebradley@icloud.ca', 13416);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #453-5652 Mollis. Rd.', '564797052 ', 'Karyn Price', 'karynprice@gmail.edu', 18802);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('480-3066 Nunc Rd.', '537150742 ', 'Macon King', 'maconking3176@gmail.net', 16012);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 467, 5418 Duis Road', '564174504 ', 'Connor Mcmillan', 'connormcmillan@google.net', 15963);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #719-4855 Ante St.', '535721837 ', 'Abra Clemons', 'abraclemons2857@aol.org', 84940);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('809 Urna Street', '575013566 ', 'Harrison Stewart', 'harrisonstewart@gmail.net', 19098);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #901-2030 Vel Street', '542991526 ', 'Jeremy Santana', 'jeremysantana@gmail.couk', 69373);
-insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('827-8375 Aliquam Rd.', '527581368 ', 'Constance Navarro', 'constancenavarro@icloud.edu', 31845);
+values ('813 Pine Ave', '567890123 ', 'Chris Brown', 'chris@email.com', 10009);
 commit;
 prompt 400 records committed...
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('383-3411 Nam Rd.', '566718812 ', 'Colby Shaffer', 'colbyshaffer7949@icloud.couk', 25922);
+values ('159 Maple St', '890123456 ', 'Amanda Garcia', 'amanda@email.com', 10010);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('279-4046 A, St.', '594524576 ', 'Stacey Mcleod', 'staceymcleod@aol.com', 26135);
+values ('101 Birch St', '234123456 ', 'Oliver Martin', 'oliver@email.com', 10011);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('4212 Odio Av.', '521145828 ', 'Gannon Vance', 'gannonvance@google.org', 77934);
+values ('202 Spruce Ln', '567234567 ', 'Sophia Lee', 'sophia@email.com', 10012);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 408, 8813 Volutpat. Avenue', '517871957 ', 'Alan Sullivan', 'alansullivan@aol.com', 83782);
+values ('303 Cherry Ave', '890345678 ', 'Liam Martinez', 'liam@email.com', 10013);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('8129 Facilisis Av.', '598355463 ', 'Joelle Hoover', 'joellehoover4378@yahoo.couk', 90376);
+values ('404 Willow Rd', '123456789 ', 'Mia Rodriguez', 'mia@email.com', 10014);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #331-8940 Ut Road', '521151267 ', 'Kane Velazquez', 'kanevelazquez5579@icloud.com', 90152);
+values ('505 Poplar St', '234567890 ', 'Noah Davis', 'noah@email.com', 10015);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('7215 Vestibulum Road', '556769693 ', 'Halee Boyer', 'haleeboyer8640@yahoo.couk', 61039);
+values ('606 Aspen Ct', '345678901 ', 'Isabella Lewis', 'isabella@email.com', 10016);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 933, 8375 Enim Rd.', '582388653 ', 'Jordan Stanton', 'jordanstanton@gmail.net', 72497);
+values ('707 Beech Blvd', '456789012 ', 'James White', 'james@email.com', 10017);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('112-260 Varius Av.', '576107777 ', 'Jescie Reynolds', 'jesciereynolds4525@icloud.couk', 44135);
+values ('88 Magnolia Way', '567890123 ', 'Charl Walker', 'charlotte@email.com', 10018);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #299-1591 Dictum Street', '505456764 ', 'Harding Ballard', 'hardingballard7768@icloud.ca', 41470);
+values ('909 Oak Dr', '678901234 ', 'Ben Hall', 'benjamin@email.com', 10019);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('442-2426 Ut Street', '526678882 ', 'Gavin Foley', 'gavinfoley@yahoo.ca', 16017);
+values ('100 Redwood Ave', '789012345 ', 'Amelia Young', 'amelia@email.com', 10020);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #878-4716 Magna Rd.', '554512612 ', 'Kennedy Atkins', 'kennedyatkins5511@yahoo.net', 68062);
+values ('196-696 Tincidunt Av.', '576802140 ', 'Shaine Sosa', 'shainesosa8233@gmail.couk', 71870);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('369-2220 Proin Av.', '556043206 ', 'Keely Lambert', 'keelylambert@aol.couk', 87909);
+values ('Ap #517-3634 Sed Street', '576163875 ', 'Kirsten Foreman', 'kirstenforeman55@google.org', 53162);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #778-3523 Nunc Street', '521473627 ', 'Kerry Cantrell', 'kerrycantrell3347@google.couk', 37037);
+values ('Ap #105-1406 Lorem Av.', '577647211 ', 'Hillary Garrett', 'hillarygarrett@yahoo.org', 19365);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('214-5228 Turpis St.', '540508616 ', 'Nehru Kane', 'nehrukane@gmail.edu', 13854);
+values ('P.O. Box 103, 7570 Vestibulum St.', '535653718 ', 'Susan Lester', 'susanlester3407@google.com', 69468);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('861-3422 Et, Rd.', '548580479 ', 'Evan Norman', 'evannorman3424@yahoo.net', 20080);
+values ('P.O. Box 128, 3885 Vitae St.', '512974695 ', 'Brianna Holcomb', 'briannaholcomb5084@icloud.ca', 94853);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('P.O. Box 302, 6246 Risus. St.', '538180461 ', 'Flynn Fulton', 'flynnfulton@google.edu', 48224);
+values ('5640 Justo St.', '533026653 ', 'Imani Clayton', 'imaniclayton@icloud.com', 31979);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('Ap #727-177 Pede Rd.', '545651455 ', 'Indigo Rios', 'indigorios2663@aol.net', 74972);
+values ('235-3854 Ipsum St.', '554287212 ', 'Colleen Nichols', 'colleennichols3441@gmail.couk', 49506);
 insert into STAFF (saddress, smobile, sname, smail, sid)
-values ('242-6132 Laoreet Ave', '535495636 ', 'Dexter Brock', 'dexterbrock@google.edu', 90220);
+values ('764-1812 Velit. Street', '596111846 ', 'Constance Francis', 'constancefrancis@yahoo.net', 51524);
 commit;
 prompt 419 records loaded
 prompt Loading DOCTOR...
-insert into DOCTOR (license, specialties, sid)
-values ('L1234', 'Orthodontist', 10001);
-insert into DOCTOR (license, specialties, sid)
-values ('L5678', 'Cosmetic', 10002);
-insert into DOCTOR (license, specialties, sid)
-values ('L9012', 'Dentist', 10003);
-insert into DOCTOR (license, specialties, sid)
-values ('L3456', 'Dentist', 10004);
-insert into DOCTOR (license, specialties, sid)
-values ('L7890', 'Cosmetic', 10005);
-insert into DOCTOR (license, specialties, sid)
-values ('L2345', 'Dentist', 10006);
-insert into DOCTOR (license, specialties, sid)
-values ('L6789', 'Dentist', 10007);
-insert into DOCTOR (license, specialties, sid)
-values ('L0123', 'Orthodontist', 10008);
-insert into DOCTOR (license, specialties, sid)
-values ('L4567', 'Orthodontist', 10009);
-insert into DOCTOR (license, specialties, sid)
-values ('L8901', 'Dentist', 10010);
-insert into DOCTOR (license, specialties, sid)
-values ('N709690', 'Cosmetic', 33532);
-insert into DOCTOR (license, specialties, sid)
-values ('P790838', 'Orthodontist''', 33794);
-insert into DOCTOR (license, specialties, sid)
-values ('A853261', 'Orthodontist''', 65613);
-insert into DOCTOR (license, specialties, sid)
-values ('Y368303', 'Dentist', 51524);
-insert into DOCTOR (license, specialties, sid)
-values ('V607115', 'Orthodontist''', 95320);
-insert into DOCTOR (license, specialties, sid)
-values ('R797629', 'Orthodontist''', 25578);
-insert into DOCTOR (license, specialties, sid)
-values ('W268703', 'Dentist', 56476);
-insert into DOCTOR (license, specialties, sid)
-values ('M200552', 'Orthodontist''', 61435);
-insert into DOCTOR (license, specialties, sid)
-values ('V770498', 'Cosmetic', 64185);
-insert into DOCTOR (license, specialties, sid)
-values ('K750550', 'Orthodontist''', 74091);
-insert into DOCTOR (license, specialties, sid)
-values ('T346515', 'Orthodontist''', 80248);
-insert into DOCTOR (license, specialties, sid)
-values ('E998542', 'Cosmetic', 84092);
-insert into DOCTOR (license, specialties, sid)
-values ('P088902', 'Cosmetic', 27192);
-insert into DOCTOR (license, specialties, sid)
-values ('R697730', 'Orthodontist''', 89350);
-insert into DOCTOR (license, specialties, sid)
-values ('W473497', 'Dentist', 68549);
-insert into DOCTOR (license, specialties, sid)
-values ('N608308', 'Dentist', 27715);
-insert into DOCTOR (license, specialties, sid)
-values ('N656165', 'Cosmetic', 11630);
-insert into DOCTOR (license, specialties, sid)
-values ('B766493', 'Orthodontist''', 49666);
-insert into DOCTOR (license, specialties, sid)
-values ('U508205', 'Cosmetic', 61546);
-insert into DOCTOR (license, specialties, sid)
-values ('I003396', 'Orthodontist''', 98364);
-insert into DOCTOR (license, specialties, sid)
-values ('M292821', 'Orthodontist''', 96750);
-insert into DOCTOR (license, specialties, sid)
-values ('I826892', 'Cosmetic', 34609);
-insert into DOCTOR (license, specialties, sid)
-values ('R548123', 'Orthodontist''', 37345);
-insert into DOCTOR (license, specialties, sid)
-values ('R386487', 'Orthodontist''', 92442);
-insert into DOCTOR (license, specialties, sid)
-values ('I665838', 'Cosmetic', 21996);
-insert into DOCTOR (license, specialties, sid)
-values ('Y223483', 'Orthodontist''', 10013);
-insert into DOCTOR (license, specialties, sid)
-values ('G593751', 'Cosmetic', 55269);
-insert into DOCTOR (license, specialties, sid)
-values ('M562872', 'Orthodontist''', 39663);
-insert into DOCTOR (license, specialties, sid)
-values ('V105043', 'Cosmetic', 38296);
-insert into DOCTOR (license, specialties, sid)
-values ('A478640', 'Dentist', 31151);
-insert into DOCTOR (license, specialties, sid)
-values ('P544230', 'Dentist', 18525);
-insert into DOCTOR (license, specialties, sid)
-values ('I104058', 'Dentist', 26135);
-insert into DOCTOR (license, specialties, sid)
-values ('D943728', 'Dentist', 63761);
-insert into DOCTOR (license, specialties, sid)
-values ('J269639', 'Orthodontist''', 35535);
-insert into DOCTOR (license, specialties, sid)
-values ('N935982', 'Dentist', 55546);
-insert into DOCTOR (license, specialties, sid)
-values ('A562040', 'Cosmetic', 80830);
-insert into DOCTOR (license, specialties, sid)
-values ('G366036', 'Cosmetic', 10014);
-insert into DOCTOR (license, specialties, sid)
-values ('H704207', 'Cosmetic', 43915);
-insert into DOCTOR (license, specialties, sid)
-values ('I715511', 'Dentist', 61696);
-insert into DOCTOR (license, specialties, sid)
-values ('Q068252', 'Orthodontist''', 13227);
-insert into DOCTOR (license, specialties, sid)
-values ('P311351', 'Orthodontist''', 37415);
-insert into DOCTOR (license, specialties, sid)
-values ('G702062', 'Dentist', 54635);
-insert into DOCTOR (license, specialties, sid)
-values ('T152511', 'Dentist', 43702);
-insert into DOCTOR (license, specialties, sid)
-values ('L216854', 'Cosmetic', 18401);
-insert into DOCTOR (license, specialties, sid)
-values ('J012983', 'Dentist', 44135);
-insert into DOCTOR (license, specialties, sid)
-values ('X377564', 'Orthodontist''', 15357);
-insert into DOCTOR (license, specialties, sid)
-values ('I877544', 'Cosmetic', 57569);
-insert into DOCTOR (license, specialties, sid)
-values ('S363634', 'Cosmetic', 49355);
-insert into DOCTOR (license, specialties, sid)
-values ('C707042', 'Cosmetic', 68229);
-insert into DOCTOR (license, specialties, sid)
-values ('N826726', 'Orthodontist''', 28053);
-insert into DOCTOR (license, specialties, sid)
-values ('D643611', 'Cosmetic', 89219);
-insert into DOCTOR (license, specialties, sid)
-values ('M859272', 'Orthodontist''', 47507);
-insert into DOCTOR (license, specialties, sid)
-values ('Z477842', 'Cosmetic', 17595);
-insert into DOCTOR (license, specialties, sid)
-values ('W262666', 'Cosmetic', 45148);
-insert into DOCTOR (license, specialties, sid)
-values ('T599229', 'Orthodontist''', 38187);
-insert into DOCTOR (license, specialties, sid)
-values ('T364122', 'Cosmetic', 91368);
-insert into DOCTOR (license, specialties, sid)
-values ('V082932', 'Cosmetic', 27379);
-insert into DOCTOR (license, specialties, sid)
-values ('K415785', 'Dentist', 88571);
-insert into DOCTOR (license, specialties, sid)
-values ('O149663', 'Orthodontist''', 15383);
-insert into DOCTOR (license, specialties, sid)
-values ('W784098', 'Cosmetic', 35130);
-insert into DOCTOR (license, specialties, sid)
-values ('E033901', 'Dentist', 99681);
-insert into DOCTOR (license, specialties, sid)
-values ('F557731', 'Cosmetic', 15343);
-insert into DOCTOR (license, specialties, sid)
-values ('W057505', 'Dentist', 19365);
-insert into DOCTOR (license, specialties, sid)
-values ('J329052', 'Orthodontist''', 82443);
-insert into DOCTOR (license, specialties, sid)
-values ('P738107', 'Orthodontist''', 55149);
-insert into DOCTOR (license, specialties, sid)
-values ('O296894', 'Dentist', 89337);
-insert into DOCTOR (license, specialties, sid)
-values ('D379867', 'Dentist', 64760);
-insert into DOCTOR (license, specialties, sid)
-values ('D478618', 'Orthodontist''', 24656);
-insert into DOCTOR (license, specialties, sid)
-values ('A797001', 'Orthodontist''', 50112);
-insert into DOCTOR (license, specialties, sid)
-values ('O802501', 'Orthodontist''', 79859);
-insert into DOCTOR (license, specialties, sid)
-values ('J966809', 'Cosmetic', 81894);
-insert into DOCTOR (license, specialties, sid)
-values ('B927814', 'Orthodontist''', 72820);
-insert into DOCTOR (license, specialties, sid)
-values ('W981873', 'Cosmetic', 10016);
-insert into DOCTOR (license, specialties, sid)
-values ('W122816', 'Orthodontist''', 64076);
-insert into DOCTOR (license, specialties, sid)
-values ('U041747', 'Cosmetic', 10011);
-insert into DOCTOR (license, specialties, sid)
-values ('L642104', 'Orthodontist''', 10652);
-insert into DOCTOR (license, specialties, sid)
-values ('N133159', 'Dentist', 12082);
-insert into DOCTOR (license, specialties, sid)
-values ('M508774', 'Cosmetic', 63961);
-insert into DOCTOR (license, specialties, sid)
-values ('V995822', 'Orthodontist''', 21570);
-insert into DOCTOR (license, specialties, sid)
-values ('U416915', 'Orthodontist''', 39306);
-insert into DOCTOR (license, specialties, sid)
-values ('C347945', 'Dentist', 31947);
-insert into DOCTOR (license, specialties, sid)
-values ('R864927', 'Orthodontist''', 10017);
 insert into DOCTOR (license, specialties, sid)
 values ('L461765', 'Orthodontist''', 29561);
 insert into DOCTOR (license, specialties, sid)
@@ -1549,8 +1112,6 @@ insert into DOCTOR (license, specialties, sid)
 values ('M565314', 'Dentist', 73373);
 insert into DOCTOR (license, specialties, sid)
 values ('H212872', 'Dentist', 79819);
-commit;
-prompt 100 records committed...
 insert into DOCTOR (license, specialties, sid)
 values ('X325759', 'Dentist', 31696);
 insert into DOCTOR (license, specialties, sid)
@@ -1677,181 +1238,195 @@ insert into DOCTOR (license, specialties, sid)
 values ('O985935', 'Dentist', 15963);
 insert into DOCTOR (license, specialties, sid)
 values ('Y119633', 'Dentist', 72479);
+insert into DOCTOR (license, specialties, sid)
+values ('L1234', 'Orthodontist', 10001);
+insert into DOCTOR (license, specialties, sid)
+values ('L5678', 'Cosmetic', 10002);
+insert into DOCTOR (license, specialties, sid)
+values ('L9012', 'Dentist', 10003);
+insert into DOCTOR (license, specialties, sid)
+values ('L3456', 'Dentist', 10004);
+insert into DOCTOR (license, specialties, sid)
+values ('L7890', 'Cosmetic', 10005);
+insert into DOCTOR (license, specialties, sid)
+values ('L2345', 'Dentist', 10006);
+insert into DOCTOR (license, specialties, sid)
+values ('L6789', 'Dentist', 10007);
+insert into DOCTOR (license, specialties, sid)
+values ('L0123', 'Orthodontist', 10008);
+insert into DOCTOR (license, specialties, sid)
+values ('L4567', 'Orthodontist', 10009);
+insert into DOCTOR (license, specialties, sid)
+values ('L8901', 'Dentist', 10010);
+insert into DOCTOR (license, specialties, sid)
+values ('N709690', 'Cosmetic', 33532);
+insert into DOCTOR (license, specialties, sid)
+values ('P790838', 'Orthodontist''', 33794);
+insert into DOCTOR (license, specialties, sid)
+values ('A853261', 'Orthodontist''', 65613);
+insert into DOCTOR (license, specialties, sid)
+values ('Y368303', 'Dentist', 51524);
+insert into DOCTOR (license, specialties, sid)
+values ('V607115', 'Orthodontist''', 95320);
+insert into DOCTOR (license, specialties, sid)
+values ('R797629', 'Orthodontist''', 25578);
+insert into DOCTOR (license, specialties, sid)
+values ('W268703', 'Dentist', 56476);
+insert into DOCTOR (license, specialties, sid)
+values ('M200552', 'Orthodontist''', 61435);
+insert into DOCTOR (license, specialties, sid)
+values ('V770498', 'Cosmetic', 64185);
+insert into DOCTOR (license, specialties, sid)
+values ('K750550', 'Orthodontist''', 74091);
+insert into DOCTOR (license, specialties, sid)
+values ('T346515', 'Orthodontist''', 80248);
+insert into DOCTOR (license, specialties, sid)
+values ('E998542', 'Cosmetic', 84092);
+insert into DOCTOR (license, specialties, sid)
+values ('P088902', 'Cosmetic', 27192);
+insert into DOCTOR (license, specialties, sid)
+values ('R697730', 'Orthodontist''', 89350);
+insert into DOCTOR (license, specialties, sid)
+values ('W473497', 'Dentist', 68549);
+insert into DOCTOR (license, specialties, sid)
+values ('N608308', 'Dentist', 27715);
+insert into DOCTOR (license, specialties, sid)
+values ('N656165', 'Cosmetic', 11630);
+insert into DOCTOR (license, specialties, sid)
+values ('B766493', 'Orthodontist''', 49666);
+insert into DOCTOR (license, specialties, sid)
+values ('U508205', 'Cosmetic', 61546);
+commit;
+prompt 100 records committed...
+insert into DOCTOR (license, specialties, sid)
+values ('I003396', 'Orthodontist''', 98364);
+insert into DOCTOR (license, specialties, sid)
+values ('M292821', 'Orthodontist''', 96750);
+insert into DOCTOR (license, specialties, sid)
+values ('I826892', 'Cosmetic', 34609);
+insert into DOCTOR (license, specialties, sid)
+values ('R548123', 'Orthodontist''', 37345);
+insert into DOCTOR (license, specialties, sid)
+values ('R386487', 'Orthodontist''', 92442);
+insert into DOCTOR (license, specialties, sid)
+values ('I665838', 'Cosmetic', 21996);
+insert into DOCTOR (license, specialties, sid)
+values ('Y223483', 'Orthodontist''', 10013);
+insert into DOCTOR (license, specialties, sid)
+values ('G593751', 'Cosmetic', 55269);
+insert into DOCTOR (license, specialties, sid)
+values ('M562872', 'Orthodontist''', 39663);
+insert into DOCTOR (license, specialties, sid)
+values ('V105043', 'Cosmetic', 38296);
+insert into DOCTOR (license, specialties, sid)
+values ('A478640', 'Dentist', 31151);
+insert into DOCTOR (license, specialties, sid)
+values ('P544230', 'Dentist', 18525);
+insert into DOCTOR (license, specialties, sid)
+values ('I104058', 'Dentist', 26135);
+insert into DOCTOR (license, specialties, sid)
+values ('D943728', 'Dentist', 63761);
+insert into DOCTOR (license, specialties, sid)
+values ('J269639', 'Orthodontist''', 35535);
+insert into DOCTOR (license, specialties, sid)
+values ('N935982', 'Dentist', 55546);
+insert into DOCTOR (license, specialties, sid)
+values ('A562040', 'Cosmetic', 80830);
+insert into DOCTOR (license, specialties, sid)
+values ('G366036', 'Cosmetic', 10014);
+insert into DOCTOR (license, specialties, sid)
+values ('H704207', 'Cosmetic', 43915);
+insert into DOCTOR (license, specialties, sid)
+values ('I715511', 'Dentist', 61696);
+insert into DOCTOR (license, specialties, sid)
+values ('Q068252', 'Orthodontist''', 13227);
+insert into DOCTOR (license, specialties, sid)
+values ('P311351', 'Orthodontist''', 37415);
+insert into DOCTOR (license, specialties, sid)
+values ('G702062', 'Dentist', 54635);
+insert into DOCTOR (license, specialties, sid)
+values ('T152511', 'Dentist', 43702);
+insert into DOCTOR (license, specialties, sid)
+values ('L216854', 'Cosmetic', 18401);
+insert into DOCTOR (license, specialties, sid)
+values ('J012983', 'Dentist', 44135);
+insert into DOCTOR (license, specialties, sid)
+values ('X377564', 'Orthodontist''', 15357);
+insert into DOCTOR (license, specialties, sid)
+values ('I877544', 'Cosmetic', 57569);
+insert into DOCTOR (license, specialties, sid)
+values ('S363634', 'Cosmetic', 49355);
+insert into DOCTOR (license, specialties, sid)
+values ('C707042', 'Cosmetic', 68229);
+insert into DOCTOR (license, specialties, sid)
+values ('N826726', 'Orthodontist''', 28053);
+insert into DOCTOR (license, specialties, sid)
+values ('D643611', 'Cosmetic', 89219);
+insert into DOCTOR (license, specialties, sid)
+values ('M859272', 'Orthodontist''', 47507);
+insert into DOCTOR (license, specialties, sid)
+values ('Z477842', 'Cosmetic', 17595);
+insert into DOCTOR (license, specialties, sid)
+values ('W262666', 'Cosmetic', 45148);
+insert into DOCTOR (license, specialties, sid)
+values ('T599229', 'Orthodontist''', 38187);
+insert into DOCTOR (license, specialties, sid)
+values ('T364122', 'Cosmetic', 91368);
+insert into DOCTOR (license, specialties, sid)
+values ('V082932', 'Cosmetic', 27379);
+insert into DOCTOR (license, specialties, sid)
+values ('K415785', 'Dentist', 88571);
+insert into DOCTOR (license, specialties, sid)
+values ('O149663', 'Orthodontist''', 15383);
+insert into DOCTOR (license, specialties, sid)
+values ('W784098', 'Cosmetic', 35130);
+insert into DOCTOR (license, specialties, sid)
+values ('E033901', 'Dentist', 99681);
+insert into DOCTOR (license, specialties, sid)
+values ('F557731', 'Cosmetic', 15343);
+insert into DOCTOR (license, specialties, sid)
+values ('W057505', 'Dentist', 19365);
+insert into DOCTOR (license, specialties, sid)
+values ('J329052', 'Orthodontist''', 82443);
+insert into DOCTOR (license, specialties, sid)
+values ('P738107', 'Orthodontist''', 55149);
+insert into DOCTOR (license, specialties, sid)
+values ('O296894', 'Dentist', 89337);
+insert into DOCTOR (license, specialties, sid)
+values ('D379867', 'Dentist', 64760);
+insert into DOCTOR (license, specialties, sid)
+values ('D478618', 'Orthodontist''', 24656);
+insert into DOCTOR (license, specialties, sid)
+values ('A797001', 'Orthodontist''', 50112);
+insert into DOCTOR (license, specialties, sid)
+values ('O802501', 'Orthodontist''', 79859);
+insert into DOCTOR (license, specialties, sid)
+values ('J966809', 'Cosmetic', 81894);
+insert into DOCTOR (license, specialties, sid)
+values ('B927814', 'Orthodontist''', 72820);
+insert into DOCTOR (license, specialties, sid)
+values ('W981873', 'Cosmetic', 10016);
+insert into DOCTOR (license, specialties, sid)
+values ('W122816', 'Orthodontist''', 64076);
+insert into DOCTOR (license, specialties, sid)
+values ('U041747', 'Cosmetic', 10011);
+insert into DOCTOR (license, specialties, sid)
+values ('L642104', 'Orthodontist''', 10652);
+insert into DOCTOR (license, specialties, sid)
+values ('N133159', 'Dentist', 12082);
+insert into DOCTOR (license, specialties, sid)
+values ('M508774', 'Cosmetic', 63961);
+insert into DOCTOR (license, specialties, sid)
+values ('V995822', 'Orthodontist''', 21570);
+insert into DOCTOR (license, specialties, sid)
+values ('U416915', 'Orthodontist''', 39306);
+insert into DOCTOR (license, specialties, sid)
+values ('C347945', 'Dentist', 31947);
+insert into DOCTOR (license, specialties, sid)
+values ('R864927', 'Orthodontist''', 10017);
 commit;
 prompt 163 records loaded
 prompt Loading PATIENT...
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1980, '123 Main St', 'Alice Johnson', 'F', 20001, '123456789', 'alice@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1990, '456 Oak Ave', 'Bob Smith', 'M', 20002, '987654321', 'bob@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1985, '789 Elm St', 'Charlie Davis', 'M', 20003, '456789012', 'charlie@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1995, '321 Pine Rd', 'Danielle Wilson', 'F', 20004, '789012345', 'danielle@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1988, '654 Maple Ln', 'Evan Thompson', 'M', 20005, '345678901', 'evan@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1992, '987 Cedar Blvd', 'Fiona Anderson', 'F', 20006, '678901234', 'fiona@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1982, '246 Oak Ct', 'George Taylor', 'M', 20007, '901234567', 'george@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1998, '579 Elm Way', 'Hannah Brown', 'F', 20008, '234567890', 'hannah@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1991, '813 Pine Ave', 'Ian Garcia', 'M', 20009, '567890123', 'ian@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1987, '159 Maple St', 'Jill Roberts', 'F', 20010, '890123456', 'jill@email.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1987, '5429 Arcu. Street', 'Louis Harding', 'M', 783, '0576085009', 'commodo@yahoo.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1986, 'P.O. Box 643, 736 Mauris Rd.', 'Bruce Walton', 'F', 601, '0584338727', 'diam.duis.mi@yahoo.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1916, 'Ap #852-970 Neque. Street', 'Flynn Jensen', 'F', 871, '0582426580', 'ligula.aliquam@aol.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1977, '725-2292 Mauris Ave', 'Noelle James', 'F', 410, '0563243318', 'et@yahoo.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2003, '564-2259 Cras Ave', 'Kathleen Santana', 'M', 373, '0551339756', 'neque.non.quam@protonmail.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1996, 'Ap #265-7286 Sollicitudin St.', 'Macey Tucker', 'M', 168, '0544411142', 'malesuada.fames.ac@google.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1991, '369-2700 Consectetuer Av.', 'Zephr Beach', 'F', 371, '0588485333', 'egestas.a.dui@hotmail.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2011, 'P.O. Box 640, 8387 Pulvinar Street', 'Amanda Mcmahon', 'F', 946, '0512426537', 'morbi.tristique@protonmail.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2004, 'Ap #958-7751 Viverra. Ave', 'Eleanor Jefferson', 'F', 577, '0582175221', 'ac.metus@outlook.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1945, 'P.O. Box 175, 6500 Quisque Av.', 'Ira Day', 'M', 838, '0524324167', 'et.nunc.quisque@yahoo.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1934, '5479 Mi St.', 'Maisie Hampton', 'F', 502, '0512648528', 'penatibus.et@yahoo.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1980, 'Ap #839-3424 Mauris Rd.', 'Malachi Sanders', 'F', 597, '0565425717', 'tellus@google.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1935, '886-9121 Augue Rd.', 'Marcia Mcknight', 'M', 648, '0542726797', 'mattis.semper@hotmail.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1954, '4755 Curabitur Rd.', 'Ariana Macias', 'F', 131, '0504276541', 'mi.eleifend@google.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1918, '766-2061 Quam Street', 'Doris Martinez', 'F', 104, '0590863510', 'phasellus.libero@outlook.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1933, '274-2912 Morbi Rd.', 'Darryl Lewis', 'F', 377, '0583347324', 'ipsum@protonmail.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1989, '897-649 In Rd.', 'Finn Henson', 'M', 134, '0532156133', 'eget@icloud.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2003, '161-1546 Mauris Rd.', 'Raven Shannon', 'F', 846, '0528119994', 'pellentesque.tincidunt@google.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1992, '482-163 Gravida Road', 'Lewis Mcclure', 'F', 584, '0544183372', 'et.rutrum@protonmail.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1945, 'P.O. Box 281, 7540 Fringilla St.', 'Madison Lott', 'M', 553, '0514296380', 'nec.tellus@outlook.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2015, '785-9518 Ipsum. Rd.', 'Maia Christensen', 'M', 897, '0537300363', 'nec.euismod@aol.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1957, 'P.O. Box 392, 213 Imperdiet Avenue', 'Regina Puckett', 'F', 890, '0585168343', 'ante@hotmail.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2011, '367-2749 Suspendisse Ave', 'Daniel Hunt', 'M', 718, '0581680813', 'sem.nulla.interdum@google.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1985, 'P.O. Box 872, 3679 Augue. Avenue', 'Abraham Barlow', 'F', 162, '0538460423', 'aliquet.lobortis@aol.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2001, 'Ap #358-8695 Tellus. Road', 'Connor Gardner', 'M', 314, '0526443117', 'facilisis.facilisis@yahoo.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2022, '570-5673 Pede Ave', 'Ferris Frazier', 'M', 609, '0555021722', 'bibendum.ullamcorper@icloud.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2005, '3977 Ultricies Rd.', 'Elvis Levy', 'F', 204, '0582961986', 'consectetuer.rhoncus@hotmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1998, 'Ap #430-5686 Luctus Av.', 'Wade Moody', 'M', 633, '0595886432', 'vestibulum@aol.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1958, '445-2329 Mauris Street', 'Armando Patterson', 'F', 207, '0511530072', 'nullam.velit.dui@google.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2004, 'Ap #449-9425 Cursus Rd.', 'Summer George', 'F', 453, '0590947426', 'suspendisse.commodo@icloud.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1945, '112-7838 Amet, Rd.', 'Kylie Rogers', 'F', 659, '0565830555', 'morbi.quis@outlook.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1973, '593-1560 Enim Av.', 'Athena Strong', 'M', 827, '0557706314', 'vestibulum@hotmail.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1983, 'Ap #233-3372 Nibh St.', 'Pearl Warner', 'M', 309, '0546323805', 'in.faucibus@yahoo.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1918, '970-3570 Mi Rd.', 'Emi Figueroa', 'F', 632, '0528318840', 'varius.et@hotmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1989, '262-6106 Semper St.', 'Hu Mays', 'F', 820, '0517032784', 'eros.nec.tellus@outlook.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1995, '651-6496 A, Ave', 'Jesse Pacheco', 'M', 109, '0573657210', 'vitae.aliquam@google.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1933, '124-4192 Erat. Road', 'Illiana Suarez', 'M', 218, '0583861577', 'ultrices.sit@outlook.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1930, 'Ap #269-7390 Sed Ave', 'Lee Nguyen', 'M', 991, '0539184201', 'tempor@hotmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1991, '4353 Nonummy Rd.', 'Amaya Watson', 'F', 412, '0572695437', 'non.dapibus@hotmail.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1972, 'Ap #477-887 Orci Avenue', 'Harriet Pickett', 'M', 923, '0575619318', 'duis.dignissim@aol.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2016, 'Ap #665-3778 Et Road', 'Cole Bernard', 'F', 152, '0575217512', 'senectus.et@hotmail.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1977, '712-2897 Praesent Rd.', 'Allistair Sheppard', 'F', 669, '0514337512', 'gravida@protonmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2009, '510-8367 Molestie Ave', 'Alyssa Lindsay', 'M', 564, '0511207573', 'vel@aol.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1919, 'Ap #706-589 Accumsan Rd.', 'Hamish Villarreal', 'M', 751, '0561625915', 'ultricies.ligula@outlook.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1928, '102 Enim Road', 'Tatum Greene', 'M', 930, '0581823827', 'tincidunt.aliquam.arcu@hotmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1929, '201-5882 Eros. Road', 'Idona Mckenzie', 'F', 779, '0537280664', 'enim.nunc@icloud.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1958, 'Ap #133-5930 Hendrerit. Rd.', 'Isabella Hampton', 'M', 313, '0538009324', 'lacus.cras@icloud.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1958, '985-4788 Ante Road', 'Acton Santana', 'M', 262, '0578025532', 'cursus.in@yahoo.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1925, '243-5841 Risus. St.', 'Anika Hopper', 'F', 349, '0525324565', 'neque@icloud.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1975, '597-2559 A, Street', 'Acton Christian', 'F', 762, '0577816023', 'semper@yahoo.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2015, 'P.O. Box 729, 1228 Praesent Street', 'Alika Garcia', 'F', 926, '0569664023', 'etiam.laoreet@yahoo.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2002, 'Ap #840-5414 Sem Rd.', 'Henry Manning', 'F', 130, '0513806701', 'in.consequat.enim@outlook.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2018, 'P.O. Box 157, 8989 Nisi Street', 'Sheila Cortez', 'M', 674, '0514843167', 'eget.ipsum@aol.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2017, 'Ap #203-2755 Parturient St.', 'Hyacinth Bass', 'F', 793, '0517681888', 'dapibus.id.blandit@google.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1934, '238-5108 Posuere, Rd.', 'Beau Bailey', 'M', 543, '0597486069', 'cursus.nunc.mauris@google.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1932, '987-3703 Natoque St.', 'Maile Mcleod', 'F', 356, '0598141537', 'erat.vitae.risus@google.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1953, 'Ap #565-9273 Duis Road', 'Illiana Mcfadden', 'F', 525, '0511842432', 'suscipit.nonummy.fusce@outlook.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1963, '951-6601 Arcu St.', 'Nero Maldonado', 'M', 753, '0539454077', 'donec.porttitor@google.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2018, 'P.O. Box 837, 7068 Pellentesque Road', 'Yoko Buck', 'F', 552, '0548747473', 'nec.enim@yahoo.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1954, 'P.O. Box 490, 5580 Elit. Avenue', 'Kaitlin Forbes', 'M', 653, '0574104204', 'tempus.non.lacinia@outlook.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1956, 'Ap #626-1553 Eu, Road', 'Noelle Underwood', 'F', 879, '0581020780', 'neque.vitae@aol.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2019, 'Ap #273-2683 Cubilia Av.', 'Blythe Stephenson', 'F', 698, '0561852315', 'magnis@aol.com');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1971, 'Ap #729-7353 Purus Rd.', 'Tanisha Wolfe', 'M', 542, '0532636663', 'integer@icloud.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1949, 'Ap #738-2791 Tincidunt. Av.', 'Tanek Bauer', 'M', 459, '0598363862', 'aliquam@yahoo.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2002, '657-2634 Non, Avenue', 'Julie Barr', 'F', 593, '0531478074', 'etiam.vestibulum@aol.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2004, 'P.O. Box 494, 3451 Urna. St.', 'Walter Church', 'F', 198, '0533015127', 'ut.nisi.a@yahoo.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1917, '111-9077 Consectetuer, Av.', 'Cheryl Carpenter', 'M', 863, '0575556476', 'lacus@hotmail.couk');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1977, 'Ap #802-2802 Vitae St.', 'Graiden Cooley', 'F', 213, '0525842721', 'eget.metus@yahoo.net');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1982, '8867 Sociis Ave', 'Odette Lucas', 'F', 799, '0541176882', 'ut@yahoo.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1937, 'Ap #491-6854 Sapien Rd.', 'Althea Randolph', 'M', 569, '0586357536', 'dolor.dolor@hotmail.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1984, '929-347 Non Av.', 'Leo Palmer', 'M', 785, '0568868364', 'vivamus@yahoo.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1974, '882-7608 Gravida St.', 'Emerald Reynolds', 'M', 894, '0521851137', 'eros.turpis@hotmail.edu');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2008, 'P.O. Box 879, 5525 Duis Avenue', 'Sydnee Clay', 'F', 481, '0562543366', 'adipiscing.elit@aol.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1922, '673-6942 Sed Av.', 'Isadora Cortez', 'M', 181, '0595953493', 'et.commodo@hotmail.ca');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (1984, '288-7365 Etiam Avenue', 'Ronan Moss', 'F', 504, '0516634785', 'lectus.a@google.org');
-insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
-values (2020, '5806 Euismod Rd.', 'Wylie Mcclure', 'F', 362, '0544515855', 'mauris.integer.sem@google.edu');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1972, '567-8655 Integer Ave', 'Reagan Berry', 'M', 727, '0513417574', 'pede.nec@outlook.edu');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -1880,8 +1455,6 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1990, 'Ap #774-3061 Erat. Street', 'Cody Salinas', 'M', 163, '0522779526', 'amet.lorem@yahoo.net');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (2008, '505-6353 A Av.', 'Brittany Guerra', 'M', 219, '0572180527', 'magna.tellus@icloud.org');
-commit;
-prompt 100 records committed...
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (2000, '613-6144 Sollicitudin Avenue', 'Murphy Rodriguez', 'F', 399, '0543917465', 'vulputate.dui@aol.ca');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -2054,6 +1627,8 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1970, 'Ap #557-8714 Nec Street', 'Christine Petersen', 'M', 298, '0514217163', 'erat.neque.non@icloud.couk');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1972, '347-6464 Fermentum Avenue', 'Oren Navarro', 'F', 590, '0573753225', 'libero.proin@hotmail.net');
+commit;
+prompt 100 records committed...
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1923, '667-9508 Tristique Rd.', 'Cruz Lowe', 'M', 302, '0584960543', 'justo@aol.org');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -2082,8 +1657,6 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1917, 'Ap #557-9780 Et Street', 'Garrison Ware', 'M', 805, '0574622955', 'mattis@protonmail.edu');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1947, 'Ap #348-104 Tempor St.', 'Adara Sampson', 'F', 127, '0546236268', 'eleifend.non@protonmail.edu');
-commit;
-prompt 200 records committed...
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (2024, '885-6524 Ac, Ave', 'Brenna Sharpe', 'M', 391, '0558403148', 'aliquam.tincidunt@hotmail.org');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -2256,6 +1829,8 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1958, '123-5818 Lacus. Ave', 'Cameron Leblanc', 'M', 338, '0548421496', 'sed.molestie@outlook.couk');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1917, '260-8086 Amet Rd.', 'Gregory Odom', 'F', 835, '0509584088', 'euismod.et.commodo@hotmail.org');
+commit;
+prompt 200 records committed...
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1962, 'Ap #188-9556 Cras Avenue', 'Naomi Paul', 'M', 567, '0507110270', 'mauris.morbi@icloud.net');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -2284,8 +1859,6 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1941, 'Ap #346-6650 Faucibus Road', 'Dahlia Reilly', 'F', 812, '0508338631', 'diam.pellentesque@hotmail.couk');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1954, 'P.O. Box 321, 9761 Arcu. Rd.', 'Thomas Mendez', 'M', 725, '0527817282', 'tristique.senectus@hotmail.ca');
-commit;
-prompt 300 records committed...
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1925, 'Ap #405-7497 Enim. Road', 'Isadora Monroe', 'M', 169, '0521215647', 'odio.etiam@protonmail.net');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
@@ -2328,9 +1901,735 @@ insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1991, 'Ap #266-3776 Mus. St.', 'Armando Dillon', 'F', 183, '0571371101', 'eu.eleifend.nec@aol.couk');
 insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
 values (1993, 'P.O. Box 272, 8267 Lorem Street', 'Vincent Cotton', 'F', 379, '0569139768', 'mauris@google.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2004, 'Ap #958-7751 Viverra. Ave', 'Eleanor Jefferson', 'F', 577, '0582175221', 'ac.metus@outlook.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1945, 'P.O. Box 175, 6500 Quisque Av.', 'Ira Day', 'M', 838, '0524324167', 'et.nunc.quisque@yahoo.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1934, '5479 Mi St.', 'Maisie Hampton', 'F', 502, '0512648528', 'penatibus.et@yahoo.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1980, 'Ap #839-3424 Mauris Rd.', 'Malachi Sanders', 'F', 597, '0565425717', 'tellus@google.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1935, '886-9121 Augue Rd.', 'Marcia Mcknight', 'M', 648, '0542726797', 'mattis.semper@hotmail.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1954, '4755 Curabitur Rd.', 'Ariana Macias', 'F', 131, '0504276541', 'mi.eleifend@google.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1918, '766-2061 Quam Street', 'Doris Martinez', 'F', 104, '0590863510', 'phasellus.libero@outlook.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1933, '274-2912 Morbi Rd.', 'Darryl Lewis', 'F', 377, '0583347324', 'ipsum@protonmail.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1989, '897-649 In Rd.', 'Finn Henson', 'M', 134, '0532156133', 'eget@icloud.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2003, '161-1546 Mauris Rd.', 'Raven Shannon', 'F', 846, '0528119994', 'pellentesque.tincidunt@google.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1992, '482-163 Gravida Road', 'Lewis Mcclure', 'F', 584, '0544183372', 'et.rutrum@protonmail.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1945, 'P.O. Box 281, 7540 Fringilla St.', 'Madison Lott', 'M', 553, '0514296380', 'nec.tellus@outlook.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2015, '785-9518 Ipsum. Rd.', 'Maia Christensen', 'M', 897, '0537300363', 'nec.euismod@aol.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1957, 'P.O. Box 392, 213 Imperdiet Avenue', 'Regina Puckett', 'F', 890, '0585168343', 'ante@hotmail.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2011, '367-2749 Suspendisse Ave', 'Daniel Hunt', 'M', 718, '0581680813', 'sem.nulla.interdum@google.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1985, 'P.O. Box 872, 3679 Augue. Avenue', 'Abraham Barlow', 'F', 162, '0538460423', 'aliquet.lobortis@aol.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2001, 'Ap #358-8695 Tellus. Road', 'Connor Gardner', 'M', 314, '0526443117', 'facilisis.facilisis@yahoo.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2022, '570-5673 Pede Ave', 'Ferris Frazier', 'M', 609, '0555021722', 'bibendum.ullamcorper@icloud.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2005, '3977 Ultricies Rd.', 'Elvis Levy', 'F', 204, '0582961986', 'consectetuer.rhoncus@hotmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1998, 'Ap #430-5686 Luctus Av.', 'Wade Moody', 'M', 633, '0595886432', 'vestibulum@aol.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1958, '445-2329 Mauris Street', 'Armando Patterson', 'F', 207, '0511530072', 'nullam.velit.dui@google.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2004, 'Ap #449-9425 Cursus Rd.', 'Summer George', 'F', 453, '0590947426', 'suspendisse.commodo@icloud.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1945, '112-7838 Amet, Rd.', 'Kylie Rogers', 'F', 659, '0565830555', 'morbi.quis@outlook.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1973, '593-1560 Enim Av.', 'Athena Strong', 'M', 827, '0557706314', 'vestibulum@hotmail.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1983, 'Ap #233-3372 Nibh St.', 'Pearl Warner', 'M', 309, '0546323805', 'in.faucibus@yahoo.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1918, '970-3570 Mi Rd.', 'Emi Figueroa', 'F', 632, '0528318840', 'varius.et@hotmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1989, '262-6106 Semper St.', 'Hu Mays', 'F', 820, '0517032784', 'eros.nec.tellus@outlook.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1995, '651-6496 A, Ave', 'Jesse Pacheco', 'M', 109, '0573657210', 'vitae.aliquam@google.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1933, '124-4192 Erat. Road', 'Illiana Suarez', 'M', 218, '0583861577', 'ultrices.sit@outlook.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1930, 'Ap #269-7390 Sed Ave', 'Lee Nguyen', 'M', 991, '0539184201', 'tempor@hotmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1991, '4353 Nonummy Rd.', 'Amaya Watson', 'F', 412, '0572695437', 'non.dapibus@hotmail.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1972, 'Ap #477-887 Orci Avenue', 'Harriet Pickett', 'M', 923, '0575619318', 'duis.dignissim@aol.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2016, 'Ap #665-3778 Et Road', 'Cole Bernard', 'F', 152, '0575217512', 'senectus.et@hotmail.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1977, '712-2897 Praesent Rd.', 'Allistair Sheppard', 'F', 669, '0514337512', 'gravida@protonmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2009, '510-8367 Molestie Ave', 'Alyssa Lindsay', 'M', 564, '0511207573', 'vel@aol.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1919, 'Ap #706-589 Accumsan Rd.', 'Hamish Villarreal', 'M', 751, '0561625915', 'ultricies.ligula@outlook.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1928, '102 Enim Road', 'Tatum Greene', 'M', 930, '0581823827', 'tincidunt.aliquam.arcu@hotmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1929, '201-5882 Eros. Road', 'Idona Mckenzie', 'F', 779, '0537280664', 'enim.nunc@icloud.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1958, 'Ap #133-5930 Hendrerit. Rd.', 'Isabella Hampton', 'M', 313, '0538009324', 'lacus.cras@icloud.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1958, '985-4788 Ante Road', 'Acton Santana', 'M', 262, '0578025532', 'cursus.in@yahoo.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1925, '243-5841 Risus. St.', 'Anika Hopper', 'F', 349, '0525324565', 'neque@icloud.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1975, '597-2559 A, Street', 'Acton Christian', 'F', 762, '0577816023', 'semper@yahoo.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2015, 'P.O. Box 729, 1228 Praesent Street', 'Alika Garcia', 'F', 926, '0569664023', 'etiam.laoreet@yahoo.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2002, 'Ap #840-5414 Sem Rd.', 'Henry Manning', 'F', 130, '0513806701', 'in.consequat.enim@outlook.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2018, 'P.O. Box 157, 8989 Nisi Street', 'Sheila Cortez', 'M', 674, '0514843167', 'eget.ipsum@aol.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2017, 'Ap #203-2755 Parturient St.', 'Hyacinth Bass', 'F', 793, '0517681888', 'dapibus.id.blandit@google.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1934, '238-5108 Posuere, Rd.', 'Beau Bailey', 'M', 543, '0597486069', 'cursus.nunc.mauris@google.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1932, '987-3703 Natoque St.', 'Maile Mcleod', 'F', 356, '0598141537', 'erat.vitae.risus@google.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1953, 'Ap #565-9273 Duis Road', 'Illiana Mcfadden', 'F', 525, '0511842432', 'suscipit.nonummy.fusce@outlook.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1963, '951-6601 Arcu St.', 'Nero Maldonado', 'M', 753, '0539454077', 'donec.porttitor@google.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2018, 'P.O. Box 837, 7068 Pellentesque Road', 'Yoko Buck', 'F', 552, '0548747473', 'nec.enim@yahoo.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1954, 'P.O. Box 490, 5580 Elit. Avenue', 'Kaitlin Forbes', 'M', 653, '0574104204', 'tempus.non.lacinia@outlook.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1956, 'Ap #626-1553 Eu, Road', 'Noelle Underwood', 'F', 879, '0581020780', 'neque.vitae@aol.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2019, 'Ap #273-2683 Cubilia Av.', 'Blythe Stephenson', 'F', 698, '0561852315', 'magnis@aol.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1971, 'Ap #729-7353 Purus Rd.', 'Tanisha Wolfe', 'M', 542, '0532636663', 'integer@icloud.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1949, 'Ap #738-2791 Tincidunt. Av.', 'Tanek Bauer', 'M', 459, '0598363862', 'aliquam@yahoo.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2002, '657-2634 Non, Avenue', 'Julie Barr', 'F', 593, '0531478074', 'etiam.vestibulum@aol.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2004, 'P.O. Box 494, 3451 Urna. St.', 'Walter Church', 'F', 198, '0533015127', 'ut.nisi.a@yahoo.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1917, '111-9077 Consectetuer, Av.', 'Cheryl Carpenter', 'M', 863, '0575556476', 'lacus@hotmail.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1977, 'Ap #802-2802 Vitae St.', 'Graiden Cooley', 'F', 213, '0525842721', 'eget.metus@yahoo.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1982, '8867 Sociis Ave', 'Odette Lucas', 'F', 799, '0541176882', 'ut@yahoo.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1937, 'Ap #491-6854 Sapien Rd.', 'Althea Randolph', 'M', 569, '0586357536', 'dolor.dolor@hotmail.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1984, '929-347 Non Av.', 'Leo Palmer', 'M', 785, '0568868364', 'vivamus@yahoo.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1974, '882-7608 Gravida St.', 'Emerald Reynolds', 'M', 894, '0521851137', 'eros.turpis@hotmail.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2008, 'P.O. Box 879, 5525 Duis Avenue', 'Sydnee Clay', 'F', 481, '0562543366', 'adipiscing.elit@aol.ca');
+commit;
+prompt 300 records committed...
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1922, '673-6942 Sed Av.', 'Isadora Cortez', 'M', 181, '0595953493', 'et.commodo@hotmail.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1984, '288-7365 Etiam Avenue', 'Ronan Moss', 'F', 504, '0516634785', 'lectus.a@google.org');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1980, '123 Main St', 'Alice Johnson', 'F', 20001, '123456789', 'alice@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1990, '456 Oak Ave', 'Bob Smith', 'M', 20002, '987654321', 'bob@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1985, '789 Elm St', 'Charlie Davis', 'M', 20003, '456789012', 'charlie@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1995, '321 Pine Rd', 'Danielle Wilson', 'F', 20004, '789012345', 'danielle@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1988, '654 Maple Ln', 'Evan Thompson', 'M', 20005, '345678901', 'evan@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1992, '987 Cedar Blvd', 'Fiona Anderson', 'F', 20006, '678901234', 'fiona@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1982, '246 Oak Ct', 'George Taylor', 'M', 20007, '901234567', 'george@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1998, '579 Elm Way', 'Hannah Brown', 'F', 20008, '234567890', 'hannah@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1991, '813 Pine Ave', 'Ian Garcia', 'M', 20009, '567890123', 'ian@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1987, '159 Maple St', 'Jill Roberts', 'F', 20010, '890123456', 'jill@email.com');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1987, '5429 Arcu. Street', 'Louis Harding', 'M', 783, '0576085009', 'commodo@yahoo.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1986, 'P.O. Box 643, 736 Mauris Rd.', 'Bruce Walton', 'F', 601, '0584338727', 'diam.duis.mi@yahoo.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1916, 'Ap #852-970 Neque. Street', 'Flynn Jensen', 'F', 871, '0582426580', 'ligula.aliquam@aol.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1977, '725-2292 Mauris Ave', 'Noelle James', 'F', 410, '0563243318', 'et@yahoo.net');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2003, '564-2259 Cras Ave', 'Kathleen Santana', 'M', 373, '0551339756', 'neque.non.quam@protonmail.edu');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1996, 'Ap #265-7286 Sollicitudin St.', 'Macey Tucker', 'M', 168, '0544411142', 'malesuada.fames.ac@google.couk');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (1991, '369-2700 Consectetuer Av.', 'Zephr Beach', 'F', 371, '0588485333', 'egestas.a.dui@hotmail.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2011, 'P.O. Box 640, 8387 Pulvinar Street', 'Amanda Mcmahon', 'F', 946, '0512426537', 'morbi.tristique@protonmail.ca');
+insert into PATIENT (cbirthyear, caddress, cname, cgender, cid, cmobile, cmail)
+values (2020, '5806 Euismod Rd.', 'Wylie Mcclure', 'F', 362, '0544515855', 'mauris.integer.sem@google.edu');
 commit;
 prompt 321 records loaded
 prompt Loading APPOINTMENT...
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-07-2026', 'dd-mm-yyyy'), 52254, 38187, 230);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-07-2026', 'dd-mm-yyyy'), 59864, 76380, 150);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-03-2026', 'dd-mm-yyyy'), 38929, 10007, 910);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-03-2029', 'dd-mm-yyyy'), 84576, 68229, 971);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-03-2028', 'dd-mm-yyyy'), 83531, 88571, 816);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-06-2027', 'dd-mm-yyyy'), 84988, 39663, 119);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-07-2027', 'dd-mm-yyyy'), 33732, 61546, 349);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-06-2024', 'dd-mm-yyyy'), 95217, 43915, 495);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-07-2025', 'dd-mm-yyyy'), 25556, 69296, 351);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-01-2025', 'dd-mm-yyyy'), 27367, 11630, 599);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-09-2026', 'dd-mm-yyyy'), 62316, 56476, 889);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-06-2026', 'dd-mm-yyyy'), 21575, 53998, 778);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-04-2029', 'dd-mm-yyyy'), 54755, 33532, 20005);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-01-2027', 'dd-mm-yyyy'), 19548, 63284, 262);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-09-2027', 'dd-mm-yyyy'), 44623, 84092, 131);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-06-2028', 'dd-mm-yyyy'), 56368, 87909, 351);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-05-2027', 'dd-mm-yyyy'), 45389, 56476, 714);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-12-2026', 'dd-mm-yyyy'), 94296, 47507, 597);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('26-03-2029', 'dd-mm-yyyy'), 53498, 57567, 468);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-07-2027', 'dd-mm-yyyy'), 45686, 12082, 218);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-05-2026', 'dd-mm-yyyy'), 45835, 43702, 392);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-06-2028', 'dd-mm-yyyy'), 52137, 96750, 835);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-10-2024', 'dd-mm-yyyy'), 46912, 18401, 874);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-06-2024', 'dd-mm-yyyy'), 52596, 64185, 392);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-10-2027', 'dd-mm-yyyy'), 61651, 21996, 418);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-10-2026', 'dd-mm-yyyy'), 84117, 13794, 309);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('22-10-2026', 'dd-mm-yyyy'), 37869, 31845, 778);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-01-2024', 'dd-mm-yyyy'), 71125, 68062, 676);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-11-2027', 'dd-mm-yyyy'), 76411, 48188, 488);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-12-2026', 'dd-mm-yyyy'), 13121, 79374, 764);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-06-2024', 'dd-mm-yyyy'), 97618, 95541, 714);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-11-2028', 'dd-mm-yyyy'), 96463, 15746, 709);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-11-2029', 'dd-mm-yyyy'), 42735, 10013, 639);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-12-2025', 'dd-mm-yyyy'), 29134, 31151, 625);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-04-2027', 'dd-mm-yyyy'), 43913, 79819, 901);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('23-09-2025', 'dd-mm-yyyy'), 69466, 10014, 219);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-02-2025', 'dd-mm-yyyy'), 72115, 71959, 943);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-01-2028', 'dd-mm-yyyy'), 22834, 82443, 708);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-08-2029', 'dd-mm-yyyy'), 67984, 10014, 698);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-04-2026', 'dd-mm-yyyy'), 52292, 84940, 855);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-07-2028', 'dd-mm-yyyy'), 66364, 45148, 775);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-08-2028', 'dd-mm-yyyy'), 91912, 29561, 660);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-12-2025', 'dd-mm-yyyy'), 13831, 26135, 995);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-03-2025', 'dd-mm-yyyy'), 69165, 10008, 709);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-12-2026', 'dd-mm-yyyy'), 17911, 63284, 798);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-04-2026', 'dd-mm-yyyy'), 34243, 69468, 362);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-03-2028', 'dd-mm-yyyy'), 76248, 33794, 878);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-02-2029', 'dd-mm-yyyy'), 25854, 51672, 934);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-09-2026', 'dd-mm-yyyy'), 38338, 84301, 199);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-06-2026', 'dd-mm-yyyy'), 68789, 32397, 991);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-03-2028', 'dd-mm-yyyy'), 51562, 12082, 151);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-04-2027', 'dd-mm-yyyy'), 43748, 44156, 418);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-12-2025', 'dd-mm-yyyy'), 62759, 56476, 769);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-06-2029', 'dd-mm-yyyy'), 92499, 69296, 322);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-07-2027', 'dd-mm-yyyy'), 74655, 12082, 274);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-01-2028', 'dd-mm-yyyy'), 72625, 26135, 874);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-12-2026', 'dd-mm-yyyy'), 72766, 96640, 457);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-05-2024', 'dd-mm-yyyy'), 21632, 64185, 20008);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-09-2025', 'dd-mm-yyyy'), 82123, 64760, 715);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-04-2028', 'dd-mm-yyyy'), 87144, 63961, 839);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-05-2029', 'dd-mm-yyyy'), 41847, 96640, 700);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-03-2025', 'dd-mm-yyyy'), 84414, 21996, 569);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-01-2026', 'dd-mm-yyyy'), 48827, 80248, 774);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-02-2026', 'dd-mm-yyyy'), 81152, 52116, 884);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-02-2025', 'dd-mm-yyyy'), 52545, 27192, 943);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-11-2028', 'dd-mm-yyyy'), 28354, 74841, 336);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('22-09-2029', 'dd-mm-yyyy'), 31743, 41224, 572);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-03-2026', 'dd-mm-yyyy'), 57217, 15963, 20006);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-08-2027', 'dd-mm-yyyy'), 49749, 35535, 610);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-11-2026', 'dd-mm-yyyy'), 24577, 89219, 293);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('26-09-2029', 'dd-mm-yyyy'), 65711, 11630, 848);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-02-2028', 'dd-mm-yyyy'), 36544, 10005, 572);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('06-07-2024', 'dd-mm-yyyy'), 38161, 50112, 567);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-12-2029', 'dd-mm-yyyy'), 37782, 45148, 647);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-12-2028', 'dd-mm-yyyy'), 58994, 24608, 599);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-04-2026', 'dd-mm-yyyy'), 55163, 86842, 20005);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-12-2024', 'dd-mm-yyyy'), 19487, 68062, 743);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('14-04-2025', 'dd-mm-yyyy'), 17373, 63036, 877);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-01-2028', 'dd-mm-yyyy'), 66593, 91368, 181);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-01-2028', 'dd-mm-yyyy'), 24984, 69880, 556);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-01-2024', 'dd-mm-yyyy'), 31688, 64760, 901);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-02-2025', 'dd-mm-yyyy'), 42917, 72820, 20003);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-07-2025', 'dd-mm-yyyy'), 45659, 10652, 20002);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-06-2029', 'dd-mm-yyyy'), 88298, 81894, 281);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-09-2026', 'dd-mm-yyyy'), 13713, 99681, 717);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-08-2024', 'dd-mm-yyyy'), 21367, 51672, 219);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-11-2029', 'dd-mm-yyyy'), 83564, 43702, 469);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-08-2027', 'dd-mm-yyyy'), 92316, 76380, 833);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-11-2029', 'dd-mm-yyyy'), 53947, 95541, 459);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-07-2025', 'dd-mm-yyyy'), 71381, 87909, 872);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('14-03-2029', 'dd-mm-yyyy'), 96657, 33794, 448);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-03-2026', 'dd-mm-yyyy'), 47365, 35535, 328);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-02-2028', 'dd-mm-yyyy'), 24399, 64076, 328);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-08-2024', 'dd-mm-yyyy'), 34639, 10002, 20006);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-08-2027', 'dd-mm-yyyy'), 12567, 10009, 828);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-11-2029', 'dd-mm-yyyy'), 29966, 68549, 820);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-12-2025', 'dd-mm-yyyy'), 71127, 88571, 409);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('06-07-2025', 'dd-mm-yyyy'), 66549, 37004, 777);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-02-2027', 'dd-mm-yyyy'), 56515, 50112, 473);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-03-2026', 'dd-mm-yyyy'), 53336, 10012, 129);
+commit;
+prompt 100 records committed...
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-09-2025', 'dd-mm-yyyy'), 88626, 27379, 569);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-08-2026', 'dd-mm-yyyy'), 49621, 69880, 685);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-06-2027', 'dd-mm-yyyy'), 19338, 44135, 745);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-07-2027', 'dd-mm-yyyy'), 61435, 15343, 914);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-08-2027', 'dd-mm-yyyy'), 53332, 18401, 504);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-02-2027', 'dd-mm-yyyy'), 81399, 10002, 562);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-01-2026', 'dd-mm-yyyy'), 76595, 37345, 136);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('26-01-2029', 'dd-mm-yyyy'), 59487, 74091, 736);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-08-2029', 'dd-mm-yyyy'), 18422, 71959, 713);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-04-2027', 'dd-mm-yyyy'), 93665, 51524, 562);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-07-2024', 'dd-mm-yyyy'), 36944, 55149, 717);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-10-2026', 'dd-mm-yyyy'), 62424, 10013, 946);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-08-2027', 'dd-mm-yyyy'), 91818, 80830, 647);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-12-2027', 'dd-mm-yyyy'), 32922, 76380, 201);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-03-2028', 'dd-mm-yyyy'), 37512, 10002, 647);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-07-2029', 'dd-mm-yyyy'), 24947, 50112, 660);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('22-04-2027', 'dd-mm-yyyy'), 84937, 12082, 389);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-12-2024', 'dd-mm-yyyy'), 31448, 56476, 314);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-01-2028', 'dd-mm-yyyy'), 16195, 52769, 654);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-02-2029', 'dd-mm-yyyy'), 39257, 69468, 890);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-04-2026', 'dd-mm-yyyy'), 46594, 10007, 930);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-12-2026', 'dd-mm-yyyy'), 17698, 96640, 20007);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-02-2025', 'dd-mm-yyyy'), 43552, 69221, 488);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('23-01-2024', 'dd-mm-yyyy'), 66745, 64076, 468);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-11-2025', 'dd-mm-yyyy'), 82439, 79374, 324);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-05-2025', 'dd-mm-yyyy'), 45949, 26135, 885);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-04-2024', 'dd-mm-yyyy'), 14235, 80248, 624);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-10-2025', 'dd-mm-yyyy'), 46981, 49355, 20008);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-06-2025', 'dd-mm-yyyy'), 36499, 32397, 941);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-08-2024', 'dd-mm-yyyy'), 79234, 10011, 743);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-03-2028', 'dd-mm-yyyy'), 39953, 99681, 391);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-06-2028', 'dd-mm-yyyy'), 97666, 72479, 975);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-12-2027', 'dd-mm-yyyy'), 37495, 35535, 584);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-10-2029', 'dd-mm-yyyy'), 26699, 22236, 653);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-04-2025', 'dd-mm-yyyy'), 47288, 10009, 899);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-05-2027', 'dd-mm-yyyy'), 83316, 13261, 829);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-06-2028', 'dd-mm-yyyy'), 49699, 39663, 327);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-09-2027', 'dd-mm-yyyy'), 85315, 99769, 897);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-12-2024', 'dd-mm-yyyy'), 51477, 89337, 371);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-11-2025', 'dd-mm-yyyy'), 92754, 39306, 588);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-05-2028', 'dd-mm-yyyy'), 24385, 51524, 809);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-09-2029', 'dd-mm-yyyy'), 17326, 38187, 374);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-04-2026', 'dd-mm-yyyy'), 39425, 86842, 669);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-07-2027', 'dd-mm-yyyy'), 26926, 10004, 518);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-12-2026', 'dd-mm-yyyy'), 17642, 72820, 842);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-10-2028', 'dd-mm-yyyy'), 98965, 48188, 653);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-04-2025', 'dd-mm-yyyy'), 57934, 98364, 941);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-09-2024', 'dd-mm-yyyy'), 28113, 10004, 727);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-02-2029', 'dd-mm-yyyy'), 77442, 41224, 572);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-03-2027', 'dd-mm-yyyy'), 43637, 84940, 662);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-05-2026', 'dd-mm-yyyy'), 76744, 90716, 833);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-01-2029', 'dd-mm-yyyy'), 65772, 15357, 828);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-03-2029', 'dd-mm-yyyy'), 37345, 17595, 747);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-02-2025', 'dd-mm-yyyy'), 36749, 87909, 144);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-12-2028', 'dd-mm-yyyy'), 34262, 69468, 153);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-04-2026', 'dd-mm-yyyy'), 44782, 87909, 219);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-05-2028', 'dd-mm-yyyy'), 63768, 84092, 760);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-07-2026', 'dd-mm-yyyy'), 83776, 68229, 577);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-12-2026', 'dd-mm-yyyy'), 11395, 61546, 901);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-09-2029', 'dd-mm-yyyy'), 53751, 49666, 903);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-09-2028', 'dd-mm-yyyy'), 37748, 62435, 208);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-06-2027', 'dd-mm-yyyy'), 69154, 15746, 328);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-06-2027', 'dd-mm-yyyy'), 66449, 13227, 812);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-08-2026', 'dd-mm-yyyy'), 41656, 10005, 201);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-01-2027', 'dd-mm-yyyy'), 66771, 86483, 871);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-06-2027', 'dd-mm-yyyy'), 11626, 98364, 609);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-03-2026', 'dd-mm-yyyy'), 52874, 10010, 648);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-04-2026', 'dd-mm-yyyy'), 54365, 26135, 674);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-01-2027', 'dd-mm-yyyy'), 54965, 28053, 208);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-03-2024', 'dd-mm-yyyy'), 32867, 54635, 399);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-10-2025', 'dd-mm-yyyy'), 84952, 45674, 470);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-07-2029', 'dd-mm-yyyy'), 42733, 74548, 162);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-05-2027', 'dd-mm-yyyy'), 78212, 79859, 618);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-12-2024', 'dd-mm-yyyy'), 18621, 10014, 572);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-10-2029', 'dd-mm-yyyy'), 27341, 68062, 783);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-05-2029', 'dd-mm-yyyy'), 13927, 84092, 109);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-04-2027', 'dd-mm-yyyy'), 61472, 63961, 984);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-01-2029', 'dd-mm-yyyy'), 78759, 52116, 743);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-07-2024', 'dd-mm-yyyy'), 28593, 27715, 553);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-04-2028', 'dd-mm-yyyy'), 65252, 63284, 799);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-04-2027', 'dd-mm-yyyy'), 28734, 25578, 705);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-08-2027', 'dd-mm-yyyy'), 86376, 63284, 513);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-02-2027', 'dd-mm-yyyy'), 91955, 12082, 715);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-11-2026', 'dd-mm-yyyy'), 37772, 92442, 567);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-03-2028', 'dd-mm-yyyy'), 37638, 35130, 218);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-07-2027', 'dd-mm-yyyy'), 98235, 83782, 110);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-08-2025', 'dd-mm-yyyy'), 42728, 31151, 842);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-06-2029', 'dd-mm-yyyy'), 69782, 39663, 221);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-03-2026', 'dd-mm-yyyy'), 44833, 10001, 408);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('06-07-2027', 'dd-mm-yyyy'), 82615, 44156, 689);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-11-2026', 'dd-mm-yyyy'), 26331, 24656, 778);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-03-2026', 'dd-mm-yyyy'), 38616, 43931, 660);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-11-2029', 'dd-mm-yyyy'), 82256, 41224, 502);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-04-2024', 'dd-mm-yyyy'), 73638, 46150, 309);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-08-2026', 'dd-mm-yyyy'), 53981, 55269, 633);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-03-2029', 'dd-mm-yyyy'), 36928, 18525, 552);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-12-2024', 'dd-mm-yyyy'), 39837, 17595, 975);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-03-2024', 'dd-mm-yyyy'), 78657, 68229, 698);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-05-2027', 'dd-mm-yyyy'), 44265, 19936, 747);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-05-2024', 'dd-mm-yyyy'), 79322, 52769, 307);
+commit;
+prompt 200 records committed...
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-11-2027', 'dd-mm-yyyy'), 41561, 10004, 832);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-09-2025', 'dd-mm-yyyy'), 55791, 64185, 572);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-07-2026', 'dd-mm-yyyy'), 68462, 31947, 984);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-05-2025', 'dd-mm-yyyy'), 78169, 21570, 262);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-12-2025', 'dd-mm-yyyy'), 65466, 10010, 250);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-10-2024', 'dd-mm-yyyy'), 59588, 67810, 324);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-04-2028', 'dd-mm-yyyy'), 51446, 37415, 556);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-10-2025', 'dd-mm-yyyy'), 14242, 64076, 562);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('05-06-2025', 'dd-mm-yyyy'), 86627, 61696, 652);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('30-07-2027', 'dd-mm-yyyy'), 61521, 84092, 292);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-10-2025', 'dd-mm-yyyy'), 19776, 10652, 698);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-01-2029', 'dd-mm-yyyy'), 34362, 10010, 134);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-03-2027', 'dd-mm-yyyy'), 73524, 26135, 879);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-11-2025', 'dd-mm-yyyy'), 14115, 10004, 584);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('23-12-2024', 'dd-mm-yyyy'), 31496, 43915, 328);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('14-06-2024', 'dd-mm-yyyy'), 49211, 41224, 743);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-02-2027', 'dd-mm-yyyy'), 89217, 87909, 309);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('11-04-2027', 'dd-mm-yyyy'), 97122, 80248, 144);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-07-2026', 'dd-mm-yyyy'), 72942, 64760, 471);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-01-2029', 'dd-mm-yyyy'), 42978, 50906, 117);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('26-11-2027', 'dd-mm-yyyy'), 26256, 61435, 242);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-05-2025', 'dd-mm-yyyy'), 99138, 61546, 726);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-02-2026', 'dd-mm-yyyy'), 48557, 25578, 585);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-09-2027', 'dd-mm-yyyy'), 89616, 80830, 569);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-01-2027', 'dd-mm-yyyy'), 58911, 79374, 610);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-08-2029', 'dd-mm-yyyy'), 67992, 51672, 978);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('09-03-2026', 'dd-mm-yyyy'), 31948, 99939, 379);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-05-2027', 'dd-mm-yyyy'), 13184, 63284, 433);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-01-2029', 'dd-mm-yyyy'), 54111, 15343, 556);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-01-2029', 'dd-mm-yyyy'), 79599, 50112, 412);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-01-2024', 'dd-mm-yyyy'), 12617, 95320, 902);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-08-2026', 'dd-mm-yyyy'), 93739, 99681, 759);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('21-12-2026', 'dd-mm-yyyy'), 49174, 54635, 568);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-11-2028', 'dd-mm-yyyy'), 64847, 21996, 152);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('07-10-2029', 'dd-mm-yyyy'), 13358, 38296, 751);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('01-12-2027', 'dd-mm-yyyy'), 32614, 68549, 586);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-12-2026', 'dd-mm-yyyy'), 94727, 21996, 471);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-11-2025', 'dd-mm-yyyy'), 59883, 10652, 338);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-05-2024', 'dd-mm-yyyy'), 31554, 91539, 513);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('27-07-2025', 'dd-mm-yyyy'), 37223, 32568, 562);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('29-11-2029', 'dd-mm-yyyy'), 93742, 61546, 437);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-11-2026', 'dd-mm-yyyy'), 73721, 35535, 838);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-10-2025', 'dd-mm-yyyy'), 53587, 37004, 220);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('06-10-2029', 'dd-mm-yyyy'), 44887, 25922, 293);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-07-2025', 'dd-mm-yyyy'), 68242, 39663, 856);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('23-06-2024', 'dd-mm-yyyy'), 24676, 99939, 584);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-07-2028', 'dd-mm-yyyy'), 16719, 82443, 332);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('03-07-2024', 'dd-mm-yyyy'), 11912, 54635, 207);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('16-07-2028', 'dd-mm-yyyy'), 14715, 64185, 709);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-01-2027', 'dd-mm-yyyy'), 62834, 70748, 877);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('10-04-2028', 'dd-mm-yyyy'), 22473, 68229, 559);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-08-2027', 'dd-mm-yyyy'), 99385, 11630, 543);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-04-2024', 'dd-mm-yyyy'), 92587, 55149, 941);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('13-11-2028', 'dd-mm-yyyy'), 25798, 10008, 409);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('04-04-2027', 'dd-mm-yyyy'), 66527, 55149, 855);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('17-11-2024', 'dd-mm-yyyy'), 23284, 55149, 350);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('28-12-2028', 'dd-mm-yyyy'), 86555, 64185, 220);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-01-2028', 'dd-mm-yyyy'), 33634, 25922, 206);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-09-2028', 'dd-mm-yyyy'), 18374, 34609, 776);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('02-10-2029', 'dd-mm-yyyy'), 81684, 31151, 556);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('19-11-2029', 'dd-mm-yyyy'), 71253, 69880, 152);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-08-2026', 'dd-mm-yyyy'), 35294, 35130, 379);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('20-09-2024', 'dd-mm-yyyy'), 65753, 24608, 885);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('24-08-2029', 'dd-mm-yyyy'), 45349, 51524, 799);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('25-11-2026', 'dd-mm-yyyy'), 68537, 79374, 855);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('12-05-2024', 'dd-mm-yyyy'), 99859, 19365, 799);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('22-02-2026', 'dd-mm-yyyy'), 48474, 63761, 362);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('15-10-2027', 'dd-mm-yyyy'), 29118, 13794, 764);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('08-11-2026', 'dd-mm-yyyy'), 94999, 21996, 890);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('18-11-2024', 'dd-mm-yyyy'), 36345, 31696, 303);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('23-09-2026', 'dd-mm-yyyy'), 85326, 25922, 392);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('31-03-2025', 'dd-mm-yyyy'), 25893, 84301, 759);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('26-05-2025', 'dd-mm-yyyy'), 12777, 54635, 20003);
+insert into APPOINTMENT (adate, appointmentid, sid, cid)
+values (to_date('14-09-2029', 'dd-mm-yyyy'), 36381, 10006, 293);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('24-09-2024', 'dd-mm-yyyy'), 23487, 22236, 984);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
@@ -2383,6 +2682,8 @@ insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('02-11-2026', 'dd-mm-yyyy'), 62227, 63036, 513);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('17-02-2027', 'dd-mm-yyyy'), 97354, 21570, 736);
+commit;
+prompt 300 records committed...
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('06-07-2026', 'dd-mm-yyyy'), 37916, 51524, 903);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
@@ -2531,286 +2832,8 @@ insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('05-10-2029', 'dd-mm-yyyy'), 35784, 57567, 839);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('08-09-2029', 'dd-mm-yyyy'), 17117, 21570, 274);
-commit;
-prompt 100 records committed...
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('07-10-2027', 'dd-mm-yyyy'), 61135, 38187, 785);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-09-2027', 'dd-mm-yyyy'), 85315, 99769, 897);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-12-2024', 'dd-mm-yyyy'), 51477, 89337, 371);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-11-2025', 'dd-mm-yyyy'), 92754, 39306, 588);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-05-2028', 'dd-mm-yyyy'), 24385, 51524, 809);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-09-2029', 'dd-mm-yyyy'), 17326, 38187, 374);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-04-2026', 'dd-mm-yyyy'), 39425, 86842, 669);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-07-2027', 'dd-mm-yyyy'), 26926, 10004, 518);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-12-2026', 'dd-mm-yyyy'), 17642, 72820, 842);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-10-2028', 'dd-mm-yyyy'), 98965, 48188, 653);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-04-2025', 'dd-mm-yyyy'), 57934, 98364, 941);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-09-2024', 'dd-mm-yyyy'), 28113, 10004, 727);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-02-2029', 'dd-mm-yyyy'), 77442, 41224, 572);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-03-2027', 'dd-mm-yyyy'), 43637, 84940, 662);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-05-2026', 'dd-mm-yyyy'), 76744, 90716, 833);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-01-2029', 'dd-mm-yyyy'), 65772, 15357, 828);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-03-2029', 'dd-mm-yyyy'), 37345, 17595, 747);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-02-2025', 'dd-mm-yyyy'), 36749, 87909, 144);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-12-2028', 'dd-mm-yyyy'), 34262, 69468, 153);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-04-2026', 'dd-mm-yyyy'), 44782, 87909, 219);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-05-2028', 'dd-mm-yyyy'), 63768, 84092, 760);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-07-2026', 'dd-mm-yyyy'), 83776, 68229, 577);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-12-2026', 'dd-mm-yyyy'), 11395, 61546, 901);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-09-2029', 'dd-mm-yyyy'), 53751, 49666, 903);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-09-2028', 'dd-mm-yyyy'), 37748, 62435, 208);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-06-2027', 'dd-mm-yyyy'), 69154, 15746, 328);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-06-2027', 'dd-mm-yyyy'), 66449, 13227, 812);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-08-2026', 'dd-mm-yyyy'), 41656, 10005, 201);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-01-2027', 'dd-mm-yyyy'), 66771, 86483, 871);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-06-2027', 'dd-mm-yyyy'), 11626, 98364, 609);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-03-2026', 'dd-mm-yyyy'), 52874, 10010, 648);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-04-2026', 'dd-mm-yyyy'), 54365, 26135, 674);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-01-2027', 'dd-mm-yyyy'), 54965, 28053, 208);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-03-2024', 'dd-mm-yyyy'), 32867, 54635, 399);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-10-2025', 'dd-mm-yyyy'), 84952, 45674, 470);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-07-2029', 'dd-mm-yyyy'), 42733, 74548, 162);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-05-2027', 'dd-mm-yyyy'), 78212, 79859, 618);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-12-2024', 'dd-mm-yyyy'), 18621, 10014, 572);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-10-2029', 'dd-mm-yyyy'), 27341, 68062, 783);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-05-2029', 'dd-mm-yyyy'), 13927, 84092, 109);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-04-2027', 'dd-mm-yyyy'), 61472, 63961, 984);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-01-2029', 'dd-mm-yyyy'), 78759, 52116, 743);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-07-2024', 'dd-mm-yyyy'), 28593, 27715, 553);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-04-2028', 'dd-mm-yyyy'), 65252, 63284, 799);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-04-2027', 'dd-mm-yyyy'), 28734, 25578, 705);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-08-2027', 'dd-mm-yyyy'), 86376, 63284, 513);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-02-2027', 'dd-mm-yyyy'), 91955, 12082, 715);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-11-2026', 'dd-mm-yyyy'), 37772, 92442, 567);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-03-2028', 'dd-mm-yyyy'), 37638, 35130, 218);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-07-2027', 'dd-mm-yyyy'), 98235, 83782, 110);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-08-2025', 'dd-mm-yyyy'), 42728, 31151, 842);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-06-2029', 'dd-mm-yyyy'), 69782, 39663, 221);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-03-2026', 'dd-mm-yyyy'), 44833, 10001, 408);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('06-07-2027', 'dd-mm-yyyy'), 82615, 44156, 689);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-11-2026', 'dd-mm-yyyy'), 26331, 24656, 778);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-03-2026', 'dd-mm-yyyy'), 38616, 43931, 660);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-11-2029', 'dd-mm-yyyy'), 82256, 41224, 502);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-04-2024', 'dd-mm-yyyy'), 73638, 46150, 309);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-08-2026', 'dd-mm-yyyy'), 53981, 55269, 633);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-03-2029', 'dd-mm-yyyy'), 36928, 18525, 552);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-12-2024', 'dd-mm-yyyy'), 39837, 17595, 975);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-03-2024', 'dd-mm-yyyy'), 78657, 68229, 698);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-05-2027', 'dd-mm-yyyy'), 44265, 19936, 747);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-05-2024', 'dd-mm-yyyy'), 79322, 52769, 307);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-11-2027', 'dd-mm-yyyy'), 41561, 10004, 832);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-09-2025', 'dd-mm-yyyy'), 55791, 64185, 572);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-07-2026', 'dd-mm-yyyy'), 68462, 31947, 984);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-05-2025', 'dd-mm-yyyy'), 78169, 21570, 262);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-12-2025', 'dd-mm-yyyy'), 65466, 10010, 250);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-10-2024', 'dd-mm-yyyy'), 59588, 67810, 324);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-04-2028', 'dd-mm-yyyy'), 51446, 37415, 556);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-10-2025', 'dd-mm-yyyy'), 14242, 64076, 562);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-06-2025', 'dd-mm-yyyy'), 86627, 61696, 652);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-07-2027', 'dd-mm-yyyy'), 61521, 84092, 292);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-10-2025', 'dd-mm-yyyy'), 19776, 10652, 698);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-01-2029', 'dd-mm-yyyy'), 34362, 10010, 134);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-03-2027', 'dd-mm-yyyy'), 73524, 26135, 879);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-11-2025', 'dd-mm-yyyy'), 14115, 10004, 584);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('23-12-2024', 'dd-mm-yyyy'), 31496, 43915, 328);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('14-06-2024', 'dd-mm-yyyy'), 49211, 41224, 743);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-02-2027', 'dd-mm-yyyy'), 89217, 87909, 309);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-04-2027', 'dd-mm-yyyy'), 97122, 80248, 144);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-07-2026', 'dd-mm-yyyy'), 72942, 64760, 471);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-01-2029', 'dd-mm-yyyy'), 42978, 50906, 117);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('26-11-2027', 'dd-mm-yyyy'), 26256, 61435, 242);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-05-2025', 'dd-mm-yyyy'), 99138, 61546, 726);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-02-2026', 'dd-mm-yyyy'), 48557, 25578, 585);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-09-2027', 'dd-mm-yyyy'), 89616, 80830, 569);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-01-2027', 'dd-mm-yyyy'), 58911, 79374, 610);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-08-2029', 'dd-mm-yyyy'), 67992, 51672, 978);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-03-2026', 'dd-mm-yyyy'), 31948, 99939, 379);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-05-2027', 'dd-mm-yyyy'), 13184, 63284, 433);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-01-2029', 'dd-mm-yyyy'), 54111, 15343, 556);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-01-2029', 'dd-mm-yyyy'), 79599, 50112, 412);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-01-2024', 'dd-mm-yyyy'), 12617, 95320, 902);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-08-2026', 'dd-mm-yyyy'), 93739, 99681, 759);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-12-2026', 'dd-mm-yyyy'), 49174, 54635, 568);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-11-2028', 'dd-mm-yyyy'), 64847, 21996, 152);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-10-2029', 'dd-mm-yyyy'), 13358, 38296, 751);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-12-2027', 'dd-mm-yyyy'), 32614, 68549, 586);
-commit;
-prompt 200 records committed...
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-12-2026', 'dd-mm-yyyy'), 94727, 21996, 471);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-11-2025', 'dd-mm-yyyy'), 59883, 10652, 338);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-05-2024', 'dd-mm-yyyy'), 31554, 91539, 513);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-07-2025', 'dd-mm-yyyy'), 37223, 32568, 562);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-11-2029', 'dd-mm-yyyy'), 93742, 61546, 437);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-11-2026', 'dd-mm-yyyy'), 73721, 35535, 838);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-10-2025', 'dd-mm-yyyy'), 53587, 37004, 220);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('06-10-2029', 'dd-mm-yyyy'), 44887, 25922, 293);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-07-2025', 'dd-mm-yyyy'), 68242, 39663, 856);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('23-06-2024', 'dd-mm-yyyy'), 24676, 99939, 584);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-07-2028', 'dd-mm-yyyy'), 16719, 82443, 332);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-07-2024', 'dd-mm-yyyy'), 11912, 54635, 207);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-07-2028', 'dd-mm-yyyy'), 14715, 64185, 709);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-01-2027', 'dd-mm-yyyy'), 62834, 70748, 877);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-04-2028', 'dd-mm-yyyy'), 22473, 68229, 559);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-08-2027', 'dd-mm-yyyy'), 99385, 11630, 543);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-04-2024', 'dd-mm-yyyy'), 92587, 55149, 941);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-11-2028', 'dd-mm-yyyy'), 25798, 10008, 409);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-04-2027', 'dd-mm-yyyy'), 66527, 55149, 855);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-11-2024', 'dd-mm-yyyy'), 23284, 55149, 350);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-12-2028', 'dd-mm-yyyy'), 86555, 64185, 220);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-01-2028', 'dd-mm-yyyy'), 33634, 25922, 206);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-09-2028', 'dd-mm-yyyy'), 18374, 34609, 776);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-10-2029', 'dd-mm-yyyy'), 81684, 31151, 556);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-11-2029', 'dd-mm-yyyy'), 71253, 69880, 152);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-08-2026', 'dd-mm-yyyy'), 35294, 35130, 379);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-09-2024', 'dd-mm-yyyy'), 65753, 24608, 885);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-08-2029', 'dd-mm-yyyy'), 45349, 51524, 799);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-11-2026', 'dd-mm-yyyy'), 68537, 79374, 855);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-05-2024', 'dd-mm-yyyy'), 99859, 19365, 799);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('22-02-2026', 'dd-mm-yyyy'), 48474, 63761, 362);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-10-2027', 'dd-mm-yyyy'), 29118, 13794, 764);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-11-2026', 'dd-mm-yyyy'), 94999, 21996, 890);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-11-2024', 'dd-mm-yyyy'), 36345, 31696, 303);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('23-09-2026', 'dd-mm-yyyy'), 85326, 25922, 392);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-03-2025', 'dd-mm-yyyy'), 25893, 84301, 759);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('26-05-2025', 'dd-mm-yyyy'), 12777, 54635, 20003);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('14-09-2029', 'dd-mm-yyyy'), 36381, 10006, 293);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('19-01-2027', 'dd-mm-yyyy'), 56388, 10007, 725);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
@@ -2861,6 +2884,8 @@ insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('15-10-2026', 'dd-mm-yyyy'), 69358, 51524, 336);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('13-04-2024', 'dd-mm-yyyy'), 74361, 96640, 481);
+commit;
+prompt 400 records committed...
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('17-08-2027', 'dd-mm-yyyy'), 63995, 48188, 616);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
@@ -2871,429 +2896,395 @@ insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('18-11-2025', 'dd-mm-yyyy'), 44484, 27379, 855);
 insert into APPOINTMENT (adate, appointmentid, sid, cid)
 values (to_date('21-06-2027', 'dd-mm-yyyy'), 65632, 15383, 885);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-07-2026', 'dd-mm-yyyy'), 52254, 38187, 230);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-07-2026', 'dd-mm-yyyy'), 59864, 76380, 150);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-03-2026', 'dd-mm-yyyy'), 38929, 10007, 910);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-03-2029', 'dd-mm-yyyy'), 84576, 68229, 971);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-03-2028', 'dd-mm-yyyy'), 83531, 88571, 816);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-06-2027', 'dd-mm-yyyy'), 84988, 39663, 119);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-07-2027', 'dd-mm-yyyy'), 33732, 61546, 349);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-06-2024', 'dd-mm-yyyy'), 95217, 43915, 495);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-07-2025', 'dd-mm-yyyy'), 25556, 69296, 351);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-01-2025', 'dd-mm-yyyy'), 27367, 11630, 599);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-09-2026', 'dd-mm-yyyy'), 62316, 56476, 889);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-06-2026', 'dd-mm-yyyy'), 21575, 53998, 778);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('17-04-2029', 'dd-mm-yyyy'), 54755, 33532, 20005);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-01-2027', 'dd-mm-yyyy'), 19548, 63284, 262);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-09-2027', 'dd-mm-yyyy'), 44623, 84092, 131);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-06-2028', 'dd-mm-yyyy'), 56368, 87909, 351);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-05-2027', 'dd-mm-yyyy'), 45389, 56476, 714);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-12-2026', 'dd-mm-yyyy'), 94296, 47507, 597);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('26-03-2029', 'dd-mm-yyyy'), 53498, 57567, 468);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-07-2027', 'dd-mm-yyyy'), 45686, 12082, 218);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-05-2026', 'dd-mm-yyyy'), 45835, 43702, 392);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-06-2028', 'dd-mm-yyyy'), 52137, 96750, 835);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-10-2024', 'dd-mm-yyyy'), 46912, 18401, 874);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-06-2024', 'dd-mm-yyyy'), 52596, 64185, 392);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-10-2027', 'dd-mm-yyyy'), 61651, 21996, 418);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-10-2026', 'dd-mm-yyyy'), 84117, 13794, 309);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('22-10-2026', 'dd-mm-yyyy'), 37869, 31845, 778);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-01-2024', 'dd-mm-yyyy'), 71125, 68062, 676);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-11-2027', 'dd-mm-yyyy'), 76411, 48188, 488);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-12-2026', 'dd-mm-yyyy'), 13121, 79374, 764);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-06-2024', 'dd-mm-yyyy'), 97618, 95541, 714);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-11-2028', 'dd-mm-yyyy'), 96463, 15746, 709);
-commit;
-prompt 300 records committed...
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-11-2029', 'dd-mm-yyyy'), 42735, 10013, 639);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-12-2025', 'dd-mm-yyyy'), 29134, 31151, 625);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-04-2027', 'dd-mm-yyyy'), 43913, 79819, 901);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('23-09-2025', 'dd-mm-yyyy'), 69466, 10014, 219);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-02-2025', 'dd-mm-yyyy'), 72115, 71959, 943);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-01-2028', 'dd-mm-yyyy'), 22834, 82443, 708);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-08-2029', 'dd-mm-yyyy'), 67984, 10014, 698);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-04-2026', 'dd-mm-yyyy'), 52292, 84940, 855);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-07-2028', 'dd-mm-yyyy'), 66364, 45148, 775);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('29-08-2028', 'dd-mm-yyyy'), 91912, 29561, 660);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-12-2025', 'dd-mm-yyyy'), 13831, 26135, 995);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-03-2025', 'dd-mm-yyyy'), 69165, 10008, 709);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-12-2026', 'dd-mm-yyyy'), 17911, 63284, 798);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-04-2026', 'dd-mm-yyyy'), 34243, 69468, 362);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-03-2028', 'dd-mm-yyyy'), 76248, 33794, 878);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-02-2029', 'dd-mm-yyyy'), 25854, 51672, 934);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-09-2026', 'dd-mm-yyyy'), 38338, 84301, 199);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-06-2026', 'dd-mm-yyyy'), 68789, 32397, 991);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-03-2028', 'dd-mm-yyyy'), 51562, 12082, 151);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-04-2027', 'dd-mm-yyyy'), 43748, 44156, 418);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-12-2025', 'dd-mm-yyyy'), 62759, 56476, 769);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-06-2029', 'dd-mm-yyyy'), 92499, 69296, 322);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-07-2027', 'dd-mm-yyyy'), 74655, 12082, 274);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-01-2028', 'dd-mm-yyyy'), 72625, 26135, 874);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-12-2026', 'dd-mm-yyyy'), 72766, 96640, 457);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-05-2024', 'dd-mm-yyyy'), 21632, 64185, 20008);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-09-2025', 'dd-mm-yyyy'), 82123, 64760, 715);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-04-2028', 'dd-mm-yyyy'), 87144, 63961, 839);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-05-2029', 'dd-mm-yyyy'), 41847, 96640, 700);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-03-2025', 'dd-mm-yyyy'), 84414, 21996, 569);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-01-2026', 'dd-mm-yyyy'), 48827, 80248, 774);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-02-2026', 'dd-mm-yyyy'), 81152, 52116, 884);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-02-2025', 'dd-mm-yyyy'), 52545, 27192, 943);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-11-2028', 'dd-mm-yyyy'), 28354, 74841, 336);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('22-09-2029', 'dd-mm-yyyy'), 31743, 41224, 572);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-03-2026', 'dd-mm-yyyy'), 57217, 15963, 20006);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-08-2027', 'dd-mm-yyyy'), 49749, 35535, 610);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-11-2026', 'dd-mm-yyyy'), 24577, 89219, 293);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('26-09-2029', 'dd-mm-yyyy'), 65711, 11630, 848);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-02-2028', 'dd-mm-yyyy'), 36544, 10005, 572);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('06-07-2024', 'dd-mm-yyyy'), 38161, 50112, 567);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-12-2029', 'dd-mm-yyyy'), 37782, 45148, 647);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-12-2028', 'dd-mm-yyyy'), 58994, 24608, 599);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-04-2026', 'dd-mm-yyyy'), 55163, 86842, 20005);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-12-2024', 'dd-mm-yyyy'), 19487, 68062, 743);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('14-04-2025', 'dd-mm-yyyy'), 17373, 63036, 877);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-01-2028', 'dd-mm-yyyy'), 66593, 91368, 181);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-01-2028', 'dd-mm-yyyy'), 24984, 69880, 556);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('02-01-2024', 'dd-mm-yyyy'), 31688, 64760, 901);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-02-2025', 'dd-mm-yyyy'), 42917, 72820, 20003);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('11-07-2025', 'dd-mm-yyyy'), 45659, 10652, 20002);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-06-2029', 'dd-mm-yyyy'), 88298, 81894, 281);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-09-2026', 'dd-mm-yyyy'), 13713, 99681, 717);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-08-2024', 'dd-mm-yyyy'), 21367, 51672, 219);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('04-11-2029', 'dd-mm-yyyy'), 83564, 43702, 469);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-08-2027', 'dd-mm-yyyy'), 92316, 76380, 833);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('19-11-2029', 'dd-mm-yyyy'), 53947, 95541, 459);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-07-2025', 'dd-mm-yyyy'), 71381, 87909, 872);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('14-03-2029', 'dd-mm-yyyy'), 96657, 33794, 448);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('03-03-2026', 'dd-mm-yyyy'), 47365, 35535, 328);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-02-2028', 'dd-mm-yyyy'), 24399, 64076, 328);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('16-08-2024', 'dd-mm-yyyy'), 34639, 10002, 20006);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('31-08-2027', 'dd-mm-yyyy'), 12567, 10009, 828);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-11-2029', 'dd-mm-yyyy'), 29966, 68549, 820);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('24-12-2025', 'dd-mm-yyyy'), 71127, 88571, 409);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('06-07-2025', 'dd-mm-yyyy'), 66549, 37004, 777);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-02-2027', 'dd-mm-yyyy'), 56515, 50112, 473);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-03-2026', 'dd-mm-yyyy'), 53336, 10012, 129);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-09-2025', 'dd-mm-yyyy'), 88626, 27379, 569);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('08-08-2026', 'dd-mm-yyyy'), 49621, 69880, 685);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('05-06-2027', 'dd-mm-yyyy'), 19338, 44135, 745);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-07-2027', 'dd-mm-yyyy'), 61435, 15343, 914);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('12-08-2027', 'dd-mm-yyyy'), 53332, 18401, 504);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-02-2027', 'dd-mm-yyyy'), 81399, 10002, 562);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('30-01-2026', 'dd-mm-yyyy'), 76595, 37345, 136);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('26-01-2029', 'dd-mm-yyyy'), 59487, 74091, 736);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-08-2029', 'dd-mm-yyyy'), 18422, 71959, 713);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-04-2027', 'dd-mm-yyyy'), 93665, 51524, 562);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-07-2024', 'dd-mm-yyyy'), 36944, 55149, 717);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-10-2026', 'dd-mm-yyyy'), 62424, 10013, 946);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-08-2027', 'dd-mm-yyyy'), 91818, 80830, 647);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-12-2027', 'dd-mm-yyyy'), 32922, 76380, 201);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('09-03-2028', 'dd-mm-yyyy'), 37512, 10002, 647);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('20-07-2029', 'dd-mm-yyyy'), 24947, 50112, 660);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('22-04-2027', 'dd-mm-yyyy'), 84937, 12082, 389);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-12-2024', 'dd-mm-yyyy'), 31448, 56476, 314);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-01-2028', 'dd-mm-yyyy'), 16195, 52769, 654);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-02-2029', 'dd-mm-yyyy'), 39257, 69468, 890);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-04-2026', 'dd-mm-yyyy'), 46594, 10007, 930);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-12-2026', 'dd-mm-yyyy'), 17698, 96640, 20007);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-02-2025', 'dd-mm-yyyy'), 43552, 69221, 488);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('23-01-2024', 'dd-mm-yyyy'), 66745, 64076, 468);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-11-2025', 'dd-mm-yyyy'), 82439, 79374, 324);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('21-05-2025', 'dd-mm-yyyy'), 45949, 26135, 885);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-04-2024', 'dd-mm-yyyy'), 14235, 80248, 624);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('07-10-2025', 'dd-mm-yyyy'), 46981, 49355, 20008);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-06-2025', 'dd-mm-yyyy'), 36499, 32397, 941);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('10-08-2024', 'dd-mm-yyyy'), 79234, 10011, 743);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('15-03-2028', 'dd-mm-yyyy'), 39953, 99681, 391);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('28-06-2028', 'dd-mm-yyyy'), 97666, 72479, 975);
-commit;
-prompt 400 records committed...
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('27-12-2027', 'dd-mm-yyyy'), 37495, 35535, 584);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('18-10-2029', 'dd-mm-yyyy'), 26699, 22236, 653);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('25-04-2025', 'dd-mm-yyyy'), 47288, 10009, 899);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('01-05-2027', 'dd-mm-yyyy'), 83316, 13261, 829);
-insert into APPOINTMENT (adate, appointmentid, sid, cid)
-values (to_date('13-06-2028', 'dd-mm-yyyy'), 49699, 39663, 327);
 commit;
 prompt 405 records loaded
 prompt Loading MATERIAL...
 insert into MATERIAL (mid, mname, amount)
-values (50001, 'Gauze', 100);
+values (21355, 'Anestethic Yvwy', 102);
 insert into MATERIAL (mid, mname, amount)
-values (50002, 'Bandages', 75);
+values (75523, 'Antibiotic Uvna', 51);
 insert into MATERIAL (mid, mname, amount)
-values (50003, 'Syringes', 200);
+values (36647, 'Ointment Xmaudd', 146);
 insert into MATERIAL (mid, mname, amount)
-values (50004, 'Scalpels', 50);
+values (82577, 'Ointment Fcvics', 61);
 insert into MATERIAL (mid, mname, amount)
-values (50005, 'Gloves', 300);
+values (44524, 'Ointment Rwbpyv', 183);
 insert into MATERIAL (mid, mname, amount)
-values (50006, 'Sutures', 125);
+values (57368, 'Antibiotic Qbzk', 8);
 insert into MATERIAL (mid, mname, amount)
-values (50007, 'Cotton Swabs', 400);
+values (83128, 'Septanest Iyovq', 164);
 insert into MATERIAL (mid, mname, amount)
-values (50008, 'Disinfectant', 150);
+values (66227, 'Antibiotic Ipls', 184);
 insert into MATERIAL (mid, mname, amount)
-values (50009, 'Thermometers', 75);
+values (57861, 'Anestethic Atyu', 114);
 insert into MATERIAL (mid, mname, amount)
-values (50010, 'Stethoscopes', 25);
+values (34263, 'Anestethic Kjhd', 132);
 insert into MATERIAL (mid, mname, amount)
-values (79172, 'Septanest', 67);
+values (52117, 'Antibiotic Earz', 94);
 insert into MATERIAL (mid, mname, amount)
-values (24511, 'Pills', 142);
+values (62511, 'Anestethic Lpxh', 192);
 insert into MATERIAL (mid, mname, amount)
-values (17846, 'Septanest', 26);
+values (47254, 'Ointment Wrrpma', 226);
 insert into MATERIAL (mid, mname, amount)
-values (25767, 'Septanest', 209);
+values (58322, 'Septanest Lmxzg', 147);
 insert into MATERIAL (mid, mname, amount)
-values (94688, 'Antibiotic', 192);
+values (22956, 'Pills Qzlokv', 235);
 insert into MATERIAL (mid, mname, amount)
-values (24183, 'Septanest', 164);
+values (18523, 'Ointment Xjygdr', 74);
 insert into MATERIAL (mid, mname, amount)
-values (82698, 'Ointment', 68);
+values (51181, 'Anestethic Jazq', 33);
 insert into MATERIAL (mid, mname, amount)
-values (84826, 'Ointment', 83);
+values (32666, 'Pills Irozgz', 184);
 insert into MATERIAL (mid, mname, amount)
-values (44571, 'Septanest', 12);
+values (25813, 'Anestethic Kkfv', 221);
 insert into MATERIAL (mid, mname, amount)
-values (22533, 'Septanest', 27);
+values (89432, 'Ointment Qenkyr', 101);
 insert into MATERIAL (mid, mname, amount)
-values (64341, 'Septanest', 106);
+values (49631, 'Ointment Ndfbim', 55);
 insert into MATERIAL (mid, mname, amount)
-values (18288, 'Septanest', 81);
+values (26412, 'Ointment Xqznvn', 201);
 insert into MATERIAL (mid, mname, amount)
-values (66187, 'Ointment', 211);
+values (34865, 'Antibiotic Tdtw', 142);
 insert into MATERIAL (mid, mname, amount)
-values (23616, 'Eskrvj', 98);
+values (24124, 'Pills Zjorvz', 3);
 insert into MATERIAL (mid, mname, amount)
-values (38187, 'Jiwzkx', 137);
+values (29411, 'Anestethic Wlnp', 29);
 insert into MATERIAL (mid, mname, amount)
-values (49119, 'Geyiew', 46);
+values (77646, 'Ointment Omrdjs', 231);
 insert into MATERIAL (mid, mname, amount)
-values (53977, 'Opuvnw', 71);
+values (82665, 'Ointment Ovwqjm', 128);
 insert into MATERIAL (mid, mname, amount)
-values (32816, 'Oiggzd', 68);
+values (81646, 'Antibiotic Pdls', 106);
 insert into MATERIAL (mid, mname, amount)
-values (66817, 'Wgsrax', 156);
+values (54227, 'Ointment Dxmfcx', 107);
 insert into MATERIAL (mid, mname, amount)
-values (39792, 'Ananxr', 238);
+values (92714, 'Anestethic Gnvb', 7);
 insert into MATERIAL (mid, mname, amount)
-values (79135, 'Yfoxcj', 46);
+values (71723, 'Pills Klfnnf', 238);
 insert into MATERIAL (mid, mname, amount)
-values (18661, 'Hebnsr', 163);
+values (54815, 'Anestethic Tqyt', 21);
 insert into MATERIAL (mid, mname, amount)
-values (17889, 'Egafnl', 40);
+values (88634, 'Pills Svvbwp', 18);
 insert into MATERIAL (mid, mname, amount)
-values (75396, 'Cagmkc', 91);
+values (79344, 'Pills Mcucxa', 214);
 insert into MATERIAL (mid, mname, amount)
-values (46421, 'Wxpvdc', 12);
+values (42346, 'Antibiotic Mvyt', 150);
 insert into MATERIAL (mid, mname, amount)
-values (57723, 'Xsgjru', 29);
+values (68343, 'Pills Byqoln', 68);
 insert into MATERIAL (mid, mname, amount)
-values (11462, 'Crrnew', 96);
+values (56126, 'Ointment Avboqi', 194);
 insert into MATERIAL (mid, mname, amount)
-values (51432, 'Jtthgp', 125);
+values (53235, 'Anestethic Dlpo', 209);
 insert into MATERIAL (mid, mname, amount)
-values (85824, 'Evztwl', 143);
+values (57995, 'Anestethic Djcu', 220);
 insert into MATERIAL (mid, mname, amount)
-values (44572, 'Exbulu', 77);
+values (68496, 'Ointment Cosfiw', 144);
 insert into MATERIAL (mid, mname, amount)
-values (25765, 'Keszqx', 196);
+values (88294, 'Anestethic Xvyc', 241);
 insert into MATERIAL (mid, mname, amount)
-values (73858, 'Pills Nuknpt', 239);
+values (19246, 'Pills Qxsbfw', 84);
 insert into MATERIAL (mid, mname, amount)
-values (51973, 'Anestethic Mcrq', 3);
+values (42668, 'Ointment Juyoms', 22);
 insert into MATERIAL (mid, mname, amount)
-values (91563, 'Antibiotic Ldix', 106);
+values (51773, 'Anestethic Anju', 111);
 insert into MATERIAL (mid, mname, amount)
-values (77593, 'Antibiotic Orrh', 90);
+values (83147, 'Pills Rgliei', 109);
 insert into MATERIAL (mid, mname, amount)
-values (81624, 'Ointment Fkevwa', 108);
+values (29336, 'Septanest Iaaqm', 23);
 insert into MATERIAL (mid, mname, amount)
-values (55635, 'Ointment Fxwcsr', 189);
+values (18298, 'Septanest Blwpf', 52);
 insert into MATERIAL (mid, mname, amount)
-values (22677, 'Pills Fiouyv', 170);
+values (89394, 'Ointment Yakkre', 16);
 insert into MATERIAL (mid, mname, amount)
-values (99117, 'Ointment Cfuzwa', 142);
+values (78819, 'Antibiotic Axno', 221);
 insert into MATERIAL (mid, mname, amount)
-values (24568, 'Ointment Ncibgp', 59);
+values (55438, 'Anestethic Kvzn', 214);
 insert into MATERIAL (mid, mname, amount)
-values (63222, 'Ointment Bojqar', 70);
+values (46422, 'Ointment Khmtdj', 99);
 insert into MATERIAL (mid, mname, amount)
-values (66972, 'Anestethic Vaup', 216);
+values (42395, 'Ointment Glnidn', 106);
 insert into MATERIAL (mid, mname, amount)
-values (26199, 'Anestethic Lpfa', 221);
+values (59978, 'Ointment Beyglb', 58);
 insert into MATERIAL (mid, mname, amount)
-values (63677, 'Anestethic Lrrj', 245);
+values (36313, 'Pills Vorqjq', 148);
 insert into MATERIAL (mid, mname, amount)
-values (62152, 'Pills Nzwazu', 131);
+values (48555, 'Anestethic Oycp', 88);
 insert into MATERIAL (mid, mname, amount)
-values (61574, 'Ointment Jnadds', 196);
+values (54715, 'Septanest Epclm', 84);
 insert into MATERIAL (mid, mname, amount)
-values (23585, 'Septanest Gdhfg', 36);
+values (44141, 'Septanest Njuqc', 48);
 insert into MATERIAL (mid, mname, amount)
-values (82597, 'Septanest Faqqo', 7);
+values (27132, 'Pills Pfgykb', 180);
 insert into MATERIAL (mid, mname, amount)
-values (32358, 'Anestethic Swft', 8);
+values (47428, 'Ointment Jdipcn', 12);
 insert into MATERIAL (mid, mname, amount)
-values (68834, 'Ointment Qiklfe', 243);
+values (27995, 'Septanest Cjigm', 167);
 insert into MATERIAL (mid, mname, amount)
-values (64735, 'Anestethic Xkad', 68);
+values (82918, 'Anestethic Rpll', 173);
 insert into MATERIAL (mid, mname, amount)
-values (18938, 'Antibiotic Tajd', 176);
+values (56184, 'Septanest Rpgcz', 62);
 insert into MATERIAL (mid, mname, amount)
-values (35459, 'Antibiotic Ptbw', 96);
+values (35844, 'Pills Rtwfzs', 147);
 insert into MATERIAL (mid, mname, amount)
-values (37651, 'Anestethic Nzew', 89);
+values (77986, 'Pills Demlia', 44);
 insert into MATERIAL (mid, mname, amount)
-values (16538, 'Ointment Jleljh', 214);
+values (49367, 'Pills Zigtyc', 239);
 insert into MATERIAL (mid, mname, amount)
-values (86826, 'Pills Jrhiju', 83);
+values (79534, 'Septanest Lomwy', 198);
 insert into MATERIAL (mid, mname, amount)
-values (78514, 'Pills Cdakhz', 182);
+values (49899, 'Anestethic Wwxj', 36);
 insert into MATERIAL (mid, mname, amount)
-values (98781, 'Pills Qngwzc', 129);
+values (97659, 'Septanest Zrxxf', 161);
 insert into MATERIAL (mid, mname, amount)
-values (68771, 'Ointment Gwhsio', 117);
+values (11871, 'Antibiotic Nuel', 102);
 insert into MATERIAL (mid, mname, amount)
-values (29442, 'Septanest Kqsdp', 55);
+values (56868, 'Septanest Ktypa', 211);
 insert into MATERIAL (mid, mname, amount)
-values (95625, 'Ointment Fozfai', 101);
+values (14964, 'Anestethic Myez', 50);
+insert into MATERIAL (mid, mname, amount)
+values (83983, 'Antibiotic Pcod', 47);
+insert into MATERIAL (mid, mname, amount)
+values (27259, 'Pills Dddlcb', 182);
+insert into MATERIAL (mid, mname, amount)
+values (88489, 'Septanest Kajjb', 192);
+insert into MATERIAL (mid, mname, amount)
+values (22944, 'Pills Svxahc', 162);
+insert into MATERIAL (mid, mname, amount)
+values (48298, 'Antibiotic Qwdn', 243);
+insert into MATERIAL (mid, mname, amount)
+values (33518, 'Septanest Oytrx', 172);
+insert into MATERIAL (mid, mname, amount)
+values (48693, 'Anestethic Tdto', 92);
+insert into MATERIAL (mid, mname, amount)
+values (92543, 'Pills Xbaqsj', 97);
+insert into MATERIAL (mid, mname, amount)
+values (28379, 'Anestethic Mbuw', 175);
+insert into MATERIAL (mid, mname, amount)
+values (97217, 'Pills Sfqmln', 153);
+insert into MATERIAL (mid, mname, amount)
+values (86223, 'Pills Ayvsog', 11);
+insert into MATERIAL (mid, mname, amount)
+values (53212, 'Septanest Qyqnt', 120);
+insert into MATERIAL (mid, mname, amount)
+values (36876, 'Antibiotic Oqex', 146);
+insert into MATERIAL (mid, mname, amount)
+values (25811, 'Antibiotic Kjsc', 141);
+insert into MATERIAL (mid, mname, amount)
+values (93566, 'Ointment Hsgzcb', 217);
+insert into MATERIAL (mid, mname, amount)
+values (44261, 'Ointment Bmotwx', 10);
+insert into MATERIAL (mid, mname, amount)
+values (64442, 'Ointment Wabyuf', 179);
+insert into MATERIAL (mid, mname, amount)
+values (26441, 'Anestethic Bqcr', 166);
+insert into MATERIAL (mid, mname, amount)
+values (55764, 'Ointment Aakmfl', 25);
+insert into MATERIAL (mid, mname, amount)
+values (44662, 'Ointment Itansw', 102);
+insert into MATERIAL (mid, mname, amount)
+values (83212, 'Pills Gxqwrt', 243);
+insert into MATERIAL (mid, mname, amount)
+values (56794, 'Ointment Qjgryy', 17);
+insert into MATERIAL (mid, mname, amount)
+values (51857, 'Anestethic Fhqu', 231);
+insert into MATERIAL (mid, mname, amount)
+values (18197, 'Anestethic Kcmt', 69);
+insert into MATERIAL (mid, mname, amount)
+values (76159, 'Anestethic Uuwy', 235);
+insert into MATERIAL (mid, mname, amount)
+values (22461, 'Septanest Qjwge', 143);
+insert into MATERIAL (mid, mname, amount)
+values (71339, 'Ointment Ggyvqx', 126);
+insert into MATERIAL (mid, mname, amount)
+values (59486, 'Pills Wjrfbr', 195);
+insert into MATERIAL (mid, mname, amount)
+values (74877, 'Ointment Cmcmhp', 120);
+commit;
+prompt 100 records committed...
+insert into MATERIAL (mid, mname, amount)
+values (89574, 'Pills Rmiyre', 210);
+insert into MATERIAL (mid, mname, amount)
+values (31773, 'Septanest Hqvbn', 156);
+insert into MATERIAL (mid, mname, amount)
+values (72235, 'Septanest Tugsg', 206);
+insert into MATERIAL (mid, mname, amount)
+values (41858, 'Anestethic Qlly', 216);
+insert into MATERIAL (mid, mname, amount)
+values (24167, 'Pills Indtmy', 174);
+insert into MATERIAL (mid, mname, amount)
+values (52423, 'Pills Wtfbjj', 109);
+insert into MATERIAL (mid, mname, amount)
+values (44888, 'Antibiotic Itmt', 10);
+insert into MATERIAL (mid, mname, amount)
+values (29698, 'Septanest Lwjaw', 171);
+insert into MATERIAL (mid, mname, amount)
+values (78965, 'Pills Dmbycy', 14);
+insert into MATERIAL (mid, mname, amount)
+values (13198, 'Antibiotic Nyte', 42);
+insert into MATERIAL (mid, mname, amount)
+values (99962, 'Septanest Gxsre', 53);
+insert into MATERIAL (mid, mname, amount)
+values (67115, 'Anestethic Sqbm', 228);
+insert into MATERIAL (mid, mname, amount)
+values (92858, 'Pills Najkrx', 93);
+insert into MATERIAL (mid, mname, amount)
+values (68849, 'Septanest Nnlua', 196);
+insert into MATERIAL (mid, mname, amount)
+values (56873, 'Septanest Uqhjh', 19);
+insert into MATERIAL (mid, mname, amount)
+values (27386, 'Anestethic Tjjz', 204);
+insert into MATERIAL (mid, mname, amount)
+values (46679, 'Ointment Daiqef', 167);
+insert into MATERIAL (mid, mname, amount)
+values (44138, 'Anestethic Jqjq', 239);
+insert into MATERIAL (mid, mname, amount)
+values (49484, 'Antibiotic Sjbh', 191);
+insert into MATERIAL (mid, mname, amount)
+values (93137, 'Ointment Zqedwm', 161);
+insert into MATERIAL (mid, mname, amount)
+values (36133, 'Ointment Wcsipo', 143);
+insert into MATERIAL (mid, mname, amount)
+values (63236, 'Ointment Oujdht', 202);
+insert into MATERIAL (mid, mname, amount)
+values (15958, 'Anestethic Naha', 94);
+insert into MATERIAL (mid, mname, amount)
+values (79737, 'Anestethic Uogo', 60);
+insert into MATERIAL (mid, mname, amount)
+values (29122, 'Pills Fixbcp', 230);
+insert into MATERIAL (mid, mname, amount)
+values (75629, 'Pills Qnfrsr', 80);
+insert into MATERIAL (mid, mname, amount)
+values (63414, 'Septanest Lxgnf', 101);
+insert into MATERIAL (mid, mname, amount)
+values (39851, 'Septanest Vbald', 8);
+insert into MATERIAL (mid, mname, amount)
+values (86561, 'Antibiotic Hqdb', 206);
+insert into MATERIAL (mid, mname, amount)
+values (97875, 'Anestethic Khqg', 93);
+insert into MATERIAL (mid, mname, amount)
+values (24115, 'Antibiotic Wedk', 249);
+insert into MATERIAL (mid, mname, amount)
+values (25752, 'Anestethic Vhnh', 7);
+insert into MATERIAL (mid, mname, amount)
+values (64219, 'Pills Lftxqe', 60);
+insert into MATERIAL (mid, mname, amount)
+values (74929, 'Anestethic Mdjz', 190);
+insert into MATERIAL (mid, mname, amount)
+values (64317, 'Antibiotic Ejkf', 72);
+insert into MATERIAL (mid, mname, amount)
+values (63768, 'Anestethic Ruxu', 199);
+insert into MATERIAL (mid, mname, amount)
+values (24534, 'Septanest Efnsl', 128);
+insert into MATERIAL (mid, mname, amount)
+values (12999, 'Anestethic Tifg', 181);
+insert into MATERIAL (mid, mname, amount)
+values (41133, 'Septanest Ugxyy', 82);
+insert into MATERIAL (mid, mname, amount)
+values (98796, 'Ointment Dighqg', 138);
+insert into MATERIAL (mid, mname, amount)
+values (59841, 'Anestethic Uxou', 96);
+insert into MATERIAL (mid, mname, amount)
+values (32832, 'Antibiotic Toit', 191);
+insert into MATERIAL (mid, mname, amount)
+values (86758, 'Antibiotic Idwa', 59);
+insert into MATERIAL (mid, mname, amount)
+values (83186, 'Pills Ajrfks', 199);
+insert into MATERIAL (mid, mname, amount)
+values (84215, 'Antibiotic Bkfr', 107);
+insert into MATERIAL (mid, mname, amount)
+values (94698, 'Pills Etvpbc', 211);
+insert into MATERIAL (mid, mname, amount)
+values (63597, 'Pills Mlavlz', 176);
+insert into MATERIAL (mid, mname, amount)
+values (49529, 'Anestethic Cgji', 46);
+insert into MATERIAL (mid, mname, amount)
+values (89721, 'Anestethic Abxx', 233);
+insert into MATERIAL (mid, mname, amount)
+values (27219, 'Septanest Ajcyl', 49);
+insert into MATERIAL (mid, mname, amount)
+values (46665, 'Septanest Vphes', 243);
+insert into MATERIAL (mid, mname, amount)
+values (71862, 'Pills Ffhwfs', 125);
+insert into MATERIAL (mid, mname, amount)
+values (97128, 'Ointment Lwzyui', 167);
+insert into MATERIAL (mid, mname, amount)
+values (25522, 'Ointment Orvfil', 200);
+insert into MATERIAL (mid, mname, amount)
+values (76774, 'Pills Wtatpx', 3);
+insert into MATERIAL (mid, mname, amount)
+values (15869, 'Antibiotic Nvgj', 20);
+insert into MATERIAL (mid, mname, amount)
+values (23116, 'Ointment Yczfth', 56);
+insert into MATERIAL (mid, mname, amount)
+values (23628, 'Antibiotic Ynii', 50);
+insert into MATERIAL (mid, mname, amount)
+values (38771, 'Ointment Nyogrk', 123);
+insert into MATERIAL (mid, mname, amount)
+values (91329, 'Ointment Bzbycw', 207);
+insert into MATERIAL (mid, mname, amount)
+values (15988, 'Anestethic Qlka', 9);
+insert into MATERIAL (mid, mname, amount)
+values (11127, 'Anestethic Eazf', 211);
+insert into MATERIAL (mid, mname, amount)
+values (53354, 'Antibiotic Taxj', 168);
+insert into MATERIAL (mid, mname, amount)
+values (68732, 'Antibiotic Abud', 184);
+insert into MATERIAL (mid, mname, amount)
+values (46333, 'Pills Qtzqne', 212);
+insert into MATERIAL (mid, mname, amount)
+values (36935, 'Antibiotic Mtho', 116);
+insert into MATERIAL (mid, mname, amount)
+values (75611, 'Antibiotic Ccqn', 14);
+insert into MATERIAL (mid, mname, amount)
+values (15484, 'Pills Kwtxwh', 133);
+insert into MATERIAL (mid, mname, amount)
+values (13657, 'Septanest Ndher', 193);
+insert into MATERIAL (mid, mname, amount)
+values (26927, 'Septanest Dkthy', 163);
+insert into MATERIAL (mid, mname, amount)
+values (36778, 'Ointment Yttrch', 46);
+insert into MATERIAL (mid, mname, amount)
+values (86938, 'Pills Ugdnqz', 243);
+insert into MATERIAL (mid, mname, amount)
+values (46122, 'Septanest Ybrhx', 238);
+insert into MATERIAL (mid, mname, amount)
+values (97441, 'Septanest Owlmu', 211);
+insert into MATERIAL (mid, mname, amount)
+values (68248, 'Septanest Eavhj', 212);
+insert into MATERIAL (mid, mname, amount)
+values (34377, 'Septanest Ngdzh', 60);
+insert into MATERIAL (mid, mname, amount)
+values (16475, 'Pills Onglod', 61);
+insert into MATERIAL (mid, mname, amount)
+values (26499, 'Anestethic Hcdn', 116);
+insert into MATERIAL (mid, mname, amount)
+values (48388, 'Ointment Wcvqrw', 224);
+insert into MATERIAL (mid, mname, amount)
+values (93786, 'Anestethic Eapy', 178);
+insert into MATERIAL (mid, mname, amount)
+values (86698, 'Antibiotic', 226);
+insert into MATERIAL (mid, mname, amount)
+values (14726, 'Thermometers', 37);
+insert into MATERIAL (mid, mname, amount)
+values (72115, 'Disinfectant', 59);
+insert into MATERIAL (mid, mname, amount)
+values (12570, 'Septanest', 83);
+insert into MATERIAL (mid, mname, amount)
+values (11654, 'Cotton Swabs', 120);
+insert into MATERIAL (mid, mname, amount)
+values (24208, 'Bandages', 136);
+insert into MATERIAL (mid, mname, amount)
+values (61185, 'Gauze', 167);
+insert into MATERIAL (mid, mname, amount)
+values (14470, 'Pills', 168);
+insert into MATERIAL (mid, mname, amount)
+values (70154, 'Gloves', 54);
+insert into MATERIAL (mid, mname, amount)
+values (99078, 'Anesthetic', 190);
+insert into MATERIAL (mid, mname, amount)
+values (73385, 'Syringes', 136);
+insert into MATERIAL (mid, mname, amount)
+values (16596, 'Pills', 69);
 insert into MATERIAL (mid, mname, amount)
 values (93815, 'Anestethic Ukof', 67);
 insert into MATERIAL (mid, mname, amount)
@@ -3310,6 +3301,8 @@ insert into MATERIAL (mid, mname, amount)
 values (92666, 'Antibiotic Hyru', 196);
 insert into MATERIAL (mid, mname, amount)
 values (64876, 'Antibiotic Ximn', 140);
+commit;
+prompt 200 records committed...
 insert into MATERIAL (mid, mname, amount)
 values (68545, 'Ointment Jpppkn', 207);
 insert into MATERIAL (mid, mname, amount)
@@ -3352,8 +3345,6 @@ insert into MATERIAL (mid, mname, amount)
 values (43963, 'Pills Ifdohk', 118);
 insert into MATERIAL (mid, mname, amount)
 values (13655, 'Ointment Wjaaax', 89);
-commit;
-prompt 100 records committed...
 insert into MATERIAL (mid, mname, amount)
 values (76277, 'Anestethic Vlyd', 169);
 insert into MATERIAL (mid, mname, amount)
@@ -3512,6 +3503,8 @@ insert into MATERIAL (mid, mname, amount)
 values (86571, 'Antibiotic Larc', 210);
 insert into MATERIAL (mid, mname, amount)
 values (51142, 'Anestethic Qbnk', 187);
+commit;
+prompt 300 records committed...
 insert into MATERIAL (mid, mname, amount)
 values (13449, 'Ointment Fmctqu', 249);
 insert into MATERIAL (mid, mname, amount)
@@ -3554,8 +3547,6 @@ insert into MATERIAL (mid, mname, amount)
 values (75214, 'Pills Axbsrh', 97);
 insert into MATERIAL (mid, mname, amount)
 values (62615, 'Antibiotic Jkxt', 137);
-commit;
-prompt 200 records committed...
 insert into MATERIAL (mid, mname, amount)
 values (22792, 'Pills Qhjijs', 74);
 insert into MATERIAL (mid, mname, amount)
@@ -3675,396 +3666,642 @@ values (42712, 'Anestethic Qeww', 130);
 insert into MATERIAL (mid, mname, amount)
 values (29767, 'Ointment Vynolg', 199);
 insert into MATERIAL (mid, mname, amount)
-values (21355, 'Anestethic Yvwy', 102);
+values (50001, 'Gauze', 100);
 insert into MATERIAL (mid, mname, amount)
-values (75523, 'Antibiotic Uvna', 51);
+values (50002, 'Bandages', 75);
 insert into MATERIAL (mid, mname, amount)
-values (36647, 'Ointment Xmaudd', 146);
+values (50003, 'Syringes', 200);
 insert into MATERIAL (mid, mname, amount)
-values (82577, 'Ointment Fcvics', 61);
+values (50004, 'Scalpels', 50);
 insert into MATERIAL (mid, mname, amount)
-values (44524, 'Ointment Rwbpyv', 183);
+values (50005, 'Gloves', 300);
 insert into MATERIAL (mid, mname, amount)
-values (57368, 'Antibiotic Qbzk', 8);
+values (50006, 'Sutures', 125);
 insert into MATERIAL (mid, mname, amount)
-values (83128, 'Septanest Iyovq', 164);
+values (50007, 'Cotton Swabs', 400);
 insert into MATERIAL (mid, mname, amount)
-values (66227, 'Antibiotic Ipls', 184);
+values (50008, 'Disinfectant', 150);
 insert into MATERIAL (mid, mname, amount)
-values (57861, 'Anestethic Atyu', 114);
+values (50009, 'Thermometers', 75);
 insert into MATERIAL (mid, mname, amount)
-values (34263, 'Anestethic Kjhd', 132);
+values (50010, 'Stethoscopes', 25);
 insert into MATERIAL (mid, mname, amount)
-values (52117, 'Antibiotic Earz', 94);
+values (79172, 'Septanest', 67);
 insert into MATERIAL (mid, mname, amount)
-values (62511, 'Anestethic Lpxh', 192);
+values (24511, 'Pills', 142);
 insert into MATERIAL (mid, mname, amount)
-values (47254, 'Ointment Wrrpma', 226);
+values (17846, 'Septanest', 26);
 insert into MATERIAL (mid, mname, amount)
-values (58322, 'Septanest Lmxzg', 147);
+values (25767, 'Septanest', 209);
 insert into MATERIAL (mid, mname, amount)
-values (22956, 'Pills Qzlokv', 235);
+values (94688, 'Antibiotic', 192);
 insert into MATERIAL (mid, mname, amount)
-values (18523, 'Ointment Xjygdr', 74);
+values (24183, 'Septanest', 164);
 insert into MATERIAL (mid, mname, amount)
-values (51181, 'Anestethic Jazq', 33);
+values (82698, 'Ointment', 68);
 insert into MATERIAL (mid, mname, amount)
-values (32666, 'Pills Irozgz', 184);
+values (84826, 'Ointment', 83);
 insert into MATERIAL (mid, mname, amount)
-values (25813, 'Anestethic Kkfv', 221);
+values (44571, 'Septanest', 12);
 insert into MATERIAL (mid, mname, amount)
-values (89432, 'Ointment Qenkyr', 101);
-insert into MATERIAL (mid, mname, amount)
-values (49631, 'Ointment Ndfbim', 55);
-insert into MATERIAL (mid, mname, amount)
-values (26412, 'Ointment Xqznvn', 201);
-insert into MATERIAL (mid, mname, amount)
-values (34865, 'Antibiotic Tdtw', 142);
-insert into MATERIAL (mid, mname, amount)
-values (24124, 'Pills Zjorvz', 3);
-insert into MATERIAL (mid, mname, amount)
-values (29411, 'Anestethic Wlnp', 29);
-insert into MATERIAL (mid, mname, amount)
-values (77646, 'Ointment Omrdjs', 231);
-insert into MATERIAL (mid, mname, amount)
-values (82665, 'Ointment Ovwqjm', 128);
-insert into MATERIAL (mid, mname, amount)
-values (81646, 'Antibiotic Pdls', 106);
-insert into MATERIAL (mid, mname, amount)
-values (54227, 'Ointment Dxmfcx', 107);
-insert into MATERIAL (mid, mname, amount)
-values (92714, 'Anestethic Gnvb', 7);
-insert into MATERIAL (mid, mname, amount)
-values (71723, 'Pills Klfnnf', 238);
-insert into MATERIAL (mid, mname, amount)
-values (54815, 'Anestethic Tqyt', 21);
-insert into MATERIAL (mid, mname, amount)
-values (88634, 'Pills Svvbwp', 18);
-insert into MATERIAL (mid, mname, amount)
-values (79344, 'Pills Mcucxa', 214);
-insert into MATERIAL (mid, mname, amount)
-values (42346, 'Antibiotic Mvyt', 150);
-insert into MATERIAL (mid, mname, amount)
-values (68343, 'Pills Byqoln', 68);
-insert into MATERIAL (mid, mname, amount)
-values (56126, 'Ointment Avboqi', 194);
-insert into MATERIAL (mid, mname, amount)
-values (53235, 'Anestethic Dlpo', 209);
-insert into MATERIAL (mid, mname, amount)
-values (57995, 'Anestethic Djcu', 220);
-insert into MATERIAL (mid, mname, amount)
-values (68496, 'Ointment Cosfiw', 144);
-insert into MATERIAL (mid, mname, amount)
-values (88294, 'Anestethic Xvyc', 241);
-commit;
-prompt 300 records committed...
-insert into MATERIAL (mid, mname, amount)
-values (19246, 'Pills Qxsbfw', 84);
-insert into MATERIAL (mid, mname, amount)
-values (42668, 'Ointment Juyoms', 22);
-insert into MATERIAL (mid, mname, amount)
-values (51773, 'Anestethic Anju', 111);
-insert into MATERIAL (mid, mname, amount)
-values (83147, 'Pills Rgliei', 109);
-insert into MATERIAL (mid, mname, amount)
-values (29336, 'Septanest Iaaqm', 23);
-insert into MATERIAL (mid, mname, amount)
-values (18298, 'Septanest Blwpf', 52);
-insert into MATERIAL (mid, mname, amount)
-values (89394, 'Ointment Yakkre', 16);
-insert into MATERIAL (mid, mname, amount)
-values (78819, 'Antibiotic Axno', 221);
-insert into MATERIAL (mid, mname, amount)
-values (55438, 'Anestethic Kvzn', 214);
-insert into MATERIAL (mid, mname, amount)
-values (46422, 'Ointment Khmtdj', 99);
-insert into MATERIAL (mid, mname, amount)
-values (42395, 'Ointment Glnidn', 106);
-insert into MATERIAL (mid, mname, amount)
-values (59978, 'Ointment Beyglb', 58);
-insert into MATERIAL (mid, mname, amount)
-values (36313, 'Pills Vorqjq', 148);
-insert into MATERIAL (mid, mname, amount)
-values (48555, 'Anestethic Oycp', 88);
-insert into MATERIAL (mid, mname, amount)
-values (54715, 'Septanest Epclm', 84);
-insert into MATERIAL (mid, mname, amount)
-values (44141, 'Septanest Njuqc', 48);
-insert into MATERIAL (mid, mname, amount)
-values (27132, 'Pills Pfgykb', 180);
-insert into MATERIAL (mid, mname, amount)
-values (47428, 'Ointment Jdipcn', 12);
-insert into MATERIAL (mid, mname, amount)
-values (27995, 'Septanest Cjigm', 167);
-insert into MATERIAL (mid, mname, amount)
-values (82918, 'Anestethic Rpll', 173);
-insert into MATERIAL (mid, mname, amount)
-values (56184, 'Septanest Rpgcz', 62);
-insert into MATERIAL (mid, mname, amount)
-values (35844, 'Pills Rtwfzs', 147);
-insert into MATERIAL (mid, mname, amount)
-values (77986, 'Pills Demlia', 44);
-insert into MATERIAL (mid, mname, amount)
-values (49367, 'Pills Zigtyc', 239);
-insert into MATERIAL (mid, mname, amount)
-values (79534, 'Septanest Lomwy', 198);
-insert into MATERIAL (mid, mname, amount)
-values (49899, 'Anestethic Wwxj', 36);
-insert into MATERIAL (mid, mname, amount)
-values (97659, 'Septanest Zrxxf', 161);
-insert into MATERIAL (mid, mname, amount)
-values (11871, 'Antibiotic Nuel', 102);
-insert into MATERIAL (mid, mname, amount)
-values (56868, 'Septanest Ktypa', 211);
-insert into MATERIAL (mid, mname, amount)
-values (14964, 'Anestethic Myez', 50);
-insert into MATERIAL (mid, mname, amount)
-values (83983, 'Antibiotic Pcod', 47);
-insert into MATERIAL (mid, mname, amount)
-values (27259, 'Pills Dddlcb', 182);
-insert into MATERIAL (mid, mname, amount)
-values (88489, 'Septanest Kajjb', 192);
-insert into MATERIAL (mid, mname, amount)
-values (22944, 'Pills Svxahc', 162);
-insert into MATERIAL (mid, mname, amount)
-values (48298, 'Antibiotic Qwdn', 243);
-insert into MATERIAL (mid, mname, amount)
-values (33518, 'Septanest Oytrx', 172);
-insert into MATERIAL (mid, mname, amount)
-values (48693, 'Anestethic Tdto', 92);
-insert into MATERIAL (mid, mname, amount)
-values (92543, 'Pills Xbaqsj', 97);
-insert into MATERIAL (mid, mname, amount)
-values (28379, 'Anestethic Mbuw', 175);
-insert into MATERIAL (mid, mname, amount)
-values (97217, 'Pills Sfqmln', 153);
-insert into MATERIAL (mid, mname, amount)
-values (86223, 'Pills Ayvsog', 11);
-insert into MATERIAL (mid, mname, amount)
-values (53212, 'Septanest Qyqnt', 120);
-insert into MATERIAL (mid, mname, amount)
-values (36876, 'Antibiotic Oqex', 146);
-insert into MATERIAL (mid, mname, amount)
-values (25811, 'Antibiotic Kjsc', 141);
-insert into MATERIAL (mid, mname, amount)
-values (93566, 'Ointment Hsgzcb', 217);
-insert into MATERIAL (mid, mname, amount)
-values (44261, 'Ointment Bmotwx', 10);
-insert into MATERIAL (mid, mname, amount)
-values (64442, 'Ointment Wabyuf', 179);
-insert into MATERIAL (mid, mname, amount)
-values (26441, 'Anestethic Bqcr', 166);
-insert into MATERIAL (mid, mname, amount)
-values (55764, 'Ointment Aakmfl', 25);
-insert into MATERIAL (mid, mname, amount)
-values (44662, 'Ointment Itansw', 102);
-insert into MATERIAL (mid, mname, amount)
-values (83212, 'Pills Gxqwrt', 243);
-insert into MATERIAL (mid, mname, amount)
-values (56794, 'Ointment Qjgryy', 17);
-insert into MATERIAL (mid, mname, amount)
-values (51857, 'Anestethic Fhqu', 231);
-insert into MATERIAL (mid, mname, amount)
-values (18197, 'Anestethic Kcmt', 69);
-insert into MATERIAL (mid, mname, amount)
-values (76159, 'Anestethic Uuwy', 235);
-insert into MATERIAL (mid, mname, amount)
-values (22461, 'Septanest Qjwge', 143);
-insert into MATERIAL (mid, mname, amount)
-values (71339, 'Ointment Ggyvqx', 126);
-insert into MATERIAL (mid, mname, amount)
-values (59486, 'Pills Wjrfbr', 195);
-insert into MATERIAL (mid, mname, amount)
-values (74877, 'Ointment Cmcmhp', 120);
-insert into MATERIAL (mid, mname, amount)
-values (89574, 'Pills Rmiyre', 210);
-insert into MATERIAL (mid, mname, amount)
-values (31773, 'Septanest Hqvbn', 156);
-insert into MATERIAL (mid, mname, amount)
-values (72235, 'Septanest Tugsg', 206);
-insert into MATERIAL (mid, mname, amount)
-values (41858, 'Anestethic Qlly', 216);
-insert into MATERIAL (mid, mname, amount)
-values (24167, 'Pills Indtmy', 174);
-insert into MATERIAL (mid, mname, amount)
-values (52423, 'Pills Wtfbjj', 109);
-insert into MATERIAL (mid, mname, amount)
-values (44888, 'Antibiotic Itmt', 10);
-insert into MATERIAL (mid, mname, amount)
-values (29698, 'Septanest Lwjaw', 171);
-insert into MATERIAL (mid, mname, amount)
-values (78965, 'Pills Dmbycy', 14);
-insert into MATERIAL (mid, mname, amount)
-values (13198, 'Antibiotic Nyte', 42);
-insert into MATERIAL (mid, mname, amount)
-values (99962, 'Septanest Gxsre', 53);
-insert into MATERIAL (mid, mname, amount)
-values (67115, 'Anestethic Sqbm', 228);
-insert into MATERIAL (mid, mname, amount)
-values (92858, 'Pills Najkrx', 93);
-insert into MATERIAL (mid, mname, amount)
-values (68849, 'Septanest Nnlua', 196);
-insert into MATERIAL (mid, mname, amount)
-values (56873, 'Septanest Uqhjh', 19);
-insert into MATERIAL (mid, mname, amount)
-values (27386, 'Anestethic Tjjz', 204);
-insert into MATERIAL (mid, mname, amount)
-values (46679, 'Ointment Daiqef', 167);
-insert into MATERIAL (mid, mname, amount)
-values (44138, 'Anestethic Jqjq', 239);
-insert into MATERIAL (mid, mname, amount)
-values (49484, 'Antibiotic Sjbh', 191);
-insert into MATERIAL (mid, mname, amount)
-values (93137, 'Ointment Zqedwm', 161);
-insert into MATERIAL (mid, mname, amount)
-values (36133, 'Ointment Wcsipo', 143);
-insert into MATERIAL (mid, mname, amount)
-values (63236, 'Ointment Oujdht', 202);
-insert into MATERIAL (mid, mname, amount)
-values (15958, 'Anestethic Naha', 94);
-insert into MATERIAL (mid, mname, amount)
-values (79737, 'Anestethic Uogo', 60);
-insert into MATERIAL (mid, mname, amount)
-values (29122, 'Pills Fixbcp', 230);
-insert into MATERIAL (mid, mname, amount)
-values (75629, 'Pills Qnfrsr', 80);
-insert into MATERIAL (mid, mname, amount)
-values (63414, 'Septanest Lxgnf', 101);
-insert into MATERIAL (mid, mname, amount)
-values (39851, 'Septanest Vbald', 8);
-insert into MATERIAL (mid, mname, amount)
-values (86561, 'Antibiotic Hqdb', 206);
-insert into MATERIAL (mid, mname, amount)
-values (97875, 'Anestethic Khqg', 93);
-insert into MATERIAL (mid, mname, amount)
-values (24115, 'Antibiotic Wedk', 249);
-insert into MATERIAL (mid, mname, amount)
-values (25752, 'Anestethic Vhnh', 7);
-insert into MATERIAL (mid, mname, amount)
-values (64219, 'Pills Lftxqe', 60);
-insert into MATERIAL (mid, mname, amount)
-values (74929, 'Anestethic Mdjz', 190);
-insert into MATERIAL (mid, mname, amount)
-values (64317, 'Antibiotic Ejkf', 72);
-insert into MATERIAL (mid, mname, amount)
-values (63768, 'Anestethic Ruxu', 199);
-insert into MATERIAL (mid, mname, amount)
-values (24534, 'Septanest Efnsl', 128);
-insert into MATERIAL (mid, mname, amount)
-values (12999, 'Anestethic Tifg', 181);
-insert into MATERIAL (mid, mname, amount)
-values (41133, 'Septanest Ugxyy', 82);
-insert into MATERIAL (mid, mname, amount)
-values (98796, 'Ointment Dighqg', 138);
-insert into MATERIAL (mid, mname, amount)
-values (59841, 'Anestethic Uxou', 96);
+values (22533, 'Septanest', 27);
 commit;
 prompt 400 records committed...
 insert into MATERIAL (mid, mname, amount)
-values (32832, 'Antibiotic Toit', 191);
+values (64341, 'Septanest', 106);
 insert into MATERIAL (mid, mname, amount)
-values (86758, 'Antibiotic Idwa', 59);
+values (18288, 'Septanest', 81);
 insert into MATERIAL (mid, mname, amount)
-values (83186, 'Pills Ajrfks', 199);
+values (66187, 'Ointment', 211);
 insert into MATERIAL (mid, mname, amount)
-values (84215, 'Antibiotic Bkfr', 107);
+values (23616, 'Eskrvj', 98);
 insert into MATERIAL (mid, mname, amount)
-values (94698, 'Pills Etvpbc', 211);
+values (38187, 'Jiwzkx', 137);
 insert into MATERIAL (mid, mname, amount)
-values (63597, 'Pills Mlavlz', 176);
+values (49119, 'Geyiew', 46);
 insert into MATERIAL (mid, mname, amount)
-values (49529, 'Anestethic Cgji', 46);
+values (53977, 'Opuvnw', 71);
 insert into MATERIAL (mid, mname, amount)
-values (89721, 'Anestethic Abxx', 233);
+values (32816, 'Oiggzd', 68);
 insert into MATERIAL (mid, mname, amount)
-values (27219, 'Septanest Ajcyl', 49);
+values (66817, 'Wgsrax', 156);
 insert into MATERIAL (mid, mname, amount)
-values (46665, 'Septanest Vphes', 243);
+values (39792, 'Ananxr', 238);
 insert into MATERIAL (mid, mname, amount)
-values (71862, 'Pills Ffhwfs', 125);
+values (79135, 'Yfoxcj', 46);
 insert into MATERIAL (mid, mname, amount)
-values (97128, 'Ointment Lwzyui', 167);
+values (18661, 'Hebnsr', 163);
 insert into MATERIAL (mid, mname, amount)
-values (25522, 'Ointment Orvfil', 200);
+values (17889, 'Egafnl', 40);
 insert into MATERIAL (mid, mname, amount)
-values (76774, 'Pills Wtatpx', 3);
+values (75396, 'Cagmkc', 91);
 insert into MATERIAL (mid, mname, amount)
-values (15869, 'Antibiotic Nvgj', 20);
+values (46421, 'Wxpvdc', 12);
 insert into MATERIAL (mid, mname, amount)
-values (23116, 'Ointment Yczfth', 56);
+values (57723, 'Xsgjru', 29);
 insert into MATERIAL (mid, mname, amount)
-values (23628, 'Antibiotic Ynii', 50);
+values (11462, 'Crrnew', 96);
 insert into MATERIAL (mid, mname, amount)
-values (38771, 'Ointment Nyogrk', 123);
+values (51432, 'Jtthgp', 125);
 insert into MATERIAL (mid, mname, amount)
-values (91329, 'Ointment Bzbycw', 207);
+values (85824, 'Evztwl', 143);
 insert into MATERIAL (mid, mname, amount)
-values (15988, 'Anestethic Qlka', 9);
+values (44572, 'Exbulu', 77);
 insert into MATERIAL (mid, mname, amount)
-values (11127, 'Anestethic Eazf', 211);
+values (25765, 'Keszqx', 196);
 insert into MATERIAL (mid, mname, amount)
-values (53354, 'Antibiotic Taxj', 168);
+values (73858, 'Pills Nuknpt', 239);
 insert into MATERIAL (mid, mname, amount)
-values (68732, 'Antibiotic Abud', 184);
+values (51973, 'Anestethic Mcrq', 3);
 insert into MATERIAL (mid, mname, amount)
-values (46333, 'Pills Qtzqne', 212);
+values (91563, 'Antibiotic Ldix', 106);
 insert into MATERIAL (mid, mname, amount)
-values (36935, 'Antibiotic Mtho', 116);
+values (77593, 'Antibiotic Orrh', 90);
 insert into MATERIAL (mid, mname, amount)
-values (75611, 'Antibiotic Ccqn', 14);
+values (81624, 'Ointment Fkevwa', 108);
 insert into MATERIAL (mid, mname, amount)
-values (15484, 'Pills Kwtxwh', 133);
+values (55635, 'Ointment Fxwcsr', 189);
 insert into MATERIAL (mid, mname, amount)
-values (13657, 'Septanest Ndher', 193);
+values (22677, 'Pills Fiouyv', 170);
 insert into MATERIAL (mid, mname, amount)
-values (26927, 'Septanest Dkthy', 163);
+values (99117, 'Ointment Cfuzwa', 142);
 insert into MATERIAL (mid, mname, amount)
-values (36778, 'Ointment Yttrch', 46);
+values (24568, 'Ointment Ncibgp', 59);
 insert into MATERIAL (mid, mname, amount)
-values (86938, 'Pills Ugdnqz', 243);
+values (63222, 'Ointment Bojqar', 70);
 insert into MATERIAL (mid, mname, amount)
-values (46122, 'Septanest Ybrhx', 238);
+values (66972, 'Anestethic Vaup', 216);
 insert into MATERIAL (mid, mname, amount)
-values (97441, 'Septanest Owlmu', 211);
+values (26199, 'Anestethic Lpfa', 221);
 insert into MATERIAL (mid, mname, amount)
-values (68248, 'Septanest Eavhj', 212);
+values (63677, 'Anestethic Lrrj', 245);
 insert into MATERIAL (mid, mname, amount)
-values (34377, 'Septanest Ngdzh', 60);
+values (62152, 'Pills Nzwazu', 131);
 insert into MATERIAL (mid, mname, amount)
-values (16475, 'Pills Onglod', 61);
+values (61574, 'Ointment Jnadds', 196);
 insert into MATERIAL (mid, mname, amount)
-values (26499, 'Anestethic Hcdn', 116);
+values (23585, 'Septanest Gdhfg', 36);
 insert into MATERIAL (mid, mname, amount)
-values (48388, 'Ointment Wcvqrw', 224);
+values (82597, 'Septanest Faqqo', 7);
 insert into MATERIAL (mid, mname, amount)
-values (93786, 'Anestethic Eapy', 178);
+values (32358, 'Anestethic Swft', 8);
 insert into MATERIAL (mid, mname, amount)
-values (86698, 'Antibiotic', 226);
+values (68834, 'Ointment Qiklfe', 243);
 insert into MATERIAL (mid, mname, amount)
-values (14726, 'Thermometers', 37);
+values (64735, 'Anestethic Xkad', 68);
 insert into MATERIAL (mid, mname, amount)
-values (72115, 'Disinfectant', 59);
+values (18938, 'Antibiotic Tajd', 176);
 insert into MATERIAL (mid, mname, amount)
-values (12570, 'Septanest', 83);
+values (35459, 'Antibiotic Ptbw', 96);
 insert into MATERIAL (mid, mname, amount)
-values (11654, 'Cotton Swabs', 120);
+values (37651, 'Anestethic Nzew', 89);
 insert into MATERIAL (mid, mname, amount)
-values (24208, 'Bandages', 136);
+values (16538, 'Ointment Jleljh', 214);
 insert into MATERIAL (mid, mname, amount)
-values (61185, 'Gauze', 167);
+values (86826, 'Pills Jrhiju', 83);
 insert into MATERIAL (mid, mname, amount)
-values (14470, 'Pills', 168);
+values (78514, 'Pills Cdakhz', 182);
 insert into MATERIAL (mid, mname, amount)
-values (70154, 'Gloves', 54);
+values (98781, 'Pills Qngwzc', 129);
 insert into MATERIAL (mid, mname, amount)
-values (99078, 'Anesthetic', 190);
+values (68771, 'Ointment Gwhsio', 117);
 insert into MATERIAL (mid, mname, amount)
-values (73385, 'Syringes', 136);
+values (29442, 'Septanest Kqsdp', 55);
 insert into MATERIAL (mid, mname, amount)
-values (16596, 'Pills', 69);
+values (95625, 'Ointment Fozfai', 101);
 commit;
 prompt 451 records loaded
 prompt Loading TREATMENT...
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 4465, 69548, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 361, 82736, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 2974, 36999, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 2349, 43562, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 1148, 29779, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 13072, 69989, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 13553, 45299, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 12520, 86448, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 5965, 55194, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 11913, 65894, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 761, 31856, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 2085, 51917, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 7022, 81291, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 9567, 98519, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 11783, 23115, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 4228, 45919, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 5749, 92957, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 136, 77953, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 13404, 66237, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 4641, 48389, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 14426, 71824, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 4715, 26426, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 1317, 86193, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 6625, 13865, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 10672, 31498, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 6004, 61161, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 876, 68541, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 5232, 72641, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 6595, 48317, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 14697, 28613, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 6039, 22389, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 12521, 82416, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 3562, 57499, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 11874, 81556, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 4376, 11741, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 9774, 95589, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 8247, 21534, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 1103, 28279, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 281, 22218, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 4332, 49126, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 6247, 94664, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 8491, 55128, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 12640, 62348, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 633, 69323, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 12016, 41269, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 3283, 19138, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 3245, 57734, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 13998, 69888, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 7383, 73447, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 9950, 87763, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 7208, 75421, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 1710, 52724, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 12844, 64556, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 12540, 98431, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 2103, 91341, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 6651, 44897, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 9771, 35753, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 10848, 39324, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 5835, 72284, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 10625, 92639, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 14143, 36176, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 10124, 93545, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 6525, 45115, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 1688, 69637, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 1350, 32573, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 12258, 48678, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 9385, 72427, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 11267, 67681, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 14423, 64624, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 4509, 22851, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 91, 14552, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 1353, 78488, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 2803, 99588, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 1546, 19964, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 14940, 67922, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 3540, 98297, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 11887, 74871, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 7188, 86759, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 859, 95638, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 3528, 26691, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 11738, 94421, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 14118, 29827, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 1233, 48123, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 11605, 48329, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 2915, 55853, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 9569, 73797, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 6714, 35821, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 12360, 18339, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 9548, 75664, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 3568, 86933, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 9909, 17936, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 13926, 22789, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 7078, 14355, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 10354, 36526, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 14253, 46961, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 2170, 41662, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 275, 69417, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 7041, 41861, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 5212, 43463, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 12620, 46755, 1);
+commit;
+prompt 100 records committed...
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 7421, 79892, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 1962, 61466, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 417, 97162, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 13434, 39569, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 9295, 55856, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 5042, 11536, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 14941, 38646, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 14038, 56679, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 76, 47955, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 10210, 68228, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 5980, 14261, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 10489, 64213, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 11926, 61751, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 13914, 42874, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 14430, 81263, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 10283, 64193, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 3691, 85923, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 7849, 97218, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 6915, 59576, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 9284, 75819, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 1259, 76218, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 7314, 61278, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 2095, 75574, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 6512, 97845, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 13737, 51563, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 975, 92627, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 7224, 67274, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 11708, 92978, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 859, 91414, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 10565, 37659, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 12371, 58261, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 4319, 69687, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 6326, 41214, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 4231, 32426, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 9361, 96629, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 658, 54973, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 7388, 65132, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 9053, 65137, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 6231, 93326, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 1007, 78657, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 6517, 53955, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 9476, 75261, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 11745, 39411, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 10788, 23557, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 12652, 91757, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 14537, 89623, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 13081, 64274, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 4744, 59859, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 11778, 63961, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 7718, 43564, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 3479, 43229, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 5841, 79265, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 414, 76278, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 5324, 89395, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 723, 19389, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 5797, 77355, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 9829, 85796, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 4499, 43898, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 1112, 97898, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 11071, 78516, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 7691, 89835, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 9397, 63439, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 11639, 87911, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 8510, 75129, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 1155, 89365, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 13795, 82369, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 7844, 88828, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 7392, 23243, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 11308, 45358, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 1602, 73173, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 12398, 95197, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 4406, 71249, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 11242, 64259, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 517, 59848, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 14785, 91318, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 5868, 94324, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 13481, 14955, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 3604, 35345, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 9386, 22378, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 6039, 87723, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 2827, 99444, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 10837, 25155, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 14356, 23348, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 3534, 33551, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 12479, 92566, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 12839, 64585, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 12208, 76939, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 7006, 19598, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 2135, 81758, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 11901, 68378, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 10887, 55476, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 14902, 64435, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 7841, 66853, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 14630, 79335, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 9255, 18323, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 2721, 16866, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 5522, 81239, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 9074, 17119, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 13467, 15973, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 14699, 87568, 5);
+commit;
+prompt 200 records committed...
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 10284, 53636, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 2721, 85642, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 260, 46923, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 12101, 48244, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 7131, 86775, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 11034, 18841, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 1145, 75494, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 11414, 58469, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 8213, 58861, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 11101, 68449, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Gum', 10501, 24741, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Braces', 5986, 81366, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 9759, 95395, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 3124, 55142, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 14751, 73772, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 2873, 36449, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 13910, 13622, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 5526, 33123, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 11068, 14675, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 11611, 71465, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 8305, 61725, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Extraction', 1497, 22573, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 8549, 77463, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 554, 97684, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 7983, 65135, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 2218, 44524, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 218, 74348, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 5063, 43531, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Extraction', 7168, 95993, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 1035, 52941, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 1773, 11355, 6);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 11782, 95429, 5);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Gum', 9681, 83316, 2);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 13428, 87726, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 914, 53372, 1);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Gum', 6639, 99975, 7);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Teeth filling', 6996, 29468, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Orthodontics', 'Teeth filling', 9650, 19434, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Teeth filling', 14312, 26161, 9);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Braces', 14925, 62824, 3);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Rehabilitation', 'Braces', 11519, 67319, 8);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 14531, 16754, 4);
+insert into TREATMENT (ttype, description, price, tid, time)
+values ('Aesthetic', 'Extraction', 11795, 58257, 4);
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Orthodontics', 'Extraction', 12080, 61916, 3);
 insert into TREATMENT (ttype, description, price, tid, time)
@@ -4179,6 +4416,8 @@ insert into TREATMENT (ttype, description, price, tid, time)
 values ('Rehabilitation', 'Gum', 12772, 18558, 8);
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Rehabilitation', 'Extraction', 5604, 54149, 9);
+commit;
+prompt 300 records committed...
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Aesthetic', 'Extraction', 8341, 89842, 4);
 insert into TREATMENT (ttype, description, price, tid, time)
@@ -4265,70 +4504,8 @@ insert into TREATMENT (ttype, description, price, tid, time)
 values ('Aesthetic', 'Teeth filling', 12513, 76229, 9);
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Aesthetic', 'Extraction', 2754, 15866, 4);
-commit;
-prompt 100 records committed...
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Aesthetic', 'Braces', 10078, 56151, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 3124, 55142, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 14751, 73772, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 2873, 36449, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 13910, 13622, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 5526, 33123, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 11068, 14675, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 11611, 71465, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 8305, 61725, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 1497, 22573, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 8549, 77463, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 554, 97684, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 7983, 65135, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 2218, 44524, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 218, 74348, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 5063, 43531, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 7168, 95993, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 1035, 52941, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 1773, 11355, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 11782, 95429, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 9681, 83316, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 13428, 87726, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 914, 53372, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 6639, 99975, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 6996, 29468, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 9650, 19434, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 14312, 26161, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 14925, 62824, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 11519, 67319, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 14531, 16754, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 11795, 58257, 4);
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Orthodontics', 'Braces', 9102, 11153, 6);
 insert into TREATMENT (ttype, description, price, tid, time)
@@ -4437,436 +4614,6 @@ insert into TREATMENT (ttype, description, price, tid, time)
 values ('Orthodontics', 'Teeth filling', 1850, 17632, 4);
 insert into TREATMENT (ttype, description, price, tid, time)
 values ('Aesthetic', 'Gum', 586, 34578, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 6039, 22389, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 12521, 82416, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 3562, 57499, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 11874, 81556, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 4376, 11741, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 9774, 95589, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 8247, 21534, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 1103, 28279, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 281, 22218, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 4332, 49126, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 6247, 94664, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 8491, 55128, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 12640, 62348, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 633, 69323, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 12016, 41269, 6);
-commit;
-prompt 200 records committed...
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 3283, 19138, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 3245, 57734, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 13998, 69888, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 7383, 73447, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 9950, 87763, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 7208, 75421, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 1710, 52724, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 12844, 64556, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 12540, 98431, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 2103, 91341, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 6651, 44897, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 9771, 35753, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 10848, 39324, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 5835, 72284, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 10625, 92639, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 14143, 36176, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 10124, 93545, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 6525, 45115, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 1688, 69637, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 1350, 32573, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 12258, 48678, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 9385, 72427, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 11267, 67681, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 14423, 64624, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 4509, 22851, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 91, 14552, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 1353, 78488, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 2803, 99588, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 1546, 19964, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 14940, 67922, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 3540, 98297, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 11887, 74871, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 7188, 86759, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 859, 95638, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 3528, 26691, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 11738, 94421, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 14118, 29827, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 1233, 48123, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 11605, 48329, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 2915, 55853, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 9569, 73797, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 6714, 35821, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 12360, 18339, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 9548, 75664, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 3568, 86933, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 9909, 17936, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 13926, 22789, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 7078, 14355, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 10354, 36526, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 14253, 46961, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 2170, 41662, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 275, 69417, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 7041, 41861, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 5212, 43463, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 12620, 46755, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 7421, 79892, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 1962, 61466, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 417, 97162, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 13434, 39569, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 9295, 55856, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 5042, 11536, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 14941, 38646, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 14038, 56679, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 76, 47955, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 10210, 68228, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 5980, 14261, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 10489, 64213, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 11926, 61751, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 13914, 42874, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 14430, 81263, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 10283, 64193, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 3691, 85923, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 7849, 97218, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 6915, 59576, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 9284, 75819, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 1259, 76218, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 7314, 61278, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 2095, 75574, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 6512, 97845, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 13737, 51563, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 975, 92627, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 7224, 67274, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 11708, 92978, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 859, 91414, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 10565, 37659, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 12371, 58261, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 4319, 69687, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 6326, 41214, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 4231, 32426, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 9361, 96629, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 658, 54973, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 7388, 65132, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 9053, 65137, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 6231, 93326, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 1007, 78657, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 6517, 53955, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 9476, 75261, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 11745, 39411, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 10788, 23557, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 12652, 91757, 4);
-commit;
-prompt 300 records committed...
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 14537, 89623, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 13081, 64274, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 4744, 59859, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 11778, 63961, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 7718, 43564, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 3479, 43229, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 5841, 79265, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 414, 76278, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 5324, 89395, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 723, 19389, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 5797, 77355, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 9829, 85796, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 4499, 43898, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 1112, 97898, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 11071, 78516, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 7691, 89835, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 9397, 63439, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 11639, 87911, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 8510, 75129, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 1155, 89365, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 13795, 82369, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 7844, 88828, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 7392, 23243, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Braces', 11308, 45358, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 1602, 73173, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 12398, 95197, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 4406, 71249, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 11242, 64259, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 517, 59848, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 14785, 91318, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 5868, 94324, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 13481, 14955, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 3604, 35345, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 9386, 22378, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 6039, 87723, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 2827, 99444, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 10837, 25155, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 14356, 23348, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 3534, 33551, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 12479, 92566, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 12839, 64585, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 12208, 76939, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 7006, 19598, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 2135, 81758, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 11901, 68378, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 10887, 55476, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 14902, 64435, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 7841, 66853, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 14630, 79335, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 9255, 18323, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 2721, 16866, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 5522, 81239, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 9074, 17119, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 13467, 15973, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 14699, 87568, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 10284, 53636, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 2721, 85642, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 260, 46923, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 12101, 48244, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 7131, 86775, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 11034, 18841, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 1145, 75494, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 11414, 58469, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 8213, 58861, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 11101, 68449, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 10501, 24741, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 5986, 81366, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 9759, 95395, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 4465, 69548, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 361, 82736, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 2974, 36999, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 2349, 43562, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 1148, 29779, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 13072, 69989, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 13553, 45299, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Extraction', 12520, 86448, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Extraction', 5965, 55194, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 11913, 65894, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 761, 31856, 3);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 2085, 51917, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Braces', 7022, 81291, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Teeth filling', 9567, 98519, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Gum', 11783, 23115, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 4228, 45919, 7);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 5749, 92957, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Teeth filling', 136, 77953, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 13404, 66237, 2);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 4641, 48389, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 14426, 71824, 5);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 4715, 26426, 9);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 1317, 86193, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 6625, 13865, 4);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 10672, 31498, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Gum', 6004, 61161, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Aesthetic', 'Extraction', 876, 68541, 1);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Braces', 5232, 72641, 8);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Orthodontics', 'Teeth filling', 6595, 48317, 6);
-insert into TREATMENT (ttype, description, price, tid, time)
-values ('Rehabilitation', 'Gum', 14697, 28613, 2);
 commit;
 prompt 398 records loaded
 prompt Loading MUSEDINT...
@@ -6482,142 +6229,6 @@ commit;
 prompt 797 records loaded
 prompt Loading OFFICE...
 insert into OFFICE (otype, sid)
-values ('Secretariat', 10011);
-insert into OFFICE (otype, sid)
-values ('Sales', 10012);
-insert into OFFICE (otype, sid)
-values ('Secretariat', 10013);
-insert into OFFICE (otype, sid)
-values ('Sales', 10014);
-insert into OFFICE (otype, sid)
-values ('Secretariat', 10015);
-insert into OFFICE (otype, sid)
-values ('Secretariat', 10016);
-insert into OFFICE (otype, sid)
-values ('Sales', 10017);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 10018);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 10019);
-insert into OFFICE (otype, sid)
-values ('Sales', 10020);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 12979);
-insert into OFFICE (otype, sid)
-values ('Sales', 68062);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 59041);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 73373);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 87171);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 78572);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 41224);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 86483);
-insert into OFFICE (otype, sid)
-values ('Sales', 57569);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 29872);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 25578);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 98375);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 26921);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 69582);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 38296);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 64636);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 45839);
-insert into OFFICE (otype, sid)
-values ('Counter', 34002);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 18802);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 55385);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 81894);
-insert into OFFICE (otype, sid)
-values ('IT', 49969);
-insert into OFFICE (otype, sid)
-values ('Counter', 51383);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 65613);
-insert into OFFICE (otype, sid)
-values ('Sales', 10334);
-insert into OFFICE (otype, sid)
-values ('Counter', 16712);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 99596);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 47970);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 29127);
-insert into OFFICE (otype, sid)
-values ('Secretariat''', 33360);
-insert into OFFICE (otype, sid)
-values ('IT', 83782);
-insert into OFFICE (otype, sid)
-values ('Counter', 47962);
-insert into OFFICE (otype, sid)
-values ('Counter', 74972);
-insert into OFFICE (otype, sid)
-values ('Sales', 32397);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 41470);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 29561);
-insert into OFFICE (otype, sid)
-values ('Sales', 68429);
-insert into OFFICE (otype, sid)
-values ('IT', 55269);
-insert into OFFICE (otype, sid)
-values ('Sales', 36074);
-insert into OFFICE (otype, sid)
-values ('IT', 10006);
-insert into OFFICE (otype, sid)
-values ('IT', 50598);
-insert into OFFICE (otype, sid)
-values ('Counter', 88762);
-insert into OFFICE (otype, sid)
-values ('Counter', 76589);
-insert into OFFICE (otype, sid)
-values ('IT', 24963);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 81875);
-insert into OFFICE (otype, sid)
-values ('Sales Secretari', 60334);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 65725);
-insert into OFFICE (otype, sid)
-values ('IT', 88875);
-insert into OFFICE (otype, sid)
-values ('IT', 30610);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 74331);
-insert into OFFICE (otype, sid)
-values ('Sales Secretari', 76479);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 10007);
-insert into OFFICE (otype, sid)
-values ('Counter', 84092);
-insert into OFFICE (otype, sid)
-values ('Shift Manager', 48212);
-insert into OFFICE (otype, sid)
-values ('Counter', 47027);
-insert into OFFICE (otype, sid)
-values ('Counter', 34941);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 73586);
-insert into OFFICE (otype, sid)
-values ('Customer Servic', 43915);
-insert into OFFICE (otype, sid)
 values ('Counter', 13261);
 insert into OFFICE (otype, sid)
 values ('Counter', 10008);
@@ -6681,8 +6292,6 @@ insert into OFFICE (otype, sid)
 values ('Counter', 82258);
 insert into OFFICE (otype, sid)
 values ('Shift Manager', 11311);
-commit;
-prompt 100 records committed...
 insert into OFFICE (otype, sid)
 values ('IT', 89219);
 insert into OFFICE (otype, sid)
@@ -6819,6 +6428,8 @@ insert into OFFICE (otype, sid)
 values ('IT', 89350);
 insert into OFFICE (otype, sid)
 values ('Shift Manager', 22440);
+commit;
+prompt 100 records committed...
 insert into OFFICE (otype, sid)
 values ('Counter', 81284);
 insert into OFFICE (otype, sid)
@@ -6883,8 +6494,6 @@ insert into OFFICE (otype, sid)
 values ('Counter', 54662);
 insert into OFFICE (otype, sid)
 values ('Customer Servic', 59791);
-commit;
-prompt 200 records committed...
 insert into OFFICE (otype, sid)
 values ('IT', 57210);
 insert into OFFICE (otype, sid)
@@ -7021,6 +6630,8 @@ insert into OFFICE (otype, sid)
 values ('Shift Manager', 27277);
 insert into OFFICE (otype, sid)
 values ('Customer Servic', 34404);
+commit;
+prompt 200 records committed...
 insert into OFFICE (otype, sid)
 values ('IT', 91156);
 insert into OFFICE (otype, sid)
@@ -7041,6 +6652,142 @@ insert into OFFICE (otype, sid)
 values ('Sales Secretari', 68229);
 insert into OFFICE (otype, sid)
 values ('Shift Manager', 86842);
+insert into OFFICE (otype, sid)
+values ('Secretariat', 10011);
+insert into OFFICE (otype, sid)
+values ('Sales', 10012);
+insert into OFFICE (otype, sid)
+values ('Secretariat', 10013);
+insert into OFFICE (otype, sid)
+values ('Sales', 10014);
+insert into OFFICE (otype, sid)
+values ('Secretariat', 10015);
+insert into OFFICE (otype, sid)
+values ('Secretariat', 10016);
+insert into OFFICE (otype, sid)
+values ('Sales', 10017);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 10018);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 10019);
+insert into OFFICE (otype, sid)
+values ('Sales', 10020);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 12979);
+insert into OFFICE (otype, sid)
+values ('Sales', 68062);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 59041);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 73373);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 87171);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 78572);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 41224);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 86483);
+insert into OFFICE (otype, sid)
+values ('Sales', 57569);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 29872);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 25578);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 98375);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 26921);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 69582);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 38296);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 64636);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 45839);
+insert into OFFICE (otype, sid)
+values ('Counter', 34002);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 18802);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 55385);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 81894);
+insert into OFFICE (otype, sid)
+values ('IT', 49969);
+insert into OFFICE (otype, sid)
+values ('Counter', 51383);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 65613);
+insert into OFFICE (otype, sid)
+values ('Sales', 10334);
+insert into OFFICE (otype, sid)
+values ('Counter', 16712);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 99596);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 47970);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 29127);
+insert into OFFICE (otype, sid)
+values ('Secretariat''', 33360);
+insert into OFFICE (otype, sid)
+values ('IT', 83782);
+insert into OFFICE (otype, sid)
+values ('Counter', 47962);
+insert into OFFICE (otype, sid)
+values ('Counter', 74972);
+insert into OFFICE (otype, sid)
+values ('Sales', 32397);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 41470);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 29561);
+insert into OFFICE (otype, sid)
+values ('Sales', 68429);
+insert into OFFICE (otype, sid)
+values ('IT', 55269);
+insert into OFFICE (otype, sid)
+values ('Sales', 36074);
+insert into OFFICE (otype, sid)
+values ('IT', 10006);
+insert into OFFICE (otype, sid)
+values ('IT', 50598);
+insert into OFFICE (otype, sid)
+values ('Counter', 88762);
+insert into OFFICE (otype, sid)
+values ('Counter', 76589);
+insert into OFFICE (otype, sid)
+values ('IT', 24963);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 81875);
+insert into OFFICE (otype, sid)
+values ('Sales Secretari', 60334);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 65725);
+insert into OFFICE (otype, sid)
+values ('IT', 88875);
+insert into OFFICE (otype, sid)
+values ('IT', 30610);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 74331);
+insert into OFFICE (otype, sid)
+values ('Sales Secretari', 76479);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 10007);
+insert into OFFICE (otype, sid)
+values ('Counter', 84092);
+insert into OFFICE (otype, sid)
+values ('Shift Manager', 48212);
+insert into OFFICE (otype, sid)
+values ('Counter', 47027);
+insert into OFFICE (otype, sid)
+values ('Counter', 34941);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 73586);
+insert into OFFICE (otype, sid)
+values ('Customer Servic', 43915);
 commit;
 prompt 278 records loaded
 prompt Loading OMAKEA...
@@ -8693,23 +8440,23 @@ values (99588, 47365);
 commit;
 prompt 398 records loaded
 prompt Enabling foreign key constraints for DOCTOR...
-alter table DOCTOR enable constraint SYS_C007250;
+alter table DOCTOR enable constraint SYS_C007299;
 prompt Enabling foreign key constraints for APPOINTMENT...
-alter table APPOINTMENT enable constraint SYS_C007256;
-alter table APPOINTMENT enable constraint SYS_C007257;
+alter table APPOINTMENT enable constraint SYS_C007313;
+alter table APPOINTMENT enable constraint SYS_C007314;
 prompt Enabling foreign key constraints for MUSEDINT...
-alter table MUSEDINT enable constraint SYS_C007275;
-alter table MUSEDINT enable constraint SYS_C007276;
+alter table MUSEDINT enable constraint SYS_C007328;
+alter table MUSEDINT enable constraint SYS_C007329;
 prompt Enabling foreign key constraints for OFFICE...
-alter table OFFICE enable constraint SYS_C007245;
+alter table OFFICE enable constraint SYS_C007333;
 prompt Enabling foreign key constraints for OMAKEA...
-alter table OMAKEA enable constraint SYS_C007265;
-alter table OMAKEA enable constraint SYS_C007266;
+alter table OMAKEA enable constraint SYS_C007337;
+alter table OMAKEA enable constraint SYS_C007338;
 prompt Enabling foreign key constraints for PAYMENT...
-alter table PAYMENT enable constraint SYS_C007282;
+alter table PAYMENT enable constraint SYS_C007344;
 prompt Enabling foreign key constraints for TPREFORMEDINA...
-alter table TPREFORMEDINA enable constraint SYS_C007270;
-alter table TPREFORMEDINA enable constraint SYS_C007271;
+alter table TPREFORMEDINA enable constraint SYS_C007348;
+alter table TPREFORMEDINA enable constraint SYS_C007349;
 prompt Enabling triggers for STAFF...
 alter table STAFF enable all triggers;
 prompt Enabling triggers for DOCTOR...
