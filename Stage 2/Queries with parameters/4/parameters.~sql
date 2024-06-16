@@ -1,0 +1,23 @@
+SELECT 
+    system.d.sId AS DoctorID,
+    system.d.sName AS DoctorName,
+    system.t.tId AS TreatmentID,
+    system.t.tType AS TreatmentType,
+    system.p.cId AS PatientID,
+    system.p.cName AS PatientName
+FROM 
+    system.Doctor d
+JOIN 
+    system.Staff s ON system.d.sId = system.s.sId
+JOIN 
+    system.Treatment t ON system.d.sId = system.t.sId
+JOIN 
+    system.TPreformedInA tp ON system.t.tId = system.tp.tId
+JOIN 
+    system.Appointment a ON system.tp.AppointmentID = system.a.AppointmentID
+JOIN 
+    system.Patient p ON system.a.cId = system.p.cId
+WHERE 
+    system.t.tType = &name
+ORDER BY 
+    system.d.sId, system.p.cId;
