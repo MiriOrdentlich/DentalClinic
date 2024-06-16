@@ -1,0 +1,18 @@
+SELECT DISTINCT
+    a.appointmentId,
+    p.cName,
+    p.cGender,
+    a.aDate,
+    SUM(pa.TotalPrice) OVER (PARTITION BY a.AppointmentID) AS Cost_To_Patient,
+    SUM(t.Price) OVER (PARTITION BY a.AppointmentID) AS Cost_To_Clinic
+FROM system.patient p
+LEFT JOIN system.appointment a ON p.cId = a.cId
+LEFT JOIN system.tPreformedInA tpia ON a.AppointmentID = tpia.AppointmentID
+LEFT JOIN system.treatment t ON tpia.tId = t.tId
+LEFT JOIN system.payment pa ON a.AppointmentID = pa.AppointmentID
+WHERE p.cName IS NOT NULL
+  AND p.cGender IS NOT NULL
+  AND a.aDate IS NOT NULL
+  AND pa.TotalPrice IS NOT NULL
+  AND t.Price IS NOT NULL
+ORDER BY p.cName, a.aDate;

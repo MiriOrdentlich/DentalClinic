@@ -1,0 +1,52 @@
+--Move the appointments that belong to the suspended doctor to a random doctor with the same Specialties
+UPDATE system.appointment
+SET sId = (
+  SELECT sId FROM (
+    SELECT d.sId
+    FROM system.doctor d
+    WHERE d.Specialties = (
+      SELECT Specialties
+      FROM system.doctor
+      WHERE sId = &Doctor_id
+    )
+    AND d.sId <> &Doctor_id
+    ORDER BY dbms_random.value
+  ) 
+  WHERE ROWNUM = 1
+)
+WHERE sId = &Doctor_id;
+
+
+--Move the appointments that belong to the suspended doctor to a random doctor with the same Specialties
+UPDATE system.appointment
+SET sId = (
+  SELECT sId FROM (
+    SELECT d.sId
+    FROM system.doctor d
+    WHERE d.Specialties = (
+      SELECT Specialties
+      FROM system.doctor
+      WHERE sId = (&<name=Doctor_id list="select distinct doc.sId from doctor doc order by doc.sId" hint="Doctor Id has 5 digits" required= true type=integer >)
+    )
+    AND d.sId <> &Doctor_id
+    ORDER BY dbms_random.value
+  ) 
+  WHERE ROWNUM = 1
+)
+WHERE sId = &Doctor_id;
+
+
+--The followings are just to check that everything worked well, No need to run
+
+--View the doctors with the same Specialties as the suspended doctor
+SELECT * from system.doctor d
+WHERE d.Specialties = (
+    SELECT Specialties
+    FROM system.doctor
+    WHERE sId = (&<name=Doctor_id list="select distinct doc.sId from doctor doc order by doc.sId" hint="Doctor Id has 5 digits" required= true type=integer >)
+  )
+  AND d.sId <> &Doctor_id
+
+--View the appointments of the suspended doctor (Will be empty after the change)
+SELECT * from system.appointment 
+WHERE sId = (&<name=Doctor_id list="select distinct doc.sId from doctor doc order by doc.sId" hint="Doctor Id has 5 digits" required= true type=integer >)

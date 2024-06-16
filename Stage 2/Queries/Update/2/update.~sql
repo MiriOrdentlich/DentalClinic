@@ -1,0 +1,18 @@
+-- the Select 
+SELECT t.tId, t.tType, t.Description, t.Price
+FROM system.Treatment t
+JOIN system.TPreformedInA tpia ON t.tId = tpia.tId
+JOIN system.Appointment a ON tpia.AppointmentID = a.AppointmentID
+WHERE a.aDate >= TO_DATE('2023-01-01', 'YYYY-MM-DD')
+ORDER BY a.aDate;
+
+-- the update query
+UPDATE system.Treatment
+SET Price = Price * 1.05
+WHERE tId IN (
+  SELECT t.tId
+  FROM system.Treatment t
+  JOIN system.TPreformedInA tpia ON t.tId = tpia.tId
+  JOIN system.Appointment a ON tpia.AppointmentID = a.AppointmentID
+  WHERE a.aDate >= TO_DATE('2023-01-01', 'YYYY-MM-DD')
+);
