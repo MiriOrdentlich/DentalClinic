@@ -1,7 +1,7 @@
 PL/SQL Developer Test script 3.0
-78
+77
 DECLARE
-    -- Variables for secondMostVisitsPerson
+    -- Variables for mostVisitsPerson
     v_result VARCHAR2(200);
     v_from_date DATE;
     v_to_date DATE;
@@ -29,16 +29,16 @@ DECLARE
     END;
 
 BEGIN
-    DBMS_OUTPUT.PUT_LINE('Testing secondMostVisitsPerson function:');
+    DBMS_OUTPUT.PUT_LINE('Testing mostVisitsPerson function:');
     DBMS_OUTPUT.PUT_LINE('---------------------------------------');
     
-    -- Test secondMostVisitsPerson
+    -- Test mostVisitsPerson
     BEGIN
-        v_result := secondMostVisitsPerson(fromDate=> :fromDate, toDate=>:toDate);
+        v_result := mostVisitsPerson(fromDate=> :fromDate, toDate=>:toDate);
         DBMS_OUTPUT.PUT_LINE('Result: ' || v_result);
     EXCEPTION
         WHEN OTHERS THEN
-            DBMS_OUTPUT.PUT_LINE('Error in secondMostVisitsPerson: ' || SQLERRM);
+            DBMS_OUTPUT.PUT_LINE('Error in mostVisitsPerson: ' || SQLERRM);
     END;
     
     DBMS_OUTPUT.PUT_LINE(CHR(10) || 'Testing create_appointment function:');
@@ -77,7 +77,6 @@ EXCEPTION
     WHEN OTHERS THEN
         DBMS_OUTPUT.PUT_LINE('An unexpected error occurred in the main block: ' || SQLERRM);
 END;
-
 6
 Enter_Doctor_ID
 1
